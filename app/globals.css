@@ -481,7 +481,10 @@ input {
 
 .deal {
     height: 25.347vw;
-    background: #f4f0ed
+    background: url('../public/images/off-banner.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .deal>.sheet-photo {
@@ -570,7 +573,20 @@ input {
     border-radius: 2.083vw;
     overflow: hidden;
     position: relative;
-    background: #ddd
+}
+
+.brand-grid #one{
+    background-image: url('../public/images/Ray-ban.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.brand-grid #two{
+    background-image: url('../public/images/Prada.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .brand-grid .sheet-photo {
@@ -615,7 +631,10 @@ input {
 
 .trend {
     height: 25.347vw;
-    background: repeating-linear-gradient(90deg, #fff66a 0 6.944vw, #f6f2ed 6.944vw 14.236vw);
+    background: url('../public/images/Trend-banner.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: grid;
     grid-template-columns: 1fr 1fr
 }
@@ -627,7 +646,8 @@ input {
 
 .trend h2 {
     font-size: 2.778vw;
-    margin: 0
+    margin: 0;
+    font-weight: 900;
 }
 
 .trend p {

@@ -13,14 +13,21 @@ const products = [
   ["Emma", "Rs. 6,000", "soft", "#dfc1aa"],
 ] as const;
 
+const bestSellerImages = [
+  "/images/1.webp",
+  "/images/2.webp",
+  "/images/3.webp",
+  "/images/4.webp",
+];
+
 const shapes = ["Square", "Rectangle", "Round", "Cat-eye", "Browline", "Aviator"];
 const shapeImages = [
-  "/images/square.webp",
-  "/images/rectangle.webp",
-  "/images/round.webp",
-  "/images/square.webp",
-  "/images/browline.webp",
-  "/images/aviator.webp",
+  "/images/Square.webp",
+  "/images/Rectangle.webp",
+  "/images/Round.webp",
+  "/images/Round.webp",
+  "/images/Browline.webp",
+  "/images/Aviator.webp",
 ];
 const categories = ["Under Rs. 5000", "New Arrivals", "Best Sellers", "Top Rated", "Rectangle", "Oversized", "Cat Eye", "Premium", "On Sale"];
 
@@ -55,7 +62,7 @@ export default function Home() {
       </header>
 
       <nav className="main-nav shell" aria-label="Shop categories">
-        {['Eyeglasses', 'Sunglasses', 'Lenses', 'Sports', 'Collabs & Partners', 'Trending Now', 'Sale'].map(x => <a key={x} href={`#${x.toLowerCase().replaceAll(' ', '-')}`}>{x}</a>)}
+        {['Eyeglasses', 'Sunglasses', 'Lenses', 'Sports', 'Trending Now', 'Sale'].map(x => <a key={x} href={`#${x.toLowerCase().replaceAll(' ', '-')}`}>{x}</a>)}
       </nav>
       <div className="pills shell">{categories.map(x => <button key={x}>{x}</button>)}</div>
 
@@ -72,8 +79,8 @@ export default function Home() {
         <section className="best" id="best-sellers">
           <div className="section-title light"><h2>BEST SELLERS</h2><p>EYEGLASSES / SUNGLASSES</p></div>
           <div className="product-grid">
-            {filtered.slice(0, visible).map(([name, price, kind, color]) => (
-              <article className="product" key={name}><b>Top Rated</b><div className="product-image"><Glasses kind={kind} /></div><div className="product-info"><strong>{price}</strong><span>★ 4.7 <small>(200)</small></span><p>{name}</p><i style={{ background: color }} /><i /></div></article>
+            {filtered.slice(0, visible).map(([name, price, kind, color], index) => (
+              <article className="product" key={name}><b>Top Rated</b><div className="product-image"><img src={bestSellerImages[index % bestSellerImages.length]} alt={name} style={{ width: "100%", objectFit: "cover", borderRadius: "1.25vw" }} /></div><div className="product-info"><strong>{price}</strong><span>★ 4.7 <small>(200)</small></span><p>{name}</p><i style={{ background: color }} /><i /></div></article>
             ))}
           </div>
           {filtered.length === 0 && <p className="no-results">No frames match “{query}”.</p>}
@@ -85,17 +92,23 @@ export default function Home() {
           <div className="benefits">{[["●", "Fast Delivery"], ["●", "Sunglasses"], ["●", "Sports"], ["●", "Kids"], ["●", "Safety"]].map(([icon, label]) => <div key={label}><span>{icon}</span><small>{label}</small></div>)}</div>
         </section>
 
-        <section className="deal card">  
+        <section className="deal card">
           <div><h2>BUY ONE,<br />GET ONE 20% OFF</h2><p>Use code <b>GET20</b></p><a className="btn" href="#best-sellers">SHOP NOW</a></div>
         </section>
 
         <section className="shape-shop"><div className="section-title left"><h2>SHOP BY FRAME SHAPE</h2><p>Versatile shapes made to fit your mood and every moment.</p></div><div className="shape-grid">{shapes.map((shape, i) => <a href="#best-sellers" key={shape}><div><img src={shapeImages[i]} alt={shape} style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "1.25vw" }} /></div><b>{shape}</b></a>)}</div></section>
       </div>
 
-      <section className="brand-band"><div className="shell brand-grid"><article><Photo cell={5} /><div className="rayban">Ray-Ban</div><a className="btn" href="#best-sellers">SHOP NOW</a></article><article><Photo cell={2} /><div className="prada">PRADA<small>EYEWEAR</small></div><a className="btn" href="#best-sellers">SHOP NOW</a></article></div><div className="slider-controls">◁ &nbsp;Ⅱ&nbsp; ▷</div></section>
+      <section className="brand-band">
+        <div className="shell brand-grid">
+          <article id="one"><a className="btn" href="#best-sellers">SHOP NOW</a></article>
+          <article id="two"><a className="btn" href="#best-sellers">SHOP NOW</a></article>
+        </div>
+        <div className="slider-controls">◁ &nbsp;Ⅱ&nbsp; ▷</div>
+      </section>
 
       <div className="page shell">
-        <section className="trend card"><div><h2>THE TREND SHOP</h2><p>Curated styles, fresh colors, and must-see edits.</p><a className="btn" href="#best-sellers">SHOP NOW</a></div><Photo cell={6} /></section>
+        <section className="trend card"><div><h2>THE TREND SHOP</h2><p>Curated styles, fresh colors, and must-see edits.</p><a className="btn" href="#best-sellers">SHOP NOW</a></div></section>
         <section className="payments"><div className="section-title"><h2>Payment Options Available</h2><p>Shop now and pay over time with our flexible payment options</p></div><div className="payment-logos"><b>VISA</b><b>AMEX</b><b>●●</b><b>Payoneer</b><b>▣ Pay</b><b>G Pay</b><b>PayPal</b></div></section>
       </div>
 

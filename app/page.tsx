@@ -14,6 +14,14 @@ const products = [
 ] as const;
 
 const shapes = ["Square", "Rectangle", "Round", "Cat-eye", "Browline", "Aviator"];
+const shapeImages = [
+  "/images/square.webp",
+  "/images/rectangle.webp",
+  "/images/round.webp",
+  "/images/square.webp",
+  "/images/browline.webp",
+  "/images/aviator.webp",
+];
 const categories = ["Under Rs. 5000", "New Arrivals", "Best Sellers", "Top Rated", "Rectangle", "Oversized", "Cat Eye", "Premium", "On Sale"];
 
 function Glasses({ kind = "soft" }: { kind?: string }) {
@@ -57,8 +65,8 @@ export default function Home() {
         </section>
 
         <section className="gender-grid">
-          <article className="gender-card"><div><span>FOR</span><h2>MEN’S</h2><a className="btn" href="#best-sellers">SHOP NOW</a></div></article>
-          <article className="gender-card"><div><span>FOR</span><h2>WOMEN’S</h2><a className="btn" href="#best-sellers">SHOP NOW</a></div></article>
+          <article className="gender-card" id="men"><div><span>FOR</span><h2>MEN’S</h2><a className="btn" href="#best-sellers">SHOP NOW</a></div></article>
+          <article className="gender-card" id="women"><div><span>FOR</span><h2>WOMEN’S</h2><a className="btn" href="#best-sellers">SHOP NOW</a></div></article>
         </section>
 
         <section className="best" id="best-sellers">
@@ -81,7 +89,7 @@ export default function Home() {
           <div><h2>BUY ONE,<br />GET ONE 20% OFF</h2><p>Use code <b>GET20</b></p><a className="btn" href="#best-sellers">SHOP NOW</a></div>
         </section>
 
-        <section className="shape-shop"><div className="section-title left"><h2>SHOP BY FRAME SHAPE</h2><p>Versatile shapes made to fit your mood and every moment.</p></div><div className="shape-grid">{shapes.map((shape, i) => <a href="#best-sellers" key={shape}><div><Glasses kind={i % 3 === 0 ? 'soft' : i % 3 === 1 ? 'rectangle' : 'round'} /></div><b>{shape}</b></a>)}</div></section>
+        <section className="shape-shop"><div className="section-title left"><h2>SHOP BY FRAME SHAPE</h2><p>Versatile shapes made to fit your mood and every moment.</p></div><div className="shape-grid">{shapes.map((shape, i) => <a href="#best-sellers" key={shape}><div><img src={shapeImages[i]} alt={shape} style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "1.25vw" }} /></div><b>{shape}</b></a>)}</div></section>
       </div>
 
       <section className="brand-band"><div className="shell brand-grid"><article><Photo cell={5} /><div className="rayban">Ray-Ban</div><a className="btn" href="#best-sellers">SHOP NOW</a></article><article><Photo cell={2} /><div className="prada">PRADA<small>EYEWEAR</small></div><a className="btn" href="#best-sellers">SHOP NOW</a></article></div><div className="slider-controls">◁ &nbsp;Ⅱ&nbsp; ▷</div></section>

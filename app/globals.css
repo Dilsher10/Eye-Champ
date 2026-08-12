@@ -193,9 +193,15 @@ input {
     background-position: 100% 100%
 }
 
+
+/* Hero */
+
 .hero {
     height: 25.694vw;
-    background: #eadbca
+    background: url('../public/images/hero.webp');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .hero>.sheet-photo {
@@ -251,7 +257,20 @@ input {
     border-radius: 1.528vw;
     overflow: hidden;
     position: relative;
-    background: #111
+}
+
+#men {
+    background: url('../public/images/men.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#women {
+    background: url('../public/images/women.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 /* .gender-card>.sheet-photo {

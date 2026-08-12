@@ -38,7 +38,7 @@ export default function Home() {
     <main>
       <div className="promo">Buy one, get one 20% off. <b>Use GET20</b> · see terms</div>
       <header className="site-header shell">
-        <a className="brand" href="#top" aria-label="Eye Champ home"><span className="brand-glasses">◯—◯</span><strong>EYE CHAMP</strong></a>
+        <a className="logo" href="#top" aria-label="Eye Champ home">LOGO</a>
         <label className="search"><span>⌕</span><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search our AI recommended frames" /></label>
         <nav className={`utility ${menu ? "open" : ""}`} aria-label="Account links">
           <a href="#login">♙<small>Login</small></a><a href="#favorites">♡<small>Favorites</small></a><a href="#help">♧<small>Help</small></a><a href="#cart">▱<small>Cart</small></a>
@@ -47,19 +47,18 @@ export default function Home() {
       </header>
 
       <nav className="main-nav shell" aria-label="Shop categories">
-        {['Eyeglasses','Sunglasses','Lenses','Sports','Collabs & Partners','Trending Now','Sale'].map(x => <a key={x} href={`#${x.toLowerCase().replaceAll(' ','-')}`}>{x}</a>)}
+        {['Eyeglasses', 'Sunglasses', 'Lenses', 'Sports', 'Collabs & Partners', 'Trending Now', 'Sale'].map(x => <a key={x} href={`#${x.toLowerCase().replaceAll(' ', '-')}`}>{x}</a>)}
       </nav>
       <div className="pills shell">{categories.map(x => <button key={x}>{x}</button>)}</div>
 
       <div className="page shell" id="top">
         <section className="hero card">
-          <Photo cell={1} />
           <div className="hero-copy"><h1>MADE FOR DIGITAL<br />MOMENTS</h1><p>Block More™ helps filter blue light during digital learning.</p><a className="btn" href="#best-sellers">SHOP NOW</a></div>
         </section>
 
         <section className="gender-grid">
-          <article className="gender-card"><Photo cell={2} /><div><span>FOR</span><h2>MEN’S</h2><a className="btn" href="#best-sellers">SHOP NOW</a></div></article>
-          <article className="gender-card"><Photo cell={3} /><div><span>FOR</span><h2>WOMEN’S</h2><a className="btn" href="#best-sellers">SHOP NOW</a></div></article>
+          <article className="gender-card"><div><span>FOR</span><h2>MEN’S</h2><a className="btn" href="#best-sellers">SHOP NOW</a></div></article>
+          <article className="gender-card"><div><span>FOR</span><h2>WOMEN’S</h2><a className="btn" href="#best-sellers">SHOP NOW</a></div></article>
         </section>
 
         <section className="best" id="best-sellers">
@@ -75,10 +74,12 @@ export default function Home() {
 
         <section className="everyone">
           <div className="section-title"><h2>EYEWEAR FOR EVERYONE</h2><p>Style & clarity made for you.</p></div>
-          <div className="benefits">{[["●","Fast Delivery"],["●","Sunglasses"],["●","Sports"],["●","Kids"],["●","Safety"]].map(([icon,label]) => <div key={label}><span>{icon}</span><small>{label}</small></div>)}</div>
+          <div className="benefits">{[["●", "Fast Delivery"], ["●", "Sunglasses"], ["●", "Sports"], ["●", "Kids"], ["●", "Safety"]].map(([icon, label]) => <div key={label}><span>{icon}</span><small>{label}</small></div>)}</div>
         </section>
 
-        <section className="deal card"><Photo cell={4} /><div><h2>BUY ONE,<br />GET ONE 20% OFF</h2><p>Use code <b>GET20</b></p><a className="btn" href="#best-sellers">SHOP NOW</a></div></section>
+        <section className="deal card">  
+          <div><h2>BUY ONE,<br />GET ONE 20% OFF</h2><p>Use code <b>GET20</b></p><a className="btn" href="#best-sellers">SHOP NOW</a></div>
+        </section>
 
         <section className="shape-shop"><div className="section-title left"><h2>SHOP BY FRAME SHAPE</h2><p>Versatile shapes made to fit your mood and every moment.</p></div><div className="shape-grid">{shapes.map((shape, i) => <a href="#best-sellers" key={shape}><div><Glasses kind={i % 3 === 0 ? 'soft' : i % 3 === 1 ? 'rectangle' : 'round'} /></div><b>{shape}</b></a>)}</div></section>
       </div>
@@ -91,12 +92,12 @@ export default function Home() {
       </div>
 
       <footer id="help"><div className="shell footer-grid">{[
-        ['SHOP BY','ALL SUNGLASSES','ALL EYEGLASSES','POLARIZED','NEW ICONS','SPECIAL OFFERS'],
-        ['SHOPPING ONLINE','SIZE GUIDE','ACCEPTED PAYMENT METHODS','PARTS & SERVICE','SHIPPING INFORMATION','CANCEL OR RETURN AN ORDER'],
-        ['ABOUT US','OUR ICONS HISTORY','RAY-BAN RED','THE ONES','ONESIGHT'],
-        ['DO IT IN PERSON','STORE LOCATOR'],
-        ['HOW CAN WE HELP?','GET SUPPORT','TRACK ORDERS','TRACK RETURNS','FAQ','REPORT A FAKE'],
-        ['CONTACT US','+92 333 8888888','002 888888','FOLLOW US','◉ ◎ ◉ ◉ ✕']
+        ['SHOP BY', 'ALL SUNGLASSES', 'ALL EYEGLASSES', 'POLARIZED', 'NEW ICONS', 'SPECIAL OFFERS'],
+        ['SHOPPING ONLINE', 'SIZE GUIDE', 'ACCEPTED PAYMENT METHODS', 'PARTS & SERVICE', 'SHIPPING INFORMATION', 'CANCEL OR RETURN AN ORDER'],
+        ['ABOUT US', 'OUR ICONS HISTORY', 'RAY-BAN RED', 'THE ONES', 'ONESIGHT'],
+        ['DO IT IN PERSON', 'STORE LOCATOR'],
+        ['HOW CAN WE HELP?', 'GET SUPPORT', 'TRACK ORDERS', 'TRACK RETURNS', 'FAQ', 'REPORT A FAKE'],
+        ['CONTACT US', '+92 333 8888888', '002 888888', 'FOLLOW US', '◉ ◎ ◉ ◉ ✕']
       ].map((group) => <div key={group[0]}><h3>{group[0]}</h3>{group.slice(1).map(x => <a href="#top" key={x}>{x}</a>)}</div>)}</div><div className="copyright">© COPYRIGHT 2026 ZENNI OPTICAL, INC. ALL RIGHTS RESERVED.</div></footer>
     </main>
   );

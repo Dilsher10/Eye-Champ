@@ -1,7 +1,103 @@
-import Image from "next/image";
+"use client";
+
+import { useMemo, useState } from "react";
+
+const products = [
+  ["Clara", "Rs. 5,000", "round", "#f2d6c9"],
+  ["Noah", "Rs. 4,500", "rectangle", "#c9d8dd"],
+  ["Avery", "Rs. 7,000", "cat-eye", "#f2bdae"],
+  ["Diana", "Rs. 6,000", "soft", "#dfc1aa"],
+  ["Luna", "Rs. 5,000", "round", "#f2d6c9"],
+  ["Milo", "Rs. 4,500", "rectangle", "#c9d8dd"],
+  ["Zara", "Rs. 7,000", "cat-eye", "#f2bdae"],
+  ["Emma", "Rs. 6,000", "soft", "#dfc1aa"],
+] as const;
+
+const shapes = ["Square", "Rectangle", "Round", "Cat-eye", "Browline", "Aviator"];
+const categories = ["Under Rs. 5000", "New Arrivals", "Best Sellers", "Top Rated", "Rectangle", "Oversized", "Cat Eye", "Premium", "On Sale"];
+
+function Glasses({ kind = "soft" }: { kind?: string }) {
+  return (
+    <div className={`glasses glasses-${kind}`} aria-hidden="true">
+      <span /><i /><span />
+    </div>
+  );
+}
+
+function Photo({ cell, className = "" }: { cell: number; className?: string }) {
+  return <div className={`sheet-photo cell-${cell} ${className}`} role="img" aria-label="Eyewear fashion photography" />;
+}
 
 export default function Home() {
+  const [query, setQuery] = useState("");
+  const [visible, setVisible] = useState(4);
+  const [menu, setMenu] = useState(false);
+  const filtered = useMemo(() => products.filter(([name]) => name.toLowerCase().includes(query.toLowerCase())), [query]);
+
   return (
-   
+    <main>
+      <div className="promo">Buy one, get one 20% off. <b>Use GET20</b> · see terms</div>
+      <header className="site-header shell">
+        <a className="brand" href="#top" aria-label="Eye Champ home"><span className="brand-glasses">◯—◯</span><strong>EYE CHAMP</strong></a>
+        <label className="search"><span>⌕</span><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search our AI recommended frames" /></label>
+        <nav className={`utility ${menu ? "open" : ""}`} aria-label="Account links">
+          <a href="#login">♙<small>Login</small></a><a href="#favorites">♡<small>Favorites</small></a><a href="#help">♧<small>Help</small></a><a href="#cart">▱<small>Cart</small></a>
+        </nav>
+        <button className="menu" onClick={() => setMenu(!menu)} aria-label="Toggle menu">☰</button>
+      </header>
+
+      <nav className="main-nav shell" aria-label="Shop categories">
+        {['Eyeglasses','Sunglasses','Lenses','Sports','Collabs & Partners','Trending Now','Sale'].map(x => <a key={x} href={`#${x.toLowerCase().replaceAll(' ','-')}`}>{x}</a>)}
+      </nav>
+      <div className="pills shell">{categories.map(x => <button key={x}>{x}</button>)}</div>
+
+      <div className="page shell" id="top">
+        <section className="hero card">
+          <Photo cell={1} />
+          <div className="hero-copy"><h1>MADE FOR DIGITAL<br />MOMENTS</h1><p>Block More™ helps filter blue light during digital learning.</p><a className="btn" href="#best-sellers">SHOP NOW</a></div>
+        </section>
+
+        <section className="gender-grid">
+          <article className="gender-card"><Photo cell={2} /><div><span>FOR</span><h2>MEN’S</h2><a className="btn" href="#best-sellers">SHOP NOW</a></div></article>
+          <article className="gender-card"><Photo cell={3} /><div><span>FOR</span><h2>WOMEN’S</h2><a className="btn" href="#best-sellers">SHOP NOW</a></div></article>
+        </section>
+
+        <section className="best" id="best-sellers">
+          <div className="section-title light"><h2>BEST SELLERS</h2><p>EYEGLASSES / SUNGLASSES</p></div>
+          <div className="product-grid">
+            {filtered.slice(0, visible).map(([name, price, kind, color]) => (
+              <article className="product" key={name}><b>Top Rated</b><div className="product-image"><Glasses kind={kind} /></div><div className="product-info"><strong>{price}</strong><span>★ 4.7 <small>(200)</small></span><p>{name}</p><i style={{ background: color }} /><i /></div></article>
+            ))}
+          </div>
+          {filtered.length === 0 && <p className="no-results">No frames match “{query}”.</p>}
+          {visible < filtered.length && <button className="btn show" onClick={() => setVisible(8)}>SHOW MORE</button>}
+        </section>
+
+        <section className="everyone">
+          <div className="section-title"><h2>EYEWEAR FOR EVERYONE</h2><p>Style & clarity made for you.</p></div>
+          <div className="benefits">{[["●","Fast Delivery"],["●","Sunglasses"],["●","Sports"],["●","Kids"],["●","Safety"]].map(([icon,label]) => <div key={label}><span>{icon}</span><small>{label}</small></div>)}</div>
+        </section>
+
+        <section className="deal card"><Photo cell={4} /><div><h2>BUY ONE,<br />GET ONE 20% OFF</h2><p>Use code <b>GET20</b></p><a className="btn" href="#best-sellers">SHOP NOW</a></div></section>
+
+        <section className="shape-shop"><div className="section-title left"><h2>SHOP BY FRAME SHAPE</h2><p>Versatile shapes made to fit your mood and every moment.</p></div><div className="shape-grid">{shapes.map((shape, i) => <a href="#best-sellers" key={shape}><div><Glasses kind={i % 3 === 0 ? 'soft' : i % 3 === 1 ? 'rectangle' : 'round'} /></div><b>{shape}</b></a>)}</div></section>
+      </div>
+
+      <section className="brand-band"><div className="shell brand-grid"><article><Photo cell={5} /><div className="rayban">Ray-Ban</div><a className="btn" href="#best-sellers">SHOP NOW</a></article><article><Photo cell={2} /><div className="prada">PRADA<small>EYEWEAR</small></div><a className="btn" href="#best-sellers">SHOP NOW</a></article></div><div className="slider-controls">◁ &nbsp;Ⅱ&nbsp; ▷</div></section>
+
+      <div className="page shell">
+        <section className="trend card"><div><h2>THE TREND SHOP</h2><p>Curated styles, fresh colors, and must-see edits.</p><a className="btn" href="#best-sellers">SHOP NOW</a></div><Photo cell={6} /></section>
+        <section className="payments"><div className="section-title"><h2>Payment Options Available</h2><p>Shop now and pay over time with our flexible payment options</p></div><div className="payment-logos"><b>VISA</b><b>AMEX</b><b>●●</b><b>Payoneer</b><b>▣ Pay</b><b>G Pay</b><b>PayPal</b></div></section>
+      </div>
+
+      <footer id="help"><div className="shell footer-grid">{[
+        ['SHOP BY','ALL SUNGLASSES','ALL EYEGLASSES','POLARIZED','NEW ICONS','SPECIAL OFFERS'],
+        ['SHOPPING ONLINE','SIZE GUIDE','ACCEPTED PAYMENT METHODS','PARTS & SERVICE','SHIPPING INFORMATION','CANCEL OR RETURN AN ORDER'],
+        ['ABOUT US','OUR ICONS HISTORY','RAY-BAN RED','THE ONES','ONESIGHT'],
+        ['DO IT IN PERSON','STORE LOCATOR'],
+        ['HOW CAN WE HELP?','GET SUPPORT','TRACK ORDERS','TRACK RETURNS','FAQ','REPORT A FAKE'],
+        ['CONTACT US','+92 333 8888888','002 888888','FOLLOW US','◉ ◎ ◉ ◉ ✕']
+      ].map((group) => <div key={group[0]}><h3>{group[0]}</h3>{group.slice(1).map(x => <a href="#top" key={x}>{x}</a>)}</div>)}</div><div className="copyright">© COPYRIGHT 2026 ZENNI OPTICAL, INC. ALL RIGHTS RESERVED.</div></footer>
+    </main>
   );
 }

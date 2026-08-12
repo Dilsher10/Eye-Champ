@@ -1,5 +1,6 @@
 "use client";
 
+import { Heart, HelpCircle, ShoppingCart, UserRound } from "lucide-react";
 import { useMemo, useState } from "react";
 
 const products = [
@@ -56,7 +57,10 @@ export default function Home() {
         <a className="logo" href="#top" aria-label="Eye Champ home">LOGO</a>
         <label className="search"><span>⌕</span><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search our AI recommended frames" /></label>
         <nav className={`utility ${menu ? "open" : ""}`} aria-label="Account links">
-          <a href="#login">♙<small>Login</small></a><a href="#favorites">♡<small>Favorites</small></a><a href="#help">♧<small>Help</small></a><a href="#cart">▱<small>Cart</small></a>
+          <a href="#login" aria-label="Login"><UserRound size={18} /><small>Login</small></a>
+          <a href="#favorites" aria-label="Favorites"><Heart size={18} /><small>Favorites</small></a>
+          <a href="#help" aria-label="Help"><HelpCircle size={18} /><small>Help</small></a>
+          <a href="#cart" aria-label="Cart"><ShoppingCart size={18} /><small>Cart</small></a>
         </nav>
         <button className="menu" onClick={() => setMenu(!menu)} aria-label="Toggle menu">☰</button>
       </header>

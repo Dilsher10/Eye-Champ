@@ -12,6 +12,10 @@ const products = [
   ["Milo", "Rs. 4,500", "rectangle", "#c9d8dd"],
   ["Zara", "Rs. 7,000", "cat-eye", "#f2bdae"],
   ["Emma", "Rs. 6,000", "soft", "#dfc1aa"],
+  ["Luna", "Rs. 5,000", "round", "#f2d6c9"],
+  ["Milo", "Rs. 4,500", "rectangle", "#c9d8dd"],
+  ["Zara", "Rs. 7,000", "cat-eye", "#f2bdae"],
+  ["Emma", "Rs. 6,000", "soft", "#dfc1aa"],
 ] as const;
 
 const bestSellerImages = [
@@ -46,7 +50,7 @@ function Photo({ cell, className = "" }: { cell: number; className?: string }) {
 
 export default function Home() {
   const [query, setQuery] = useState("");
-  const [visible, setVisible] = useState(4);
+  const [visible, setVisible] = useState(8);
   const [menu, setMenu] = useState(false);
   const filtered = useMemo(() => products.filter(([name]) => name.toLowerCase().includes(query.toLowerCase())), [query]);
 
@@ -88,7 +92,7 @@ export default function Home() {
             ))}
           </div>
           {filtered.length === 0 && <p className="no-results">No frames match “{query}”.</p>}
-          {visible < filtered.length && <button className="btn show" onClick={() => setVisible(8)}>SHOW MORE</button>}
+          {visible < filtered.length && <button className="btn show" onClick={() => setVisible((v) => Math.min(v + 4, filtered.length))}>SHOW MORE</button>}
         </section>
 
         <section className="everyone">

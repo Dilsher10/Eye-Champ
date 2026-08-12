@@ -693,14 +693,15 @@ footer {
 }
 
 .footer-grid h3 {
-    font-size: 0.833vw;
-    margin-bottom: 1.528vw
+    font-size: 1vw;
+    margin-bottom: 1.528vw;
+    font-weight: 600;
 }
 
 .footer-grid a {
     display: block;
     color: #666;
-    font-size: 0.625vw;
+    font-size: 0.725vw;
     margin: 0.833vw 0
 }
 
@@ -709,7 +710,7 @@ footer {
     color: #fff;
     text-align: center;
     padding: 1.111vw;
-    font-size: 0.556vw
+    font-size: 1vw
 }
 
 @media(max-width:50rem) {

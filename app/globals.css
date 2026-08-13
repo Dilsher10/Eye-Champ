@@ -83,6 +83,23 @@ input {
     justify-content: space-between
 }
 
+.pills-track {
+    display: flex;
+    justify-content: space-between;
+    margin: 2vw 0;
+}
+.pills-track button {
+    flex: none;
+    min-width: max-content;
+    font-size: 0.9vw;
+    padding: 0.5rem 1vw;
+    border-radius: 999px;
+    white-space: nowrap;
+    text-align: center;
+    border: 1px solid gainsboro;
+    font-weight: 600;
+}
+
 .utility a {
     display: flex;
     flex-direction: column;
@@ -122,6 +139,11 @@ input {
     justify-content: space-between;
     overflow: auto;
     padding: 2.25vw 0;
+    scrollbar-width: none;
+}
+
+.pills::-webkit-scrollbar {
+    display: none;
 }
 
 .pills button {
@@ -133,6 +155,7 @@ input {
     white-space: nowrap;
     font-weight: 600;
     cursor: pointer;
+    transition: all 0.2s ease;
 }
 
 .pills button:hover {
@@ -262,7 +285,7 @@ input {
     background-repeat: no-repeat;
 }
 
-#men div{
+#men div {
     position: absolute;
     inset: 3.125vw;
     color: #fff;
@@ -278,7 +301,7 @@ input {
 }
 
 
-#women div{
+#women div {
     position: absolute;
     inset: 3.125vw;
     color: #fff;
@@ -638,7 +661,7 @@ input {
     animation: trendFade 0.8s ease-in-out;
 }
 
-.trend > div:last-child {
+.trend>div:last-child {
     position: relative;
     z-index: 1;
     padding: 6.597vw 3.819vw;
@@ -649,6 +672,7 @@ input {
         opacity: 0.25;
         transform: scale(1.04);
     }
+
     to {
         opacity: 1;
         transform: scale(1);
@@ -739,7 +763,7 @@ footer {
 }
 
 .image-slider .slick-track,
-.image-slider .slick-slide > div {
+.image-slider .slick-slide>div {
     height: 100%;
 }
 
@@ -779,7 +803,7 @@ footer {
     cursor: pointer;
     display: grid;
     place-items: center;
-    box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
 }
 
 .slider-arrow:hover {
@@ -865,6 +889,49 @@ footer {
 @media (max-width: 768px) {
     .shell {
         width: min(92vw, 100%);
+    }
+
+    .pills-wrap {
+        overflow: hidden;
+        padding: 1rem 0 1.25rem;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .pills-track {
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-rows: repeat(2, auto);
+        grid-auto-columns: max-content;
+        gap: 0.6rem;
+        width: max-content;
+        animation: categorySlide 18s linear infinite;
+        will-change: transform;
+    }
+
+    .pills-track:hover {
+        animation-play-state: paused;
+    }
+
+    .pills-track button {
+        flex: none;
+        min-width: max-content;
+        font-size: 0.72rem;
+        padding: 0.3rem 0.4rem;
+        border-radius: 999px;
+        white-space: nowrap;
+        text-align: center;
+        border: 1px solid var(--ink);
+    }
+
+    @keyframes categorySlide {
+        from {
+            transform: translateX(0);
+        }
+
+        to {
+            transform: translateX(-50%);
+        }
     }
 
     .promo {
@@ -1304,7 +1371,7 @@ footer {
         aspect-ratio: 1.26 / 1;
     }
 
-    .gender-card > div:last-child {
+    .gender-card>div:last-child {
         inset: 18px;
     }
 
@@ -1343,7 +1410,7 @@ footer {
         margin-top: 20px;
     }
 
-    .product > b {
+    .product>b {
         left: 7px;
         top: 7px;
         font-size: 6px;
@@ -1354,11 +1421,23 @@ footer {
         padding: 7px 8px 9px;
     }
 
-    .product-info strong { font-size: 8px; }
+    .product-info strong {
+        font-size: 8px;
+    }
+
     .product-info span,
-    .product-info p { font-size: 7px; }
-    .product-info p { margin: 5px 0; }
-    .product-info i { width: 13px; height: 13px; }
+    .product-info p {
+        font-size: 7px;
+    }
+
+    .product-info p {
+        margin: 5px 0;
+    }
+
+    .product-info i {
+        width: 13px;
+        height: 13px;
+    }
 
     .show {
         margin-top: 16px;
@@ -1433,7 +1512,7 @@ footer {
         font-size: 8px;
     }
 
-    .shape-grid a > div {
+    .shape-grid a>div {
         height: auto;
         /* aspect-ratio: 1.38 / 1; */
         margin-bottom: 7px;
@@ -1491,7 +1570,7 @@ footer {
         padding: 0;
     }
 
-    .trend > div:last-child {
+    .trend>div:last-child {
         padding: 30px 22px;
         /* width: 55%; */
     }
@@ -1546,13 +1625,13 @@ footer {
         padding: 0 16px;
     }
 
-    .footer-grid > div {
+    .footer-grid>div {
         position: relative;
         border-top: 1px solid #e6e6e6;
         padding: 12px 0;
     }
 
-    .footer-grid > div::after {
+    .footer-grid>div::after {
         content: "⌄";
         position: absolute;
         right: 2px;
@@ -1560,7 +1639,7 @@ footer {
         color: #777;
     }
 
-    .footer-grid > div:last-child {
+    .footer-grid>div:last-child {
         display: none;
     }
 

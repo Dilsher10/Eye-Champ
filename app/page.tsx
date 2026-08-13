@@ -2,7 +2,7 @@
 
 import ImageSlider from "@/components/ImageSlider";
 import { Heart, HelpCircle, Search, ShoppingCart, UserRound } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const products = [
   ["Clara", "Rs. 5,000", "round", "#f2d6c9"],
@@ -36,12 +36,27 @@ const shapeImages = [
   "/images/Aviator.webp",
 ];
 const categories = ["Under Rs. 5000", "New Arrivals", "Best Sellers", "Top Rated", "Rectangle", "Oversized", "Cat Eye", "Premium", "On Sale"];
+const trendBanners = [
+  "/images/trend-banners/1.webp",
+  "/images/trend-banners/2.webp",
+  "/images/trend-banners/3.webp",
+  "/images/trend-banners/4.webp",
+];
 
 export default function Home() {
   const [query, setQuery] = useState("");
   const [visible, setVisible] = useState(8);
   const [menu, setMenu] = useState(false);
+  const [trendIndex, setTrendIndex] = useState(1);
   const filtered = useMemo(() => products.filter(([name]) => name.toLowerCase().includes(query.toLowerCase())), [query]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTrendIndex((current) => (current + 1) % trendBanners.length);
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <main>
@@ -101,7 +116,18 @@ export default function Home() {
        <ImageSlider />
 
       <div className="page shell">
-        <section className="trend card"><div><h2>THE TREND SHOP</h2><p>Curated styles, fresh colors, and must-see edits.</p><a className="btn" href="#best-sellers">SHOP NOW</a></div></section>
+        <section className="trend card">
+          <div
+            key={trendBanners[trendIndex]}
+            className="trend-bg"
+            style={{ backgroundImage: `url(${trendBanners[trendIndex]})` }}
+          />
+          <div>
+            <h2>THE TREND SHOP</h2>
+            <p>Curated styles, fresh colors, and must-see edits.</p>
+            <a className="btn" href="#best-sellers">SHOP NOW</a>
+          </div>
+        </section>
         <section className="payments"><div className="section-title"><h2>Payment Options Available</h2><p>Shop now and pay over time with our flexible payment options</p></div><div className="payment-logos"><b>VISA</b><b>AMEX</b><b>●●</b><b>Payoneer</b><b>▣ Pay</b><b>G Pay</b><b>PayPal</b></div></section>
       </div>
 

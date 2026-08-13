@@ -614,19 +614,39 @@ input {
 }
 
 .trend {
+    position: relative;
     height: 25.347vw;
-    background: url('../public/images/Trend-banner.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     margin-top: 3vw;
+    overflow: hidden;
 }
 
-.trend>div:first-child {
+.trend-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: trendFade 0.8s ease-in-out;
+}
+
+.trend > div:last-child {
+    position: relative;
+    z-index: 1;
     padding: 6.597vw 3.819vw;
-    z-index: 1
+}
+
+@keyframes trendFade {
+    from {
+        opacity: 0.25;
+        transform: scale(1.04);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .trend h2 {

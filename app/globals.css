@@ -642,7 +642,7 @@ input {
     left: 2.778vw
 }
 
-.trend {
+/* .trend {
     position: relative;
     height: 25.347vw;
     background-size: cover;
@@ -650,13 +650,13 @@ input {
     background-repeat: no-repeat;
     margin-top: 3vw;
     overflow: hidden;
-}
+} */
 
 .trend-bg {
     position: absolute;
     inset: 0;
     background-size: cover;
-    background-position: center;
+    background-position: 100% 100%;
     background-repeat: no-repeat;
     animation: trendFade 0.8s ease-in-out;
 }
@@ -1207,7 +1207,13 @@ footer {
     .trend {
         display: block;
         padding: 1.5rem 1.1rem;
+        background-position: center;
     }
+
+    /* .trend-bg {
+        background-position: center center;
+        background-size: cover;
+    } */
 
     .trend>div:first-child {
         padding: 0;
@@ -1619,6 +1625,7 @@ footer {
 
     .trend>div:last-child {
         padding: 30px 22px;
+        text-align: center;
         /* width: 55%; */
     }
 

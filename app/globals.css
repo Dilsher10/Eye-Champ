@@ -293,21 +293,6 @@ input {
     margin-right: 8.3vw
 }
 
-/* .gender-card>div:last-child {
-    position: absolute;
-    inset: 3.125vw;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end
-} */
-
-/* .gender-card span {
-    font-size: 1.319vw;
-    font-weight: 900;
-    margin-right: 5.833vw
-} */
-
 .gender-card h2 {
     font-size: 3.264vw;
     line-height: normal;
@@ -628,61 +613,6 @@ input {
     left: 2.778vw
 }
 
-.rayban {
-    position: absolute;
-    left: 2.778vw;
-    top: 11.806vw;
-    color: #e21313;
-    font: italic 4.028vw cursive;
-    transform: rotate(-8deg)
-}
-
-.prada {
-    position: absolute;
-    left: 2.917vw;
-    top: 12.847vw;
-    font: 2.778vw Georgia;
-    letter-spacing: 0.208vw
-}
-
-.prada small {
-    display: block;
-    font: 0.694vw Arial;
-    letter-spacing: 0.139vw
-}
-
-.slider-controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: .833vw;
-    margin-top: 1.736vw;
-    color: #666
-}
-
-.slider-controls button {
-    border: 0;
-    background: transparent;
-    color: inherit;
-    cursor: pointer;
-    font-size: 1.944vw;
-    line-height: 1;
-    padding: .347vw
-}
-
-.slider-controls .slider-dot {
-    width: .556vw;
-    height: .556vw;
-    padding: 0;
-    border: .069vw solid #666;
-    border-radius: 50%
-}
-
-.slider-controls .slider-dot.active {
-    background: #111;
-    border-color: #111
-}
-
 .trend {
     height: 25.347vw;
     background: url('../public/images/Trend-banner.webp');
@@ -690,7 +620,8 @@ input {
     background-position: center;
     background-repeat: no-repeat;
     display: grid;
-    grid-template-columns: 1fr 1fr
+    grid-template-columns: 1fr 1fr;
+    margin-top: 3vw;
 }
 
 .trend>div:first-child {
@@ -764,6 +695,101 @@ footer {
     text-align: center;
     padding: 1.111vw;
     font-size: 1vw
+}
+
+.image-slider {
+    position: relative;
+    border-radius: 2rem;
+    overflow: visible;
+    padding: 0 2.5rem 2rem;
+}
+
+.image-slider .slick-list {
+    margin: 0 -0.75rem;
+}
+
+.image-slider .slick-track,
+.image-slider .slick-slide > div {
+    height: 100%;
+}
+
+.image-slider .slick-slide {
+    position: relative;
+    padding: 0 0.75rem;
+}
+
+.image-slide {
+    position: relative;
+    height: 30rem;
+    outline: none;
+    border-radius: 1.5rem;
+    overflow: hidden;
+}
+
+.image-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slider-arrow {
+    position: absolute;
+    top: 42%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    color: #111;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+}
+
+.slider-arrow:hover {
+    background: #fff;
+}
+
+.prev-arrow {
+    left: -0.5rem;
+}
+
+.next-arrow {
+    right: -0.5rem;
+}
+
+.image-slider .slick-dots {
+    position: relative;
+    bottom: auto;
+    margin-top: 1rem;
+}
+
+.image-slider .slick-dots li {
+    margin: 0 0.2rem;
+}
+
+.image-slider .slick-dots li button:before {
+    font-size: .75rem;
+    color: rgba(17, 17, 17, 0.35);
+    opacity: 1;
+    transition: all 0.2s ease;
+}
+
+.image-slider .slick-dots li.slick-active button:before {
+    color: #111;
+    transform: scale(1.3);
+    opacity: 1;
+}
+
+.image-slider .slick-dots li.slick-active button {
+    width: 0.8rem;
+    /* height: 0.8rem; */
 }
 
 @media (max-width: 1024px) {

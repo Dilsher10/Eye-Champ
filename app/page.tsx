@@ -1,5 +1,6 @@
 "use client";
 
+import ImageSlider from "@/components/ImageSlider";
 import { Heart, HelpCircle, Search, ShoppingCart, UserRound } from "lucide-react";
 import { useMemo, useState } from "react";
 
@@ -40,7 +41,6 @@ export default function Home() {
   const [query, setQuery] = useState("");
   const [visible, setVisible] = useState(8);
   const [menu, setMenu] = useState(false);
-  const [brandSlide, setBrandSlide] = useState(0);
   const filtered = useMemo(() => products.filter(([name]) => name.toLowerCase().includes(query.toLowerCase())), [query]);
 
   return (
@@ -98,7 +98,7 @@ export default function Home() {
         <section className="shape-shop"><div className="section-title left"><h2>SHOP BY FRAME SHAPE</h2><p>Versatile shapes made to fit your mood and every moment.</p></div><div className="shape-grid">{shapes.map((shape, i) => <a href="#best-sellers" key={shape}><div><img src={shapeImages[i]} alt={shape} style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "1.25vw" }} /></div><b>{shape}</b></a>)}</div></section>
       </div>
 
-
+       <ImageSlider />
 
       <div className="page shell">
         <section className="trend card"><div><h2>THE TREND SHOP</h2><p>Curated styles, fresh colors, and must-see edits.</p><a className="btn" href="#best-sellers">SHOP NOW</a></div></section>

@@ -227,8 +227,8 @@ input {
     display: inline-block;
     border: 0;
     border-radius: 1.25vw;
-    background: #050505;
-    color: #fff;
+    background: var(--white);
+    color: var(--ink);
     padding: 0.694vw 1.389vw;
     font-size: 0.694vw;
     font-weight: 800;
@@ -262,7 +262,7 @@ input {
     background-repeat: no-repeat;
 }
 
-.gender-card>div:last-child {
+#men div{
     position: absolute;
     inset: 3.125vw;
     color: #fff;
@@ -271,17 +271,49 @@ input {
     align-items: flex-end
 }
 
-.gender-card span {
+#men span {
+    font-size: 1.319vw;
+    font-weight: 900;
+    margin-right: 8.3vw
+}
+
+
+#women div{
+    position: absolute;
+    inset: 3.125vw;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start
+}
+
+#women span {
+    font-size: 1.319vw;
+    font-weight: 900;
+    margin-right: 8.3vw
+}
+
+/* .gender-card>div:last-child {
+    position: absolute;
+    inset: 3.125vw;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end
+} */
+
+/* .gender-card span {
     font-size: 1.319vw;
     font-weight: 900;
     margin-right: 5.833vw
-}
+} */
 
 .gender-card h2 {
     font-size: 3.264vw;
     line-height: normal;
     margin: 0;
     font-weight: 900;
+    -webkit-text-stroke: 0.3px var(--ink);
 }
 
 .gender-card .btn {

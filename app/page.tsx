@@ -1,6 +1,6 @@
 "use client";
 
-import { Heart, HelpCircle, Search, ShoppingCart, UserRound} from "lucide-react";
+import { Heart, HelpCircle, Search, ShoppingCart, UserRound } from "lucide-react";
 import { useMemo, useState } from "react";
 
 const products = [
@@ -98,26 +98,7 @@ export default function Home() {
         <section className="shape-shop"><div className="section-title left"><h2>SHOP BY FRAME SHAPE</h2><p>Versatile shapes made to fit your mood and every moment.</p></div><div className="shape-grid">{shapes.map((shape, i) => <a href="#best-sellers" key={shape}><div><img src={shapeImages[i]} alt={shape} style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "1.25vw" }} /></div><b>{shape}</b></a>)}</div></section>
       </div>
 
-      <section className="brand-band">
-        <div className="shell brand-viewport" aria-roledescription="carousel" aria-label="Featured eyewear brands">
-          <div className="brand-grid" style={{ transform: `translateX(-${brandSlide * 50}%)` }}>
-            <article className="brand-slide brand-one" aria-hidden={brandSlide !== 0}>
-              <a className="btn" href="#best-sellers" tabIndex={brandSlide === 0 ? 0 : -1}>SHOP NOW</a>
-            </article>
-            <article className="brand-slide brand-two">
-              <a className="btn" href="#best-sellers">SHOP NOW</a>
-            </article>
-            <article className="brand-slide brand-one" aria-hidden={brandSlide !== 1}>
-              <a className="btn" href="#best-sellers" tabIndex={brandSlide === 1 ? 0 : -1}>SHOP NOW</a>
-            </article>
-          </div>
-        </div>
-        <div className="slider-controls">
-          <button type="button" onClick={() => setBrandSlide((brandSlide + 1) % 2)} aria-label="Previous brand">‹</button>
-          {[0, 1].map((slide) => <button type="button" className={`slider-dot ${brandSlide === slide ? "active" : ""}`} onClick={() => setBrandSlide(slide)} aria-label={`Show brand ${slide + 1}`} aria-current={brandSlide === slide ? "true" : undefined} key={slide} />)}
-          <button type="button" onClick={() => setBrandSlide((brandSlide + 1) % 2)} aria-label="Next brand">›</button>
-        </div>
-      </section>
+
 
       <div className="page shell">
         <section className="trend card"><div><h2>THE TREND SHOP</h2><p>Curated styles, fresh colors, and must-see edits.</p><a className="btn" href="#best-sellers">SHOP NOW</a></div></section>

@@ -789,8 +789,8 @@ footer {
 
 .slider-arrow {
     position: absolute;
-    top: 42%;
-    transform: translateY(-50%);
+    bottom: -1vw;
+    transform: none;
     z-index: 2;
     width: 2.75rem;
     height: 2.75rem;
@@ -811,11 +811,11 @@ footer {
 }
 
 .prev-arrow {
-    left: -0.5rem;
+    left: calc(50% - 3.75rem);
 }
 
 .next-arrow {
-    right: -0.5rem;
+    right: calc(50% - 3.75rem);
 }
 
 .image-slider .slick-dots {
@@ -1024,8 +1024,8 @@ footer {
     }
 
     .hero {
-        min-height: 30rem;
-        height: auto;
+        height: 500px;
+        min-height: 500px;
     }
 
     .deal {
@@ -1050,6 +1050,12 @@ footer {
     .hero-copy {
         left: 1.25rem;
         right: 1.25rem;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
     }
 
     .hero h1,
@@ -1057,14 +1063,14 @@ footer {
     .section-title h2,
     .trend h2,
     .gender-card h2 {
-        font-size: clamp(1.8rem, 6vw, 3rem);
+        font-size: clamp(2.1rem, 7vw, 3.3rem);
     }
 
     .hero p,
     .deal p,
     .trend p,
     .section-title p {
-        font-size: 0.85rem;
+        font-size: 0.9rem;
     }
 
     .btn {
@@ -1323,25 +1329,25 @@ footer {
     }
 
     .hero {
-        min-height: 0;
-        height: auto;
-        aspect-ratio: 1 / 1;
+        height: 450px;
+        min-height: 450px;
+        aspect-ratio: auto;
         background-position: center;
     }
 
-    .hero-copy {
+    /* .hero-copy {
         left: 22px;
-        /* right: 42%; */
+        right: 42%;
         top: 22px;
         transform: none;
-    }
+    } */
 
     .hero h1,
     .gender-card h2,
     .deal h2,
     .trend h2,
     .section-title h2 {
-        font-size: 23px;
+        font-size: 30px;
         line-height: 1.2;
     }
 
@@ -1349,17 +1355,17 @@ footer {
     .deal p,
     .trend p,
     .section-title p {
-        font-size: 9px;
+        font-size: 19px;
         line-height: 1.25;
     }
 
     .hero p {
-        margin: 10px 0;
+        margin: 30px 0;
     }
 
     .btn {
-        padding: 7px 12px;
-        font-size: 8px;
+        padding: 10px 20px;
+        font-size: 15px;
     }
 
     .gender-grid {
@@ -1369,6 +1375,8 @@ footer {
     .gender-card {
         height: auto;
         aspect-ratio: 1.26 / 1;
+        width: 100%;
+        height: 150px;
     }
 
     .gender-card>div:last-child {

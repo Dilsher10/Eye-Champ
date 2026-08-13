@@ -36,7 +36,7 @@ function NextArrow({ onClick }: CustomArrowProps) {
 
 export default function ImageSlider() {
     const settings: Settings = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 600,
         slidesToShow: 2,

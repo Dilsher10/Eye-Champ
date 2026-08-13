@@ -52,13 +52,18 @@ export default function ImageSlider() {
         variableWidth: false,
         centerPadding: "16px",
         responsive: [
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 1,
-                    centerPadding: "0px",
-                },
-            },
+      {
+        breakpoint: 769,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          slidesPerRow: 1,
+          variableWidth: false,
+          centerMode: false,
+          centerPadding: "0px",
+          arrows: false,
+        },
+      },
         ],
     };
 

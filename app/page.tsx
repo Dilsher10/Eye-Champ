@@ -35,7 +35,7 @@ const shapeImages = [
   "/images/Browline.webp",
   "/images/Aviator.webp",
 ];
-const categories = ["Under Rs. 5000", "New Arrivals", "Best Sellers", "Top Rated", "Rectangle", "Oversized", "Cat Eye", "Premium", "On Sale"];
+const categories = ["Under Rs. 5000", "New Arrivals", "Best Sellers", "Top Rated", "Rectangle", "Oversized", "Cat Eye", "Premium", "On Sale", "Men's"];
 const trendBanners = [
   "/images/trend-banners/1.webp",
   "/images/trend-banners/2.webp",
@@ -78,6 +78,7 @@ export default function Home() {
       <nav className="main-nav shell" aria-label="Shop categories">
         {['Eyeglasses', 'Sunglasses', 'Lenses', 'Sports', 'Trending Now', 'Sale'].map(x => <a key={x} href={`#${x.toLowerCase().replaceAll(' ', '-')}`}>{x}</a>)}
       </nav>
+      
       <div className="pills shell">{categories.map(x => <button key={x}>{x}</button>)}</div>
 
       <div className="page shell" id="top">
@@ -98,7 +99,15 @@ export default function Home() {
             ))}
           </div>
           {filtered.length === 0 && <p className="no-results">No frames match “{query}”.</p>}
-          {visible < filtered.length && <button className="btn show" onClick={() => setVisible((v) => Math.min(v + 4, filtered.length))}>SHOW MORE</button>}
+          {filtered.length > 8 && (
+            <div className="show-row">
+              {visible < filtered.length ? (
+                <button className="btn show" onClick={() => setVisible((v) => Math.min(v + 4, filtered.length))}>SHOW MORE</button>
+              ) : (
+                <button className="btn show" onClick={() => setVisible(8)}>VIEW LESS</button>
+              )}
+            </div>
+          )}
         </section>
 
         <section className="everyone">

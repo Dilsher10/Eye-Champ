@@ -796,8 +796,8 @@ footer {
     height: 2.75rem;
     border: 0;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.9);
-    color: #111;
+    background: #111;
+    color: rgba(255, 255, 255, 0.9);
     font-size: 2rem;
     line-height: 1;
     cursor: pointer;
@@ -808,6 +808,7 @@ footer {
 
 .slider-arrow:hover {
     background: #fff;
+    color: #111;
 }
 
 .prev-arrow {
@@ -887,6 +888,21 @@ footer {
 }
 
 @media (max-width: 768px) {
+    .slider-arrow {
+        width: 2.25rem;
+        height: 2.25rem;
+        font-size: 1.5rem;
+        bottom: 0.35rem;
+    }
+
+    .prev-arrow {
+        left: calc(50% - 3rem);
+    }
+
+    .next-arrow {
+        right: calc(50% - 3rem);
+    }
+
     .shell {
         width: min(92vw, 100%);
     }
@@ -1342,6 +1358,16 @@ footer {
         transform: none;
     } */
 
+
+    .page{
+        margin-top: 10vw;
+    }
+
+
+    .slider-arrow {
+        bottom: -5vw;
+    }
+
     .hero h1,
     .gender-card h2,
     .deal h2,
@@ -1553,7 +1579,7 @@ footer {
     }
 
     .slider-arrow {
-        display: none !important;
+        display: grid !important;
     }
 
     .image-slider .slick-dots {

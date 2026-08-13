@@ -61,7 +61,7 @@ export default function ImageSlider() {
           variableWidth: false,
           centerMode: false,
           centerPadding: "0px",
-          arrows: false,
+          arrows: true,
         },
       },
         ],

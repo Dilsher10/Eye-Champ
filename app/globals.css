@@ -563,28 +563,34 @@ input {
     padding: 2.431vw 0 1.667vw
 }
 
-.brand-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2.083vw
+.brand-viewport {
+    overflow: hidden;
+    border-radius: 2.083vw
 }
 
-.brand-grid article {
+.brand-grid {
+    display: flex;
+    transition: transform .55s cubic-bezier(.22, .61, .36, 1)
+}
+
+.brand-slide {
+    flex: 0 0 50%;
     height: 29.861vw;
     border-radius: 2.083vw;
+    border: 1.042vw solid var(--cream);
     overflow: hidden;
     position: relative;
 }
 
-.brand-grid #one{
-    background-image: url('../public/images/Ray-ban.webp');
+.brand-grid .brand-one{
+    background-image: url('/images/Ray-ban.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
-.brand-grid #two{
-    background-image: url('../public/images/Prada.webp');
+.brand-grid .brand-two{
+    background-image: url('/images/Prada.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -625,9 +631,35 @@ input {
 }
 
 .slider-controls {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .833vw;
     margin-top: 1.736vw;
     color: #666
+}
+
+.slider-controls button {
+    border: 0;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    font-size: 1.944vw;
+    line-height: 1;
+    padding: .347vw
+}
+
+.slider-controls .slider-dot {
+    width: .556vw;
+    height: .556vw;
+    padding: 0;
+    border: .069vw solid #666;
+    border-radius: 50%
+}
+
+.slider-controls .slider-dot.active {
+    background: #111;
+    border-color: #111
 }
 
 .trend {
@@ -865,12 +897,28 @@ footer {
         height: 25.641vw
     }
 
-    .brand-grid {
+    .brand-slide {
+        height: 69.231vw
+    }
+
+    .brand-viewport {
+        border-radius: 5.128vw
+    }
+
+    .slider-controls {
         gap: 3.077vw
     }
 
-    .brand-grid article {
-        height: 69.231vw
+    .slider-controls button {
+        font-size: 7.179vw;
+        padding: 1.282vw
+    }
+
+    .slider-controls .slider-dot {
+        width: 2.051vw;
+        height: 2.051vw;
+        padding: 0;
+        border-width: .256vw
     }
 
     .rayban {

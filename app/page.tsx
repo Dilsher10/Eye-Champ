@@ -52,6 +52,7 @@ export default function Home() {
   const [query, setQuery] = useState("");
   const [visible, setVisible] = useState(8);
   const [menu, setMenu] = useState(false);
+  const [brandSlide, setBrandSlide] = useState(0);
   const filtered = useMemo(() => products.filter(([name]) => name.toLowerCase().includes(query.toLowerCase())), [query]);
 
   return (
@@ -108,11 +109,24 @@ export default function Home() {
       </div>
 
       <section className="brand-band">
-        <div className="shell brand-grid">
-          <article id="one"><a className="btn" href="#best-sellers">SHOP NOW</a></article>
-          <article id="two"><a className="btn" href="#best-sellers">SHOP NOW</a></article>
+        <div className="shell brand-viewport" aria-roledescription="carousel" aria-label="Featured eyewear brands">
+          <div className="brand-grid" style={{ transform: `translateX(-${brandSlide * 50}%)` }}>
+            <article className="brand-slide brand-one" aria-hidden={brandSlide !== 0}>
+              <a className="btn" href="#best-sellers" tabIndex={brandSlide === 0 ? 0 : -1}>SHOP NOW</a>
+            </article>
+            <article className="brand-slide brand-two">
+              <a className="btn" href="#best-sellers">SHOP NOW</a>
+            </article>
+            <article className="brand-slide brand-one" aria-hidden={brandSlide !== 1}>
+              <a className="btn" href="#best-sellers" tabIndex={brandSlide === 1 ? 0 : -1}>SHOP NOW</a>
+            </article>
+          </div>
         </div>
-        <div className="slider-controls">◁ &nbsp;Ⅱ&nbsp; ▷</div>
+        <div className="slider-controls">
+          <button type="button" onClick={() => setBrandSlide((brandSlide + 1) % 2)} aria-label="Previous brand">‹</button>
+          {[0, 1].map((slide) => <button type="button" className={`slider-dot ${brandSlide === slide ? "active" : ""}`} onClick={() => setBrandSlide(slide)} aria-label={`Show brand ${slide + 1}`} aria-current={brandSlide === slide ? "true" : undefined} key={slide} />)}
+          <button type="button" onClick={() => setBrandSlide((brandSlide + 1) % 2)} aria-label="Next brand">›</button>
+        </div>
       </section>
 
       <div className="page shell">

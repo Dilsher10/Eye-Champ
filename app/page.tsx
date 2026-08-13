@@ -1,6 +1,6 @@
 "use client";
 
-import { Heart, HelpCircle, ShoppingCart, UserRound } from "lucide-react";
+import { Heart, HelpCircle, Search, ShoppingCart, UserRound} from "lucide-react";
 import { useMemo, useState } from "react";
 
 const products = [
@@ -36,11 +36,6 @@ const shapeImages = [
 ];
 const categories = ["Under Rs. 5000", "New Arrivals", "Best Sellers", "Top Rated", "Rectangle", "Oversized", "Cat Eye", "Premium", "On Sale"];
 
-
-function Photo({ cell, className = "" }: { cell: number; className?: string }) {
-  return <div className={`sheet-photo cell-${cell} ${className}`} role="img" aria-label="Eyewear fashion photography" />;
-}
-
 export default function Home() {
   const [query, setQuery] = useState("");
   const [visible, setVisible] = useState(8);
@@ -52,8 +47,10 @@ export default function Home() {
     <main>
       <div className="promo">Buy one, get one 20% off. <b>Use GET20</b> · see terms</div>
       <header className="site-header shell">
-        <a className="logo" href="#top" aria-label="Eye Champ home">LOGO</a>
-        <label className="search"><span>⌕</span><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search our AI recommended frames" /></label>
+        <a className="logo" href="#top" aria-label="Eye Champ home">
+          <img src="/images/logo.png" alt="" />
+        </a>
+        <label className="search"><Search size={18} /><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search our AI recommended frames" /></label>
         <nav className={`utility ${menu ? "open" : ""}`} aria-label="Account links">
           <a href="#login" aria-label="Login"><UserRound size={18} /><small>Login</small></a>
           <a href="#favorites" aria-label="Favorites"><Heart size={18} /><small>Favorites</small></a>

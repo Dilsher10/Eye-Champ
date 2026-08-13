@@ -717,6 +717,10 @@ footer {
     font-size: 1vw
 }
 
+.footer-social {
+    display: none;
+}
+
 .image-slider {
     position: relative;
     border-radius: 2rem;
@@ -1133,39 +1137,440 @@ footer {
 }
 
 @media (max-width: 480px) {
+    .shell {
+        width: calc(100% - 32px);
+    }
+
+    .promo {
+        min-height: 32px;
+        padding: 6px 12px;
+        font-size: 9px;
+    }
+
     .site-header {
-        padding-top: 0.9rem;
+        grid-template-areas:
+            "menu logo utility"
+            "search search search";
+        grid-template-columns: 28px 1fr auto;
+        gap: 8px 10px;
+        padding: 8px 0 7px;
+    }
+
+    .menu {
+        grid-area: menu;
+        justify-self: start;
+        font-size: 0;
+        padding: 0;
+        width: 24px;
+        height: 24px;
+    }
+
+    .menu::before {
+        content: "☰";
+        font-size: 18px;
     }
 
     .logo {
-        font-size: 1.2rem;
+        grid-area: logo;
+        justify-self: start;
+        width: 54px;
+        height: 30px;
+        overflow: hidden;
+    }
+
+    .logo img {
+        width: 54px;
+        height: 36px;
+        object-fit: contain;
     }
 
     .search {
-        padding: 0 0.9rem;
-        height: 2.7rem;
+        grid-area: search;
+        display: flex;
+        height: 32px;
+        padding: 0 12px;
+        border-radius: 18px;
+    }
+
+    .search input {
+        font-size: 9px;
+    }
+
+    .utility,
+    .utility.open {
+        grid-area: utility;
+        position: static;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        padding: 0;
+        border: 0;
+        box-shadow: none;
+        background: transparent;
+    }
+
+    .utility a {
+        width: auto;
+    }
+
+    .utility a:nth-child(3),
+    .utility small {
         display: none;
     }
 
-    .product-grid,
-    .shape-grid,
-    .footer-grid {
-        grid-template-columns: 1fr 1fr;
+    .main-nav {
+        display: none;
     }
 
-    .gender-card {
-        height: 10rem;
+    .pills {
+        width: 100%;
+        padding: 5px 0 10px;
+        gap: 6px;
+        scrollbar-width: none;
+    }
+
+    .pills::-webkit-scrollbar {
+        display: none;
+    }
+
+    .pills button {
+        font-size: 8px;
+        padding: 5px 11px;
+    }
+
+    .page {
+        gap: 24px;
+    }
+
+    .card,
+    .gender-card,
+    .best {
+        border-radius: 18px;
+    }
+
+    .hero {
+        min-height: 0;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        background-position: center;
+    }
+
+    .hero-copy {
+        left: 22px;
+        /* right: 42%; */
+        top: 22px;
+        transform: none;
     }
 
     .hero h1,
+    .gender-card h2,
     .deal h2,
     .trend h2,
-    .section-title h2,
-    .gender-card h2 {
-        font-size: clamp(1.5rem, 8vw, 2.4rem);
+    .section-title h2 {
+        font-size: 23px;
+        line-height: 1.2;
+    }
+
+    .hero p,
+    .deal p,
+    .trend p,
+    .section-title p {
+        font-size: 9px;
+        line-height: 1.25;
+    }
+
+    .hero p {
+        margin: 10px 0;
+    }
+
+    .btn {
+        padding: 7px 12px;
+        font-size: 8px;
+    }
+
+    .gender-grid {
+        gap: 18px;
+    }
+
+    .gender-card {
+        height: auto;
+        aspect-ratio: 1.26 / 1;
+    }
+
+    .gender-card > div:last-child {
+        inset: 18px;
+    }
+
+    #men div {
+        align-items: flex-end;
+    }
+
+    .gender-card span {
+        font-size: 11px;
+    }
+
+    .best {
+        padding: 20px 12px 22px;
+    }
+
+    .best .section-title h2 {
+        font-size: 25px;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        margin: 16px 0 0;
+    }
+
+    .product {
+        border-radius: 10px;
+    }
+
+    .product-image {
+        height: auto;
+        aspect-ratio: 1.55 / 1;
+    }
+
+    .product-image img {
+        margin-top: 20px;
+    }
+
+    .product > b {
+        left: 7px;
+        top: 7px;
+        font-size: 6px;
+        padding: 3px 6px;
+    }
+
+    .product-info {
+        padding: 7px 8px 9px;
+    }
+
+    .product-info strong { font-size: 8px; }
+    .product-info span,
+    .product-info p { font-size: 7px; }
+    .product-info p { margin: 5px 0; }
+    .product-info i { width: 13px; height: 13px; }
+
+    .show {
+        margin-top: 16px;
+        background: #080808;
+        color: white;
+    }
+
+    .everyone {
+        padding: 4px 0 8px;
+    }
+
+    .everyone .section-title h2 {
+        max-width: 250px;
+        margin-inline: auto;
     }
 
     .benefits {
+        display: grid;
+        grid-template-columns: repeat(3, 58px);
         justify-content: center;
+        gap: 8px 25px;
+        margin-top: 8px;
+    }
+
+    .benefits span {
+        font-size: 44px;
+        margin-bottom: -16px;
+    }
+
+    .benefits small {
+        font-size: 8px;
+    }
+
+    .deal {
+        min-height: 0;
+        height: auto;
+        aspect-ratio: 1.28 / 1;
+    }
+
+    .deal h2 {
+        font-size: 25px;
+    }
+
+    .deal p {
+        margin: 5px 0 12px;
+    }
+
+    .shape-shop {
+        margin: 0 0 18px;
+    }
+
+    .shape-shop .section-title {
+        text-align: center;
+    }
+
+    .shape-shop .section-title h2 {
+        font-size: 25px;
+    }
+
+    .shape-shop .section-title p {
+        max-width: 250px;
+        margin-inline: auto;
+    }
+
+    .shape-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px 14px;
+        margin-top: 18px;
+    }
+
+    .shape-grid a {
+        font-size: 8px;
+    }
+
+    .shape-grid a > div {
+        height: auto;
+        /* aspect-ratio: 1.38 / 1; */
+        margin-bottom: 7px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .brand-band {
+        padding: 0;
+        background: white;
+    }
+
+    .image-slider {
+        padding: 0 0 18px;
+        border-radius: 0;
+    }
+
+    .image-slider .slick-list {
+        margin: 0;
+    }
+
+    .image-slider .slick-slide {
+        padding: 0;
+    }
+
+    .image-slide {
+        height: auto;
+        aspect-ratio: 1.26 / 1;
+        border-radius: 18px;
+    }
+
+    .slider-arrow {
+        display: none !important;
+    }
+
+    .image-slider .slick-dots {
+        margin-top: 6px;
+    }
+
+    .image-slider .slick-dots li {
+        width: 8px;
+        height: 8px;
+        margin: 0 1px;
+    }
+
+    .image-slider .slick-dots li button:before {
+        font-size: 6px;
+    }
+
+    .trend {
+        min-height: 0;
+        height: auto;
+        aspect-ratio: 1.28 / 1;
+        margin-top: 0;
+        padding: 0;
+    }
+
+    .trend > div:last-child {
+        padding: 30px 22px;
+        /* width: 55%; */
+    }
+
+    .trend h2 {
+        font-size: 27px;
+    }
+
+    .trend p {
+        margin: 6px 0 15px;
+    }
+
+    .payments {
+        padding: 0 0 18px;
+    }
+
+    .payments .section-title h2 {
+        font-size: 23px;
+    }
+
+    .payment-logos {
+        margin-top: 15px;
+        gap: 6px;
+    }
+
+    .payment-logos b {
+        font-size: 7px;
+        padding: 4px 6px;
+    }
+
+    footer {
+        padding-top: 12px;
+    }
+
+    .footer-social {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 8px 16px 16px;
+        font-size: 12px;
+    }
+
+    .footer-social b {
+        margin-right: 5px;
+        font-size: 9px;
+    }
+
+    .footer-grid {
+        display: block;
+        width: 100%;
+        padding: 0 16px;
+    }
+
+    .footer-grid > div {
+        position: relative;
+        border-top: 1px solid #e6e6e6;
+        padding: 12px 0;
+    }
+
+    .footer-grid > div::after {
+        content: "⌄";
+        position: absolute;
+        right: 2px;
+        top: 9px;
+        color: #777;
+    }
+
+    .footer-grid > div:last-child {
+        display: none;
+    }
+
+    .footer-grid h3 {
+        margin: 0;
+        font-size: 9px;
+        font-weight: 700;
+    }
+
+    .footer-grid a {
+        display: none;
+    }
+
+    .copyright {
+        margin-top: 8px;
+        padding: 24px 16px;
+        font-size: 8px;
     }
 }

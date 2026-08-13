@@ -36,13 +36,6 @@ const shapeImages = [
 ];
 const categories = ["Under Rs. 5000", "New Arrivals", "Best Sellers", "Top Rated", "Rectangle", "Oversized", "Cat Eye", "Premium", "On Sale"];
 
-function Glasses({ kind = "soft" }: { kind?: string }) {
-  return (
-    <div className={`glasses glasses-${kind}`} aria-hidden="true">
-      <span /><i /><span />
-    </div>
-  );
-}
 
 function Photo({ cell, className = "" }: { cell: number; className?: string }) {
   return <div className={`sheet-photo cell-${cell} ${className}`} role="img" aria-label="Eyewear fashion photography" />;

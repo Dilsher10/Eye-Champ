@@ -21,7 +21,7 @@ export default function Navbar() {
                 <button className="menu" onClick={() => setMenu(!menu)} aria-label="Toggle menu">☰</button>
             </header>
 
-            <nav className="main-nav shell" aria-label="Shop categories">
+            <nav className="main-nav" aria-label="Shop categories">
                 {['Eyeglasses', 'Sunglasses', 'Lenses', 'Sports', 'Trending Now', 'Sale'].map(x => <a key={x} href={`#${x.toLowerCase().replaceAll(' ', '-')}`}>{x}</a>)}
             </nav>
         </>

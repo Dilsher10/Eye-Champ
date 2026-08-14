@@ -7,12 +7,18 @@ export default function Categories() {
     return (
         <>
             <div className="pills-wrap shell desktop-categories" aria-label="Shop categories">
-                {categories.map((x, index) => <button key={`${x}-${index}`}>{x}</button>)}
+                {categories.map((x, index) => <button key={`${x}-${index}`}>
+                    <img src="./images/HP-pills-under30.avif" alt="" />
+                    {x}
+                </button>)}
             </div>
 
-            <div className="pills-wrap shell mobile-categories">
+            <div className="pills-wrap mobile-categories">
                 <div className="pills-track" aria-label="Shop categories carousel">
-                    {mobileCategories.map((x, index) => <button key={`${x}-${index}`}>{x}</button>)}
+                    {mobileCategories.map((x, index) => <button key={`${x}-${index}`}>
+                        <img src="./images/HP-pills-under30.avif" alt="" />
+                        {x}
+                        </button>)}
                 </div>
             </div>
         </>

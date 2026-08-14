@@ -83,11 +83,25 @@ input {
     justify-content: space-between
 }
 
-.pills-track {
+.pills-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 2vw auto;
+}
+
+.desktop-categories {
     display: flex;
     justify-content: space-between;
-    margin: 2vw 0;
 }
+
+.mobile-categories {
+    display: none;
+}
+
+.pills-wrap button,
 .pills-track button {
     flex: none;
     min-width: max-content;
@@ -594,8 +608,10 @@ input {
 }
 
 .brand-band {
-    background: var(--cream);
-    padding: 2.431vw 0 1.667vw
+    position: relative;
+    background: #fff;
+    padding: 1.5rem 0 4rem;
+    overflow: hidden
 }
 
 .brand-viewport {
@@ -753,13 +769,12 @@ footer {
 
 .image-slider {
     position: relative;
-    border-radius: 2rem;
-    overflow: visible;
-    padding: 0 2.5rem 2rem;
+    width: 100%;
 }
 
 .image-slider .slick-list {
-    margin: 0 -0.75rem;
+    overflow: hidden;
+    margin: 0;
 }
 
 .image-slider .slick-track,
@@ -774,13 +789,10 @@ footer {
 
 .image-slide {
     position: relative;
-    height: 30rem;
+    height: clamp(22rem, 31.1vw, 32.25rem);
     outline: none;
-    border-radius: 1.5rem;
+    border-radius: 1rem;
     overflow: hidden;
-    transition: transform 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
-    opacity: 0.7;
-    transform: scale(0.9);
 }
 
 .image-slide img {
@@ -790,46 +802,66 @@ footer {
     object-fit: cover;
 }
 
-.image-slider .slick-center .image-slide {
-    opacity: 1;
-    transform: scale(1);
-    z-index: 2;
-}
-
-.image-slider .slick-slide:not(.slick-center) .image-slide {
-    filter: saturate(0.8);
-}
-
 .slider-arrow {
     position: absolute;
-    bottom: -1vw;
-    transform: none;
-    z-index: 2;
-    width: 2.75rem;
-    height: 2.75rem;
+    top: calc(100% + 1rem);
+    z-index: 3;
+    width: 1.875rem;
+    height: 1.875rem;
     border: 0;
     border-radius: 50%;
-    background: #111;
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 2rem;
-    line-height: 1;
+    background: #080a0b;
+    color: #fff;
     cursor: pointer;
     display: grid;
     place-items: center;
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+    transform: none;
+    transition: transform .2s ease, background .2s ease;
 }
 
-.slider-arrow:hover {
-    background: #fff;
-    color: #111;
+.slider-arrow svg {
+    width: .875rem;
+    height: .875rem;
+    stroke-width: 3;
+}
+
+.slider-arrow:hover,
+.slider-arrow:focus-visible {
+    background: #242829;
+    transform: scale(1.06);
 }
 
 .prev-arrow {
-    left: calc(50% - 3.75rem);
+    left: calc(50% - 4.45rem);
 }
 
 .next-arrow {
-    right: calc(50% - 3.75rem);
+    right: calc(50% - 4.45rem);
+}
+
+.slider-pause {
+    position: absolute;
+    z-index: 4;
+    left: 50%;
+    bottom: 1.125rem;
+    width: 1.875rem;
+    height: 1.875rem;
+    padding: 0;
+    border: 1px solid #080a0b;
+    border-radius: 50%;
+    background: #fff;
+    color: #080a0b;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transform: translateX(-50%);
+}
+
+.slider-pause svg {
+    width: .875rem;
+    height: .875rem;
+    fill: currentColor;
+    stroke-width: 2.5;
 }
 
 .image-slider .slick-dots {
@@ -920,9 +952,13 @@ footer {
         width: min(92vw, 100%);
     }
 
-    .pills-wrap {
+    .desktop-categories {
+        display: none;
+    }
+
+    .mobile-categories {
+        display: block;
         overflow: hidden;
-        padding: 1rem 0 1.25rem;
         width: 100%;
         max-width: 100%;
     }
@@ -1255,6 +1291,10 @@ footer {
         width: calc(100% - 32px);
     }
 
+    .pills-wrap{
+        padding-top: 5vw;
+    }
+
     .promo {
         min-height: 32px;
         padding: 6px 12px;
@@ -1574,12 +1614,11 @@ footer {
     }
 
     .brand-band {
-        padding: 0;
+        padding: 0 0 3.4rem;
         background: white;
     }
 
     .image-slider {
-        padding: 0 0 18px;
         border-radius: 0;
     }
 
@@ -1588,17 +1627,29 @@ footer {
     }
 
     .image-slider .slick-slide {
-        padding: 0;
+        padding: 0 6px;
     }
 
     .image-slide {
         height: auto;
         aspect-ratio: 1.26 / 1;
-        border-radius: 18px;
+        border-radius: 14px;
     }
 
     .slider-arrow {
         display: grid !important;
+    }
+
+    .prev-arrow {
+        left: calc(50% - 4rem);
+    }
+
+    .next-arrow {
+        right: calc(50% - 4rem);
+    }
+
+    .slider-pause {
+        bottom: .75rem;
     }
 
     .image-slider .slick-dots {

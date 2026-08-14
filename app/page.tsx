@@ -36,7 +36,7 @@ const shapeImages = [
   "/images/Aviator.webp",
 ];
 const categories = ["Under Rs. 5000", "New Arrivals", "Best Sellers", "Top Rated", "Rectangle", "Oversized", "Cat Eye", "Premium", "On Sale", "Men's"];
-const mobileCategories = [...categories];
+const mobileCategories = [...categories, ...categories];
 const trendBanners = [
   "/images/trend-banners/1.webp",
   "/images/trend-banners/2.webp",
@@ -80,7 +80,11 @@ export default function Home() {
         {['Eyeglasses', 'Sunglasses', 'Lenses', 'Sports', 'Trending Now', 'Sale'].map(x => <a key={x} href={`#${x.toLowerCase().replaceAll(' ', '-')}`}>{x}</a>)}
       </nav>
 
-      <div className="pills-wrap shell">
+      <div className="pills-wrap shell desktop-categories" aria-label="Shop categories">
+        {categories.map((x, index) => <button key={`${x}-${index}`}>{x}</button>)}
+      </div>
+
+      <div className="pills-wrap shell mobile-categories">
         <div className="pills-track" aria-label="Shop categories carousel">
           {mobileCategories.map((x, index) => <button key={`${x}-${index}`}>{x}</button>)}
         </div>

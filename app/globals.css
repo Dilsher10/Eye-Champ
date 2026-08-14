@@ -178,6 +178,7 @@ input {
 }
 
 .page {
+    margin-top: 3vw;
     display: flex;
     flex-direction: column;
     gap: 2.361vw
@@ -1404,8 +1405,8 @@ footer {
     }
 
     .hero {
-        height: 450px;
-        min-height: 450px;
+        height: 550px;
+        min-height: 550px;
         aspect-ratio: auto;
         background-position: center;
     }

@@ -1,7 +1,7 @@
 "use client";
 
+import Categories from "@/components/Categories";
 import ImageSlider from "@/components/ImageSlider";
-import { Heart, HelpCircle, Search, ShoppingCart, UserRound } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
 const products = [
@@ -35,8 +35,7 @@ const shapeImages = [
   "/images/Browline.webp",
   "/images/Aviator.webp",
 ];
-const categories = ["Under Rs. 5000", "New Arrivals", "Best Sellers", "Top Rated", "Rectangle", "Oversized", "Cat Eye", "Premium", "On Sale", "Men's"];
-const mobileCategories = [...categories, ...categories];
+
 const trendBanners = [
   "/images/trend-banners/1.webp",
   "/images/trend-banners/2.webp",
@@ -47,7 +46,6 @@ const trendBanners = [
 export default function Home() {
   const [query, setQuery] = useState("");
   const [visible, setVisible] = useState(8);
-  const [menu, setMenu] = useState(false);
   const [trendIndex, setTrendIndex] = useState(1);
   const filtered = useMemo(() => products.filter(([name]) => name.toLowerCase().includes(query.toLowerCase())), [query]);
 
@@ -61,34 +59,7 @@ export default function Home() {
 
   return (
     <main>
-      <div className="promo">Buy one, get one 20% off. <b>Use GET20</b> · see terms</div>
-      <header className="site-header shell">
-        <a className="logo" href="#top" aria-label="Eye Champ home">
-          <img src="/images/logo.png" alt="" />
-        </a>
-        <label className="search"><Search size={18} /><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search our AI recommended frames" /></label>
-        <nav className={`utility ${menu ? "open" : ""}`} aria-label="Account links">
-          <a href="#login" aria-label="Login"><UserRound size={18} /><small>Login</small></a>
-          <a href="#favorites" aria-label="Favorites"><Heart size={18} /><small>Favorites</small></a>
-          <a href="#help" aria-label="Help"><HelpCircle size={18} /><small>Help</small></a>
-          <a href="#cart" aria-label="Cart"><ShoppingCart size={18} /><small>Cart</small></a>
-        </nav>
-        <button className="menu" onClick={() => setMenu(!menu)} aria-label="Toggle menu">☰</button>
-      </header>
-
-      <nav className="main-nav shell" aria-label="Shop categories">
-        {['Eyeglasses', 'Sunglasses', 'Lenses', 'Sports', 'Trending Now', 'Sale'].map(x => <a key={x} href={`#${x.toLowerCase().replaceAll(' ', '-')}`}>{x}</a>)}
-      </nav>
-
-      <div className="pills-wrap shell desktop-categories" aria-label="Shop categories">
-        {categories.map((x, index) => <button key={`${x}-${index}`}>{x}</button>)}
-      </div>
-
-      <div className="pills-wrap shell mobile-categories">
-        <div className="pills-track" aria-label="Shop categories carousel">
-          {mobileCategories.map((x, index) => <button key={`${x}-${index}`}>{x}</button>)}
-        </div>
-      </div>
+      <Categories/>
 
       <div className="page shell" id="top">
         <section className="hero card">
@@ -131,7 +102,7 @@ export default function Home() {
         <section className="shape-shop"><div className="section-title left"><h2>SHOP BY FRAME SHAPE</h2><p>Versatile shapes made to fit your mood and every moment.</p></div><div className="shape-grid">{shapes.map((shape, i) => <a href="#best-sellers" key={shape}><div><img src={shapeImages[i]} alt={shape} style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "1.25vw" }} /></div><b>{shape}</b></a>)}</div></section>
       </div>
 
-       <ImageSlider />
+      <ImageSlider />
 
       <div className="page shell">
         <section className="trend card">

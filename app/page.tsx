@@ -1,30 +1,10 @@
 "use client";
 
+import BestSeller from "@/components/BestSeller";
 import Categories from "@/components/Categories";
+import Hero from "@/components/Hero";
 import ImageSlider from "@/components/ImageSlider";
-import { useEffect, useMemo, useState } from "react";
-
-const products = [
-  ["Clara", "Rs. 5,000", "round", "#f2d6c9"],
-  ["Noah", "Rs. 4,500", "rectangle", "#c9d8dd"],
-  ["Avery", "Rs. 7,000", "cat-eye", "#f2bdae"],
-  ["Diana", "Rs. 6,000", "soft", "#dfc1aa"],
-  ["Luna", "Rs. 5,000", "round", "#f2d6c9"],
-  ["Milo", "Rs. 4,500", "rectangle", "#c9d8dd"],
-  ["Zara", "Rs. 7,000", "cat-eye", "#f2bdae"],
-  ["Emma", "Rs. 6,000", "soft", "#dfc1aa"],
-  ["Luna", "Rs. 5,000", "round", "#f2d6c9"],
-  ["Milo", "Rs. 4,500", "rectangle", "#c9d8dd"],
-  ["Zara", "Rs. 7,000", "cat-eye", "#f2bdae"],
-  ["Emma", "Rs. 6,000", "soft", "#dfc1aa"],
-] as const;
-
-const bestSellerImages = [
-  "/images/1.webp",
-  "/images/2.webp",
-  "/images/3.webp",
-  "/images/4.webp",
-];
+import { useEffect, useState } from "react";
 
 const shapes = ["Square", "Rectangle", "Round", "Cat-eye", "Browline", "Aviator"];
 const shapeImages = [
@@ -44,11 +24,8 @@ const trendBanners = [
 ];
 
 export default function Home() {
-  const [query, setQuery] = useState("");
-  const [visible, setVisible] = useState(8);
   const [trendIndex, setTrendIndex] = useState(1);
-  const filtered = useMemo(() => products.filter(([name]) => name.toLowerCase().includes(query.toLowerCase())), [query]);
-
+  
   useEffect(() => {
     const timer = setInterval(() => {
       setTrendIndex((current) => (current + 1) % trendBanners.length);
@@ -59,36 +36,17 @@ export default function Home() {
 
   return (
     <main>
-      <Categories/>
+      <Categories />
 
       <div className="page shell" id="top">
-        <section className="hero card">
-          <div className="hero-copy"><h1>MADE FOR DIGITAL<br />MOMENTS</h1><p>Block More™ helps filter blue light during digital learning.</p><a className="btn" href="#best-sellers">SHOP NOW</a></div>
-        </section>
+        <Hero/>
 
         <section className="gender-grid">
           <article className="gender-card" id="men"><div><span>FOR</span><h2>MEN’S</h2><a className="btn" href="#best-sellers">SHOP NOW</a></div></article>
           <article className="gender-card" id="women"><div><span>FOR</span><h2>WOMEN’S</h2><a className="btn" href="#best-sellers">SHOP NOW</a></div></article>
         </section>
 
-        <section className="best" id="best-sellers">
-          <div className="section-title light"><h2>BEST SELLERS</h2><p>EYEGLASSES / SUNGLASSES</p></div>
-          <div className="product-grid">
-            {filtered.slice(0, visible).map(([name, price, kind, color], index) => (
-              <article className="product" key={name}><b>Top Rated</b><div className="product-image"><img src={bestSellerImages[index % bestSellerImages.length]} alt={name} style={{ width: "100%", objectFit: "cover", borderRadius: "1.25vw" }} /></div><div className="product-info"><strong>{price}</strong><span>★ 4.7 <small>(200)</small></span><p>{name}</p><i style={{ background: color }} /><i /></div></article>
-            ))}
-          </div>
-          {filtered.length === 0 && <p className="no-results">No frames match “{query}”.</p>}
-          {filtered.length > 8 && (
-            <div className="show-row">
-              {visible < filtered.length ? (
-                <button className="btn show" onClick={() => setVisible((v) => Math.min(v + 4, filtered.length))}>SHOW MORE</button>
-              ) : (
-                <button className="btn show" onClick={() => setVisible(8)}>VIEW LESS</button>
-              )}
-            </div>
-          )}
-        </section>
+        <BestSeller/>
 
         <section className="everyone">
           <div className="section-title"><h2>EYEWEAR FOR EVERYONE</h2><p>Style & clarity made for you.</p></div>

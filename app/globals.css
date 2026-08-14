@@ -8,6 +8,29 @@
     --white: #fff
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+}
+
+
 * {
     box-sizing: border-box
 }
@@ -386,7 +409,21 @@ input {
     border-radius: 1.181vw;
     overflow: hidden;
     position: relative;
-    min-width: 0
+    min-width: 0;
+}
+
+.product.visible {
+    opacity: 1;
+    transform: scale(1);
+    animation: fadeIn 0.4s ease forwards;
+    pointer-events: auto;
+}
+
+.product.hidden {
+    opacity: 0;
+    transform: scale(0.95);
+    animation: fadeOut 0.6s ease forwards;
+    pointer-events: none;
 }
 
 .product>b {
@@ -488,6 +525,8 @@ input {
     display: flex;
     justify-content: center;
     margin-top: 2.083vw;
+    opacity: 1;
+    transition: opacity 0.3s ease;
 }
 
 .show {

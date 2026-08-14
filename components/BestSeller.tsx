@@ -32,8 +32,23 @@ export default function BestSeller() {
         <section className="best" id="best-sellers">
             <div className="section-title light"><h2>BEST SELLERS</h2><p>EYEGLASSES / SUNGLASSES</p></div>
             <div className="product-grid">
-                {filtered.slice(0, visible).map(([name, price, kind, color], index) => (
-                    <article className="product" key={name}><b>Top Rated</b><div className="product-image"><img src={bestSellerImages[index % bestSellerImages.length]} alt={name} style={{ width: "100%", objectFit: "cover", borderRadius: "1.25vw" }} /></div><div className="product-info"><strong>{price}</strong><span>★ 4.7 <small>(200)</small></span><p>{name}</p><i style={{ background: color }} /><i /></div></article>
+                {filtered.map(([name, price, kind, color], index) => (
+                    <article 
+                        className={`product ${index < visible ? "visible" : "hidden"}`}
+                        key={`${name}-${index}`}
+                    >
+                        <b>Top Rated</b>
+                        <div className="product-image">
+                            <img src={bestSellerImages[index % bestSellerImages.length]} alt={name} style={{ width: "100%", objectFit: "cover", borderRadius: "1.25vw" }} />
+                        </div>
+                        <div className="product-info">
+                            <strong>{price}</strong>
+                            <span>★ 4.7 <small>(200)</small></span>
+                            <p>{name}</p>
+                            <i style={{ background: color }} />
+                            <i />
+                        </div>
+                    </article>
                 ))}
             </div>
             {filtered.length === 0 && <p className="no-results">No frames match “{query}”.</p>}

@@ -9,16 +9,16 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const slides = [
-  ["cartier", "Cartier eyewear campaign"],
-  ["emporio-armani", "Emporio Armani eyewear campaign"],
-  ["gucci", "Gucci eyewear campaign"],
-  ["mont-blanc", "Montblanc eyewear campaign"],
-  ["moscot", "Moscot eyewear campaign"],
-  ["oakley", "Oakley eyewear campaign"],
-  ["prada", "Prada eyewear campaign"],
-  ["ray-ban", "Ray-Ban eyewear campaign"],
-  ["tom-ford", "Tom Ford eyewear campaign"],
-  ["versace", "Versace eyewear campaign"],
+  ["cartier", "Cartier eyewear campaign", null],
+  ["emporio-armani", "Emporio Armani eyewear campaign", "Emporio Armani  - 1168 x 960.webp"],
+  ["gucci", "Gucci eyewear campaign", "Gucci - 1168 x 960.webp"],
+  ["mont-blanc", "Montblanc eyewear campaign", "Mont Blanc - 1168 x 960.webp"],
+  ["moscot", "Moscot eyewear campaign", "Moscot - 1168 x 960.webp"],
+  ["oakley", "Oakley eyewear campaign", "Oakley  - 1168 x 960.webp"],
+  ["prada", "Prada eyewear campaign", "Prada - 1168 x 960.webp"],
+  ["ray-ban", "Ray-Ban eyewear campaign", "Ray ban - 1168 x 960.webp"],
+  ["tom-ford", "Tom Ford eyewear campaign", "Tom Ford - 1168 x 960.webp"],
+  ["versace", "Versace eyewear campaign", "Versace - 1168 x 960.webp"],
 ] as const;
 
 function PrevArrow({ onClick }: CustomArrowProps) {
@@ -77,15 +77,23 @@ export default function ImageSlider() {
   return (
     <section className="brand-band" aria-label="Featured eyewear promotions">
       <Slider ref={slider} {...settings} className="image-slider">
-        {slides.map(([name, alt]) => (
+        {slides.map(([name, alt, mobileImage]) => (
           <article key={name} className="image-slide">
-            <Image
-              src={`/images/brand-banners/${name}.webp`}
-              alt={alt}
-              fill
-              unoptimized
-              sizes="(max-width: 768px) 76vw, 38vw"
-            />
+            <picture>
+              {mobileImage && (
+                <source
+                  media="(max-width: 768px)"
+                  srcSet={`/images/brand-banners/mobile/${mobileImage}`}
+                />
+              )}
+              <Image
+                src={`/images/brand-banners/${name}.webp`}
+                alt={alt}
+                fill
+                unoptimized
+                sizes="(max-width: 768px) 100vw, 38vw"
+              />
+            </picture>
           </article>
         ))}
       </Slider>

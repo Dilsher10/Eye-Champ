@@ -855,7 +855,7 @@ footer {
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    /* object-fit: cover; */
 }
 
 .slider-arrow {
@@ -1297,6 +1297,16 @@ footer {
         height: 15rem;
     }
 
+    .image-slide {
+        height: 500px;
+        aspect-ratio: auto;
+    }
+
+    .image-slide img {
+        /* object-fit: cover; */
+        width: 100%;
+    }
+
     .brand-grid .btn {
         left: 1.25rem;
         bottom: 1.25rem;
@@ -1431,7 +1441,7 @@ footer {
     .logo img {
         width: 54px;
         height: 36px;
-        object-fit: contain;
+        object-fit: cover;
     }
 
     .search {
@@ -1725,8 +1735,8 @@ footer {
     }
 
     .image-slide {
-        height: auto;
-        aspect-ratio: 1.26 / 1;
+        height: 400px;
+        aspect-ratio: auto;
         border-radius: 14px;
     }
 

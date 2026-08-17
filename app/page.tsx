@@ -5,6 +5,7 @@ import Categories from "@/components/Categories";
 import Hero from "@/components/Hero";
 import ImageSlider from "@/components/ImageSlider";
 import { useEffect, useState } from "react";
+import type { CSSProperties } from "react";
 
 const shapes = ["Square", "Rectangle", "Round", "Cat-eye", "Browline", "Aviator"];
 const shapeImages = [
@@ -23,12 +24,20 @@ const trendBanners = [
   "/images/trend-banners/4.webp",
 ];
 
+const mobileTrendBanners = [
+  "/images/trend-banners/mobile/1.webp",
+  "/images/trend-banners/mobile/2.webp",
+  "/images/trend-banners/mobile/3.webp",
+];
+
 export default function Home() {
   const [trendIndex, setTrendIndex] = useState(1);
+  const [mobileTrendIndex, setMobileTrendIndex] = useState(1);
   
   useEffect(() => {
     const timer = setInterval(() => {
       setTrendIndex((current) => (current + 1) % trendBanners.length);
+      setMobileTrendIndex((current) => (current + 1) % mobileTrendBanners.length);
     }, 5000);
 
     return () => clearInterval(timer);
@@ -65,9 +74,12 @@ export default function Home() {
       <div className="page shell">
         <section className="trend card">
           <div
-            key={trendBanners[trendIndex]}
+            key={`${trendBanners[trendIndex]}-${mobileTrendBanners[mobileTrendIndex]}`}
             className="trend-bg"
-            style={{ backgroundImage: `url(${trendBanners[trendIndex]})` }}
+            style={{
+              "--trend-desktop-image": `url(${trendBanners[trendIndex]})`,
+              "--trend-mobile-image": `url(${mobileTrendBanners[mobileTrendIndex]})`,
+            } as CSSProperties}
           />
           <div>
             <h2>THE TREND SHOP</h2>

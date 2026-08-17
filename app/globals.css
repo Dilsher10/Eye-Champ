@@ -726,6 +726,7 @@ input {
 .trend-bg {
     position: absolute;
     inset: 0;
+    background-image: var(--trend-desktop-image);
     background-size: cover;
     background-position: 100% 100%;
     background-repeat: no-repeat;
@@ -1303,17 +1304,51 @@ footer {
 
     .trend {
         display: block;
-        padding: 1.5rem 1.1rem;
-        background-position: center;
+        width: 100%;
+        min-height: 0;
+        height: auto;
+        aspect-ratio: 288 / 551;
+        padding: 0;
+        border-radius: 1rem;
     }
 
-    /* .trend-bg {
-        background-position: center center;
+    .trend-bg {
+        background-image: var(--trend-mobile-image);
+        background-position: center top;
         background-size: cover;
-    } */
+    }
 
     .trend>div:first-child {
         padding: 0;
+    }
+
+    .trend>div:last-child {
+        position: absolute;
+        inset: 62% 1rem auto;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .trend h2 {
+        max-width: 15rem;
+        margin: 0;
+        font-size: clamp(2rem, 10vw, 2.6rem);
+        line-height: 0.92;
+    }
+
+    .trend p {
+        max-width: 17rem;
+        margin: 0.8rem 0 1.25rem;
+        font-size: clamp(0.9rem, 4.7vw, 1.1rem);
+        line-height: 1.25;
+    }
+
+    .trend .btn {
+        padding: 0.75rem 1.25rem;
+        font-size: 0.95rem;
     }
 
     .payments .payment-logos {
@@ -1708,7 +1743,7 @@ footer {
     }
 
     .slider-pause {
-        bottom: .75rem;
+        bottom: .3rem;
     }
 
     .image-slider .slick-dots {
@@ -1727,14 +1762,14 @@ footer {
 
     .trend {
         min-height: 0;
-        height: auto;
+        height: 500px;
         aspect-ratio: 1.28 / 1;
         margin-top: 0;
         padding: 0;
     }
 
     .trend>div:last-child {
-        padding: 30px 22px;
+        /* padding: 30px 22px; */
         text-align: center;
         /* width: 55%; */
     }

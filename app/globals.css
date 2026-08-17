@@ -384,7 +384,121 @@ input {
 .best {
     background: var(--red);
     border-radius: 1.528vw;
-    padding: 3.125vw 3.75vw
+    padding: 3.125vw 0 3.75vw;
+    overflow: hidden
+}
+
+.best-header { text-align: center; color: #fff }
+.best-header h2 { margin: 0 0 1.25rem; font-size: clamp(2rem, 3vw, 3.25rem); line-height: 1; font-weight: 900; letter-spacing: -.04em }
+.best-tabs { display: inline-flex; padding: 3px; border: 1px solid rgba(255,255,255,.75); border-radius: 999px }
+.best-tabs button { min-width: 8.5rem; padding: .65rem 1.25rem; border: 0; border-radius: 999px; background: transparent; color: #fff; font: inherit; font-size: .9rem; cursor: pointer }
+.best-tabs button.active { background: #fff; color: #111 }
+.best-carousel { position: relative; margin-top: 2rem }
+.product-rail { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 4.167vw) / 4); gap: 1.389vw; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 0 3.75vw }
+.product-rail::-webkit-scrollbar { display: none }
+.best .product { scroll-snap-align: start; border-radius: .85rem; background: #fff }
+.best .product-image { position: relative; height: 16vw; min-height: 13rem; background: #f4f4f1; overflow: hidden }
+.best .product-image img { width: 100%; height: 100%; object-fit: cover; display: block }
+.product-badge { position: absolute; z-index: 2; top: .8rem; left: .8rem; padding: .35rem .65rem; border-radius: 999px; background: #fff; color: #171717; font-size: .7rem; font-weight: 700 }
+.wish-button { position: absolute; z-index: 2; top: .65rem; right: .65rem; width: 2.25rem; height: 2.25rem; display: grid; place-items: center; border: 0; border-radius: 50%; background: #fff; color: #111; cursor: pointer }
+.wish-button svg { width: 1.15rem }
+.best .product-info { min-height: 0; padding: 1rem; background: #fff }
+.product-meta, .product-bottom { display: flex; align-items: center; justify-content: space-between; gap: .65rem }
+.best .product-meta strong { font-size: .95rem }
+.best .product-meta>span { display: flex; align-items: center; gap: .2rem; color: #111; font-size: .72rem; white-space: nowrap }
+.product-meta svg { width: .75rem; height: .75rem; color: #edaa00 }
+.best .product-info p { margin: .4rem 0 1rem; font-size: .78rem; color: #717171 }
+.swatches { display: flex; align-items: center; gap: .35rem }
+.best .swatches i { width: 1rem; height: 1rem; margin: 0; border: 1px solid #aaa; box-shadow: 0 0 0 2px #fff }
+.best .swatches small { color: #555; font-size: .7rem }
+.product-bottom>b { font-size: .84rem; white-space: nowrap }
+.best-arrow { position: absolute; z-index: 4; top: 50%; width: 2.75rem; height: 2.75rem; border: 0; border-radius: 50%; background: #fff; color: #111; box-shadow: 0 2px 12px rgba(0,0,0,.18); display: grid; place-items: center; cursor: pointer; transform: translateY(-50%) }
+.best-arrow svg { width: 1.25rem }
+.best-arrow-left { left: 1rem }
+.best-arrow-right { right: 1rem }
+
+@media (max-width: 768px) {
+    .best .product-rail { grid-auto-columns: 44% }
+}
+
+@media (max-width: 480px) {
+    .best { padding-left: 0; padding-right: 0 }
+    .best .product-rail { grid-auto-columns: 76%; gap: 10px; padding: 0 14px }
+}
+
+/* Zenni home page — Best Sellers */
+.page .best {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    padding: 34px 0 40px;
+    border-radius: 0;
+    background: rgb(206, 236, 243);
+    color: #080808;
+    overflow: hidden;
+}
+
+.page .best-header {
+    padding: 0 24px;
+    color: #080808;
+    text-align: left;
+}
+
+.page .best-header h2 {
+    margin: 0 0 18px;
+    font-size: clamp(48px, 4.45vw, 64px);
+    line-height: .94;
+    letter-spacing: -2.7px;
+    font-weight: 900;
+}
+
+.page .best-tabs {
+    display: flex;
+    width: max-content;
+    gap: 32px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+}
+
+.page .best-tabs button {
+    position: relative;
+    min-width: 0;
+    padding: 0 0 3px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: #090909;
+    font-size: 16px;
+    line-height: 1.25;
+}
+
+.page .best-tabs button.active {
+    background: transparent;
+    color: #090909;
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+}
+
+.page .best-carousel { margin-top: 32px }
+.page .best .product-rail { grid-auto-columns: calc((100vw - 90px) / 4); gap: 14px; padding: 0 24px }
+.page .best .product { border-radius: 14px; box-shadow: none }
+.page .best .product-image { height: 260px; min-height: 0; background: #f7f7f5 }
+.page .best .product-info { padding: 14px 16px 16px }
+.page .best-arrow { width: 42px; height: 42px; box-shadow: none }
+.page .best-arrow-left { left: 8px }
+.page .best-arrow-right { right: 8px }
+
+@media (max-width: 768px) {
+    .page .best { padding: 31px 0 34px }
+    .page .best-header { padding: 0 24px; text-align: center }
+    .page .best-header h2 { margin-bottom: 20px; font-size: 40px; line-height: 1; letter-spacing: -1.7px; white-space: nowrap }
+    .page .best-tabs { margin-inline: auto; gap: 32px }
+    .page .best-tabs button { font-size: 17px }
+    .page .best-carousel { margin-top: 30px }
+    .page .best .product-rail { grid-auto-columns: 76vw; gap: 12px; padding: 0 16px }
+    .page .best .product-image { height: 245px }
 }
 
 .section-title {
@@ -989,6 +1103,7 @@ footer {
 }
 
 @media (max-width: 768px) {
+    .product-rail { grid-auto-columns: 44% }
     .slider-arrow {
         width: 2.25rem;
         height: 2.25rem;
@@ -1393,6 +1508,20 @@ footer {
 }
 
 @media (max-width: 480px) {
+    .best { padding: 28px 0 26px; border-radius: 18px }
+    .best-header h2 { margin-bottom: 14px; font-size: 27px }
+    .best-tabs button { min-width: 112px; padding: 8px 14px; font-size: 12px }
+    .best-carousel { margin-top: 20px }
+    .product-rail { grid-auto-columns: 76%; gap: 10px; padding: 0 14px }
+    .best .product-image { min-height: 0; height: 190px; aspect-ratio: auto }
+    .best .product-image img { margin-top: 0 }
+    .best .product-info { padding: 12px }
+    .best .product-meta strong { font-size: 13px }
+    .best .product-meta>span, .best .product-info p, .product-bottom>b { font-size: 10px }
+    .best .swatches i { width: 14px; height: 14px }
+    .best-arrow { width: 34px; height: 34px }
+    .best-arrow-left { left: 5px }
+    .best-arrow-right { right: 5px }
     .shell {
         width: calc(100% - 32px);
     }
@@ -1867,4 +1996,140 @@ footer {
         padding: 24px 16px;
         font-size: 8px;
     }
+}
+
+/* Exact Best Sellers card layout */
+.page .best {
+    padding: 14px 0 22px;
+    background: #ceecf3;
+}
+
+.page .best-header {
+    position: relative;
+    padding: 0 24px;
+}
+
+.page .best-header h2 {
+    margin: 0 0 18px;
+    font-size: 64px;
+    line-height: 1.08;
+    letter-spacing: -2.5px;
+}
+
+.page .best-shop-all {
+    position: absolute;
+    top: 0;
+    right: 1px;
+    padding: 9px 18px;
+    border-radius: 999px;
+    background: #050505;
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.page .best-tabs { gap: 32px }
+.page .best-tabs button { font-size: 17px }
+
+.page .best .product-rail {
+    grid-auto-columns: 316px;
+    gap: 16px;
+    margin-top: 50px;
+    padding: 0 24px;
+}
+
+.page .best .product {
+    overflow: hidden;
+    border-radius: 14px;
+    background: #fff;
+}
+
+.page .best .product-image {
+    height: 365px;
+    margin: 8px 8px 0;
+    border-radius: 12px;
+    background: #f6f7f8;
+}
+
+.page .best .product-image img {
+    object-fit: contain;
+    padding: 72px 14px 76px;
+}
+
+.page .best .product-badge {
+    top: 12px;
+    left: 8px;
+    padding: 3px 9px;
+    background: #ceecf3;
+    color: #36474b;
+    font-size: 14px;
+    line-height: 1.15;
+}
+
+.page .best .wish-button {
+    top: 10px;
+    right: 7px;
+    width: 31px;
+    height: 31px;
+    background: transparent;
+}
+
+.page .best .wish-button svg { width: 27px; height: 27px; stroke-width: 1.8 }
+
+.page .best .try-on {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    bottom: 21px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 16px;
+    border: 1px solid #050505;
+    border-radius: 999px;
+    background: #fff;
+    color: #050505;
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 700;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.page .best .try-on svg { width: 18px; height: 18px; stroke-width: 0 }
+
+.page .best .product-info {
+    height: 142px;
+    padding: 13px 8px 10px;
+}
+
+.page .best .product-meta strong { font-size: 18px; line-height: 1.2 }
+.page .best .product-meta>span { gap: 4px; font-size: 16px }
+.page .best .product-meta svg { width: 23px; height: 23px }
+.page .best .product-meta small { color: #333; font-size: 14px }
+.page .best .product-info p { margin: 8px 0 0; color: #111; font-size: 16px; line-height: 1.2 }
+
+.page .best .delivery {
+    display: block;
+    margin-top: 11px;
+    color: #09633f;
+    font-size: 16px;
+    line-height: 1.15;
+}
+
+.page .best .swatches { position: absolute; bottom: 11px; left: 8px; gap: 13px }
+.page .best .swatches i { width: 27px; height: 27px; border: 0; box-shadow: none }
+.page .best .swatches i:first-child { outline: 2px solid #050505; outline-offset: 3px }
+.page .best .swatches button { width: 28px; height: 28px; padding: 3px; border: 2px solid #111; border-radius: 50%; background: #fff }
+.page .best .swatches button svg { width: 17px; height: 17px }
+.page .best .swatches .tortoise { background: radial-gradient(circle at 35% 35%, #f4a70b 0 27%, #3b2107 29% 48%, #d99c24 50% 70%, #18100a 72%) }
+.page .best .swatches .stripe { background: repeating-linear-gradient(45deg, #111 0 3px, #eee 3px 6px) }
+.page .best .swatches .multi { background: conic-gradient(#ed7136 0 25%, #0faea6 0 50%, #356abb 0 75%, #f2b642 0) }
+
+@media (max-width: 768px) {
+    .page .best { padding-top: 24px }
+    .page .best-header h2 { font-size: 40px }
+    .page .best-shop-all { display: none }
+    .page .best .product-rail { grid-auto-columns: 316px; margin-top: 42px; padding-inline: 16px }
 }

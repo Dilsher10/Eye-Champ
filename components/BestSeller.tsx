@@ -1,66 +1,64 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { Heart, Plus, Star, Video } from "lucide-react";
+import Image from "next/image";
+import { useRef, useState } from "react";
 
-const products = [
-    ["Clara", "Rs. 5,000", "round", "#f2d6c9"],
-    ["Noah", "Rs. 4,500", "rectangle", "#c9d8dd"],
-    ["Avery", "Rs. 7,000", "cat-eye", "#f2bdae"],
-    ["Diana", "Rs. 6,000", "soft", "#dfc1aa"],
-    ["Luna", "Rs. 5,000", "round", "#f2d6c9"],
-    ["Milo", "Rs. 4,500", "rectangle", "#c9d8dd"],
-    ["Zara", "Rs. 7,000", "cat-eye", "#f2bdae"],
-    ["Emma", "Rs. 6,000", "soft", "#dfc1aa"],
-    ["Luna", "Rs. 5,000", "round", "#f2d6c9"],
-    ["Milo", "Rs. 4,500", "rectangle", "#c9d8dd"],
-    ["Zara", "Rs. 7,000", "cat-eye", "#f2bdae"],
-    ["Emma", "Rs. 6,000", "soft", "#dfc1aa"],
-] as const;
+type Category = "eyeglasses" | "sunglasses";
 
-const bestSellerImages = [
-    "/images/1.webp",
-    "/images/2.webp",
-    "/images/3.webp",
-    "/images/4.webp",
-];
+const products = {
+  eyeglasses: [
+    { price: "$31.95", rating: "4.7", reviews: "221", shape: "Square", image: "/images/2.webp", delivery: "", colors: ["tortoise", "#050505"] },
+    { price: "$17.95", rating: "4.5", reviews: "2K+", shape: "Square", image: "/images/1.webp", delivery: "Get it as early as Thu, Aug 20", colors: ["#123ab5", "#d9ebf5", "#80634e"], more: true },
+    { price: "$31.95", rating: "4.6", reviews: "223", shape: "Square", image: "/images/2.webp", delivery: "Get it as early as Thu, Aug 20", colors: ["#050505", "tortoise", "#666"] },
+    { price: "$17.95", rating: "4.7", reviews: "167", shape: "Rectangle", image: "/images/4.webp", delivery: "", colors: ["#050505", "#08af20"] },
+    { price: "$14.95", rating: "4.5", reviews: "4K+", shape: "Rectangle", image: "/images/3.webp", delivery: "Get it as early as Thu, Aug 20", colors: ["stripe", "multi", "#b10a89"], more: true },
+  ],
+  sunglasses: [
+    { price: "$29.95", rating: "4.8", reviews: "315", shape: "Square", image: "/images/4.webp", delivery: "", colors: ["#050505", "tortoise"] },
+    { price: "$24.95", rating: "4.6", reviews: "1K+", shape: "Round", image: "/images/3.webp", delivery: "Get it as early as Thu, Aug 20", colors: ["#050505", "#825b3e", "#c78d72"], more: true },
+    { price: "$31.95", rating: "4.7", reviews: "452", shape: "Aviator", image: "/images/2.webp", delivery: "", colors: ["#a98043", "#050505"] },
+    { price: "$19.95", rating: "4.5", reviews: "892", shape: "Rectangle", image: "/images/1.webp", delivery: "Get it as early as Thu, Aug 20", colors: ["#050505", "#16633b", "#dbb79b"] },
+  ],
+} as const;
 
 export default function BestSeller() {
-    const [query, setQuery] = useState("");
-    const [visible, setVisible] = useState(8);
-    const filtered = useMemo(() => products.filter(([name]) => name.toLowerCase().includes(query.toLowerCase())), [query]);
-    return (
-        <section className="best" id="best-sellers">
-            <div className="section-title light"><h2>BEST SELLERS</h2><p>EYEGLASSES / SUNGLASSES</p></div>
-            <div className="product-grid">
-                {filtered.map(([name, price, kind, color], index) => (
-                    <article 
-                        className={`product ${index < visible ? "visible" : "hidden"}`}
-                        key={`${name}-${index}`}
-                    >
-                        <b>Top Rated</b>
-                        <div className="product-image">
-                            <img src={bestSellerImages[index % bestSellerImages.length]} alt={name} style={{ width: "100%", objectFit: "cover", borderRadius: "1.25vw" }} />
-                        </div>
-                        <div className="product-info">
-                            <strong>{price}</strong>
-                            <span>★ 4.7 <small>(200)</small></span>
-                            <p>{name}</p>
-                            <i style={{ background: color }} />
-                            <i />
-                        </div>
-                    </article>
-                ))}
+  const [category, setCategory] = useState<Category>("eyeglasses");
+  const railRef = useRef<HTMLDivElement>(null);
+  const selectCategory = (next: Category) => { setCategory(next); railRef.current?.scrollTo({ left: 0 }); };
+
+  return (
+    <section className="best" id="best-sellers" aria-labelledby="best-sellers-title">
+      <header className="best-header">
+        <h2 id="best-sellers-title">BEST SELLERS</h2>
+        <a className="best-shop-all" href="#best-sellers">Shop all</a>
+        <div className="best-tabs" role="group" aria-label="Choose a frame category">
+          <button className={category === "eyeglasses" ? "active" : ""} onClick={() => selectCategory("eyeglasses")}>Eyeglasses</button>
+          <button className={category === "sunglasses" ? "active" : ""} onClick={() => selectCategory("sunglasses")}>Sunglasses</button>
+        </div>
+      </header>
+
+      <div className="product-rail" ref={railRef} key={category}>
+        {products[category].map((product, index) => (
+          <article className="product" key={`${category}-${index}`}>
+            <div className="product-image">
+              <span className="product-badge">Top rated</span>
+              <button className="wish-button" aria-label="Add to favorites"><Heart /></button>
+              <Image src={product.image} alt={`${product.shape} glasses`} fill sizes="316px" unoptimized />
+              <button className="try-on"><Video fill="currentColor" />Try on</button>
             </div>
-            {filtered.length === 0 && <p className="no-results">No frames match “{query}”.</p>}
-            {filtered.length > 8 && (
-                <div className="show-row">
-                    {visible < filtered.length ? (
-                        <button className="btn show" onClick={() => setVisible((v) => Math.min(v + 4, filtered.length))}>SHOW MORE</button>
-                    ) : (
-                        <button className="btn show" onClick={() => setVisible(8)}>VIEW LESS</button>
-                    )}
-                </div>
-            )}
-        </section>
-    );
+            <div className="product-info">
+              <div className="product-meta"><strong>{product.price}</strong><span><Star fill="currentColor" /> {product.rating} <small>({product.reviews})</small></span></div>
+              <p>{product.shape}</p>
+              {product.delivery && <b className="delivery">{product.delivery}</b>}
+              <div className="swatches">
+                {product.colors.map((color) => <i key={color} className={color === "tortoise" || color === "stripe" || color === "multi" ? color : ""} style={color.startsWith("#") ? { backgroundColor: color } : undefined} />)}
+                {"more" in product && product.more && <button aria-label="More colors"><Plus /></button>}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
 }

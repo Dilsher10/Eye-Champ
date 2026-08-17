@@ -33,7 +33,7 @@ const mobileTrendBanners = [
 export default function Home() {
   const [trendIndex, setTrendIndex] = useState(1);
   const [mobileTrendIndex, setMobileTrendIndex] = useState(1);
-  
+
   useEffect(() => {
     const timer = setInterval(() => {
       setTrendIndex((current) => (current + 1) % trendBanners.length);
@@ -48,15 +48,17 @@ export default function Home() {
       <Categories />
 
       <div className="page shell" id="top">
-        <Hero/>
+        <Hero />
 
         <section className="gender-grid">
           <article className="gender-card" id="men"><div><span>FOR</span><h2>MEN’S</h2><a className="btn" href="#best-sellers">SHOP NOW</a></div></article>
           <article className="gender-card" id="women"><div><span>FOR</span><h2>WOMEN’S</h2><a className="btn" href="#best-sellers">SHOP NOW</a></div></article>
         </section>
+      </div>
 
-        <BestSeller/>
+      <BestSeller />
 
+      <div className="page shell">
         <section className="everyone">
           <div className="section-title"><h2>EYEWEAR FOR EVERYONE</h2><p>Style & clarity made for you.</p></div>
           <div className="benefits">{[["●", "Fast Delivery"], ["●", "Sunglasses"], ["●", "Sports"], ["●", "Kids"], ["●", "Safety"]].map(([icon, label]) => <div key={label}><span>{icon}</span><small>{label}</small></div>)}</div>
@@ -98,6 +100,6 @@ export default function Home() {
         ['HOW CAN WE HELP?', 'GET SUPPORT', 'TRACK ORDERS', 'TRACK RETURNS', 'FAQ', 'REPORT A FAKE'],
         ['CONTACT US', '+92 333 8888888', '002 888888', 'FOLLOW US', '◉ ◎ ◉ ◉ ✕']
       ].map((group) => <div key={group[0]}><h3>{group[0]}</h3>{group.slice(1).map(x => <a href="#top" key={x}>{x}</a>)}</div>)}</div><div className="copyright">© COPYRIGHT 2026 ZENNI OPTICAL, INC. ALL RIGHTS RESERVED.</div></footer>
-    </main>
+    </main >
   );
 }

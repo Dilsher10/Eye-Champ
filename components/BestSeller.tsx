@@ -2,7 +2,11 @@
 
 import { ChevronLeft, ChevronRight, Heart, Plus, Star, Video } from "lucide-react";
 import Image from "next/image";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useState } from "react";
+import Slider from "react-slick";
+import type { CustomArrowProps, Settings } from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 type Category = "eyeglasses" | "sunglasses";
 
@@ -23,40 +27,40 @@ const products = {
     { price: "$24.95", rating: "4.6", reviews: "1K+", shape: "Round", image: "/images/3.webp", delivery: "Get it as early as Thu, Aug 20", colors: ["#050505", "#825b3e", "#c78d72"], more: true },
     { price: "$31.95", rating: "4.7", reviews: "452", shape: "Aviator", image: "/images/2.webp", delivery: "", colors: ["#a98043", "#050505"] },
     { price: "$19.95", rating: "4.5", reviews: "892", shape: "Rectangle", image: "/images/1.webp", delivery: "Get it as early as Thu, Aug 20", colors: ["#050505", "#16633b", "#dbb79b"] },
+    { price: "$21.95", rating: "4.6", reviews: "734", shape: "Cat Eye", image: "/images/2.webp", delivery: "Get it as early as Thu, Aug 20", colors: ["tortoise", "#050505", "#b10a89"], more: true },
+    { price: "$27.95", rating: "4.8", reviews: "518", shape: "Rectangle", image: "/images/4.webp", delivery: "", colors: ["#050505", "#08af20", "#80634e"] },
   ],
 } as const;
 
+function PrevArrow({ className, onClick }: CustomArrowProps) {
+  return <button type="button" className={`card-slider-arrow card-slider-prev ${className ?? ""}`} onClick={onClick} aria-label="Previous products"><ChevronLeft /></button>;
+}
+
+function NextArrow({ className, onClick }: CustomArrowProps) {
+  return <button type="button" className={`card-slider-arrow card-slider-next ${className ?? ""}`} onClick={onClick} aria-label="Next products"><ChevronRight /></button>;
+}
+
 export default function BestSeller() {
   const [category, setCategory] = useState<Category>("eyeglasses");
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(false);
-  const railRef = useRef<HTMLDivElement>(null);
-  const selectCategory = (next: Category) => {
-    setCanScrollLeft(false);
-    setCategory(next);
-    railRef.current?.scrollTo({ left: 0 });
-  };
-  const updateArrows = useCallback(() => {
-    const rail = railRef.current;
-    if (!rail) return;
-    const firstCard = rail.firstElementChild as HTMLElement | null;
-    const lastCard = rail.lastElementChild as HTMLElement | null;
-    const railBounds = rail.getBoundingClientRect();
-    const firstBounds = firstCard?.getBoundingClientRect();
-    const lastBounds = lastCard?.getBoundingClientRect();
-
-    setCanScrollLeft(Boolean(firstBounds && firstBounds.left < railBounds.left - 4));
-    setCanScrollRight(Boolean(lastBounds && lastBounds.right > railBounds.right + 4));
-  }, []);
-
-  useEffect(() => {
-    const frame = requestAnimationFrame(updateArrows);
-    window.addEventListener("resize", updateArrows);
-    return () => { cancelAnimationFrame(frame); window.removeEventListener("resize", updateArrows); };
-  }, [category, updateArrows]);
-
-  const slide = (direction: -1 | 1) => {
-    railRef.current?.scrollBy({ left: direction * 332, behavior: "smooth" });
+  const [selectedColors, setSelectedColors] = useState<Record<string, number>>({});
+  const selectCategory = (next: Category) => setCategory(next);
+  const settings: Settings = {
+    infinite: false,
+    speed: 450,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    swipeToSlide: true,
+    arrows: true,
+    dots: false,
+    prevArrow: <PrevArrow />,
+    nextArrow: <NextArrow />,
+    cssEase: "cubic-bezier(.22,.61,.36,1)",
+    responsive: [
+      {
+        breakpoint: 769,
+        settings: { slidesToShow: 1, slidesToScroll: 1 },
+      },
+    ],
   };
 
   return (
@@ -70,31 +74,39 @@ export default function BestSeller() {
         </div>
       </header>
 
-      <div className="best-slider" data-at-start={!canScrollLeft} data-at-end={!canScrollRight}>
-        {canScrollLeft && <button className="card-slider-arrow card-slider-prev" onClick={() => slide(-1)} aria-label="Previous products"><ChevronLeft /></button>}
-        <div className="product-rail" ref={railRef} key={category} onScroll={updateArrows}>
-          {products[category].map((product, index) => (
-            <article className="product" key={`${category}-${index}`}>
+      <Slider {...settings} className="best-slider best-product-slider" key={category}>
+          {products[category].map((product, index) => {
+            const productKey = `${category}-${index}`;
+            const selectedColor = selectedColors[productKey] ?? 0;
+            return (
+            <div className="product-slide" key={`${category}-${index}`}><article className="product">
             <div className="product-image">
               <span className="product-badge">Top rated</span>
               <button className="wish-button" aria-label="Add to favorites"><Heart /></button>
               <Image src={product.image} alt={`${product.shape} glasses`} fill sizes="316px" unoptimized />
-              <button className="try-on"><Video fill="currentColor" />Try on</button>
+              {/* <button className="try-on"><Video fill="currentColor" />Try on</button> */}
             </div>
             <div className="product-info">
               <div className="product-meta"><strong>{product.price}</strong><span><Star fill="currentColor" /> {product.rating} <small>({product.reviews})</small></span></div>
               <p>{product.shape}</p>
               {product.delivery && <b className="delivery">{product.delivery}</b>}
-              <div className="swatches">
-                {product.colors.map((color) => <i key={color} className={color === "tortoise" || color === "stripe" || color === "multi" ? color : ""} style={color.startsWith("#") ? { backgroundColor: color } : undefined} />)}
+              <div className="swatches" aria-label="Available colors">
+                {product.colors.map((color, colorIndex) => (
+                  <button
+                    key={color}
+                    className={`color-swatch ${color === "tortoise" || color === "stripe" || color === "multi" ? color : ""} ${selectedColor === colorIndex ? "selected" : ""}`}
+                    style={color.startsWith("#") ? { backgroundColor: color } : undefined}
+                    onClick={() => setSelectedColors((current) => ({ ...current, [productKey]: colorIndex }))}
+                    aria-label={`Select color ${colorIndex + 1}`}
+                    aria-pressed={selectedColor === colorIndex}
+                  />
+                ))}
                 {"more" in product && product.more && <button aria-label="More colors"><Plus /></button>}
               </div>
             </div>
-            </article>
-          ))}
-        </div>
-        {canScrollRight && <button className="card-slider-arrow card-slider-next" onClick={() => slide(1)} aria-label="Next products"><ChevronRight /></button>}
-      </div>
+            </article></div>
+          )})}
+      </Slider>
     </section>
   );
 }

@@ -381,12 +381,6 @@ input {
     margin-top: auto
 }
 
-.best {
-    background: var(--red);
-    border-radius: 1.528vw;
-    padding: 3.125vw 0 3.75vw;
-    overflow: hidden
-}
 
 .best-header { text-align: center; color: #fff }
 .best-header h2 { margin: 0 0 1.25rem; font-size: clamp(2rem, 3vw, 3.25rem); line-height: 1; font-weight: 900; letter-spacing: -.04em }
@@ -427,23 +421,13 @@ input {
 }
 
 /* Zenni home page — Best Sellers */
-.page .best {
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    padding: 34px 0 40px;
-    border-radius: 0;
-    background: rgb(206, 236, 243);
-    color: #080808;
-    overflow: hidden;
-}
-
-.page .best-header {
+.best-header {
     padding: 0 24px;
     color: #080808;
     text-align: left;
 }
 
-.page .best-header h2 {
+.best-header h2 {
     margin: 0 0 18px;
     font-size: clamp(48px, 4.45vw, 64px);
     line-height: .94;
@@ -451,7 +435,7 @@ input {
     font-weight: 900;
 }
 
-.page .best-tabs {
+.best-tabs {
     display: flex;
     width: max-content;
     gap: 32px;
@@ -460,7 +444,7 @@ input {
     border-radius: 0;
 }
 
-.page .best-tabs button {
+.best-tabs button {
     position: relative;
     min-width: 0;
     padding: 0 0 3px;
@@ -472,7 +456,7 @@ input {
     line-height: 1.25;
 }
 
-.page .best-tabs button.active {
+.best-tabs button.active {
     background: transparent;
     color: #090909;
     font-weight: 700;
@@ -481,24 +465,24 @@ input {
     text-underline-offset: 2px;
 }
 
-.page .best-carousel { margin-top: 32px }
-.page .best .product-rail { grid-auto-columns: calc((100vw - 90px) / 4); gap: 14px; padding: 0 24px }
-.page .best .product { border-radius: 14px; box-shadow: none }
-.page .best .product-image { height: 260px; min-height: 0; background: #f7f7f5 }
-.page .best .product-info { padding: 14px 16px 16px }
-.page .best-arrow { width: 42px; height: 42px; box-shadow: none }
-.page .best-arrow-left { left: 8px }
-.page .best-arrow-right { right: 8px }
+.best-carousel { margin-top: 32px }
+.best .product-rail { grid-auto-columns: calc((100vw - 90px) / 4); gap: 14px; padding: 0 24px }
+.best .product { border-radius: 14px; box-shadow: none }
+.best .product-image { height: 260px; min-height: 0; background: #f7f7f5 }
+.best .product-info { padding: 14px 16px 16px }
+.best-arrow { width: 42px; height: 42px; box-shadow: none }
+.best-arrow-left { left: 8px }
+.best-arrow-right { right: 8px }
 
 @media (max-width: 768px) {
-    .page .best { padding: 31px 0 34px }
-    .page .best-header { padding: 0 24px; text-align: center }
-    .page .best-header h2 { margin-bottom: 20px; font-size: 40px; line-height: 1; letter-spacing: -1.7px; white-space: nowrap }
-    .page .best-tabs { margin-inline: auto; gap: 32px }
-    .page .best-tabs button { font-size: 17px }
-    .page .best-carousel { margin-top: 30px }
-    .page .best .product-rail { grid-auto-columns: 76vw; gap: 12px; padding: 0 16px }
-    .page .best .product-image { height: 245px }
+    .best { padding: 31px 0 34px }
+    .best-header { padding: 0 24px; text-align: center }
+    .best-header h2 { margin-bottom: 20px; font-size: 40px; line-height: 1; letter-spacing: -1.7px; white-space: nowrap }
+    .best-tabs { margin-inline: auto; gap: 32px }
+    .best-tabs button { font-size: 17px }
+    .best-carousel { margin-top: 30px }
+    .best .product-rail { grid-auto-columns: 76vw; gap: 12px; padding: 0 16px }
+    .best .product-image { height: 245px }
 }
 
 .section-title {
@@ -1998,25 +1982,32 @@ footer {
     }
 }
 
+
+
+
+
+
+
 /* Exact Best Sellers card layout */
-.page .best {
-    padding: 14px 0 22px;
+.best {
     background: #ceecf3;
+    padding: 4vw 2vw;
+    margin-top: 5vw;
 }
 
-.page .best-header {
+.best-header {
     position: relative;
     padding: 0 24px;
 }
 
-.page .best-header h2 {
+.best-header h2 {
     margin: 0 0 18px;
     font-size: 64px;
     line-height: 1.08;
     letter-spacing: -2.5px;
 }
 
-.page .best-shop-all {
+.best-shop-all {
     position: absolute;
     top: 0;
     right: 1px;
@@ -2029,19 +2020,19 @@ footer {
     font-weight: 700;
 }
 
-.page .best-tabs { gap: 32px }
-.page .best-tabs button { font-size: 17px }
+.best-tabs { gap: 32px }
+.best-tabs button { font-size: 17px }
 
-.page .best .product-rail {
+.best .product-rail {
     grid-auto-columns: 316px;
     gap: 16px;
     margin-top: 50px;
     padding: 0 24px;
 }
 
-.page .best-slider { position: relative }
+.best-slider { position: relative }
 
-.page .card-slider-arrow {
+.best .card-slider-arrow {
     position: absolute;
     z-index: 8;
     top: calc(50% + 25px);
@@ -2062,39 +2053,49 @@ footer {
     transition: opacity .18s ease, transform .18s ease, background .18s ease;
 }
 
-.page .card-slider-arrow svg { width: 23px; height: 23px; stroke-width: 2.5 }
-.page .card-slider-prev { left: 8px }
-.page .card-slider-next { right: 8px }
-.page .best-slider[data-at-start="true"] .card-slider-prev,
-.page .best-slider[data-at-end="true"] .card-slider-next { display: none }
-.page .best-slider:hover .card-slider-arrow,
-.page .best-slider:focus-within .card-slider-arrow {
+.best .card-slider-arrow svg { width: 23px; height: 23px; stroke-width: 2.5 }
+.best .card-slider-prev { left: 8px }
+.best .card-slider-next { right: 8px }
+.best-slider:hover .card-slider-arrow,
+.best-slider:focus-within .card-slider-arrow {
     opacity: 1;
     pointer-events: auto;
     transform: translateY(-50%) scale(1);
 }
-.page .card-slider-arrow:hover { background: #303030 }
-.page .card-slider-arrow:focus-visible { outline: 3px solid #fff; outline-offset: 2px }
+.best .card-slider-arrow:hover { background: #303030 }
+.best .card-slider-arrow:focus-visible { outline: 3px solid #fff; outline-offset: 2px }
+.best-product-slider { margin-top: 50px }
+.best-product-slider .slick-list { overflow: hidden; padding: 0 16px }
+.best-product-slider .slick-track { display: flex }
+.best-product-slider .product-slide { padding: 0 8px }
+.best-product-slider .slick-disabled { display: none !important }
+.best-product-slider .slick-slide>div { height: auto }
+.best-product-slider .card-slider-arrow::before { display: none }
 
-.page .best .product {
+@media (max-width: 768px) {
+    .best-product-slider .slick-list { padding: 0 16px }
+    .best-product-slider .product-slide { padding: 0 }
+}
+
+.best .product {
     overflow: hidden;
     border-radius: 14px;
     background: #fff;
 }
 
-.page .best .product-image {
-    height: 365px;
+.best .product-image {
+    height: 330px;
     margin: 8px 8px 0;
     border-radius: 12px;
     background: #f6f7f8;
 }
 
-.page .best .product-image img {
+.best .product-image img {
     object-fit: contain;
     padding: 72px 14px 76px;
 }
 
-.page .best .product-badge {
+.best .product-badge {
     top: 12px;
     left: 8px;
     padding: 3px 9px;
@@ -2104,7 +2105,7 @@ footer {
     line-height: 1.15;
 }
 
-.page .best .wish-button {
+.best .wish-button {
     top: 10px;
     right: 7px;
     width: 31px;
@@ -2112,9 +2113,9 @@ footer {
     background: transparent;
 }
 
-.page .best .wish-button svg { width: 27px; height: 27px; stroke-width: 1.8 }
+.best .wish-button svg { width: 27px; height: 27px; stroke-width: 1.8 }
 
-.page .best .try-on {
+.best .try-on {
     position: absolute;
     z-index: 2;
     left: 50%;
@@ -2134,20 +2135,20 @@ footer {
     white-space: nowrap;
 }
 
-.page .best .try-on svg { width: 18px; height: 18px; stroke-width: 0 }
+.best .try-on svg { width: 18px; height: 18px; stroke-width: 0 }
 
-.page .best .product-info {
+.best .product-info {
     height: 142px;
     padding: 13px 8px 10px;
 }
 
-.page .best .product-meta strong { font-size: 18px; line-height: 1.2 }
-.page .best .product-meta>span { gap: 4px; font-size: 16px }
-.page .best .product-meta svg { width: 23px; height: 23px }
-.page .best .product-meta small { color: #333; font-size: 14px }
-.page .best .product-info p { margin: 8px 0 0; color: #111; font-size: 16px; line-height: 1.2 }
+.best .product-meta strong { font-size: 18px; line-height: 1.2 }
+.best .product-meta>span { gap: 4px; font-size: 16px }
+.best .product-meta svg { width: 23px; height: 23px }
+.best .product-meta small { color: #333; font-size: 14px }
+.best .product-info p { margin: 8px 0 0; color: #111; font-size: 16px; line-height: 1.2 }
 
-.page .best .delivery {
+.best .delivery {
     display: block;
     margin-top: 11px;
     color: #09633f;
@@ -2155,18 +2156,88 @@ footer {
     line-height: 1.15;
 }
 
-.page .best .swatches { position: absolute; bottom: 11px; left: 8px; gap: 13px }
-.page .best .swatches i { width: 27px; height: 27px; border: 0; box-shadow: none }
-.page .best .swatches i:first-child { outline: 2px solid #050505; outline-offset: 3px }
-.page .best .swatches button { width: 28px; height: 28px; padding: 3px; border: 2px solid #111; border-radius: 50%; background: #fff }
-.page .best .swatches button svg { width: 17px; height: 17px }
-.page .best .swatches .tortoise { background: radial-gradient(circle at 35% 35%, #f4a70b 0 27%, #3b2107 29% 48%, #d99c24 50% 70%, #18100a 72%) }
-.page .best .swatches .stripe { background: repeating-linear-gradient(45deg, #111 0 3px, #eee 3px 6px) }
-.page .best .swatches .multi { background: conic-gradient(#ed7136 0 25%, #0faea6 0 50%, #356abb 0 75%, #f2b642 0) }
+.best .swatches { position: absolute; bottom: 11px; left: 8px; gap: 13px }
+.best .swatches .color-swatch { width: 27px; height: 27px; padding: 0; border: 0; border-radius: 50%; background: #fff; cursor: pointer; box-shadow: none }
+.best .swatches .color-swatch.selected { outline: 2px solid #050505; outline-offset: 3px }
+.best .swatches .color-swatch:focus-visible { outline: 3px solid #1677c8; outline-offset: 3px }
+.best .swatches button:not(.color-swatch) { width: 28px; height: 28px; padding: 3px; border: 2px solid #111; border-radius: 50%; background: #fff }
+.best .swatches button:not(.color-swatch) svg { width: 17px; height: 17px }
+.best .swatches .tortoise { background: radial-gradient(circle at 35% 35%, #f4a70b 0 27%, #3b2107 29% 48%, #d99c24 50% 70%, #18100a 72%) }
+.best .swatches .stripe { background: repeating-linear-gradient(45deg, #111 0 3px, #eee 3px 6px) }
+.best .swatches .multi { background: conic-gradient(#ed7136 0 25%, #0faea6 0 50%, #356abb 0 75%, #f2b642 0) }
 
 @media (max-width: 768px) {
-    .page .best { padding-top: 24px }
-    .page .best-header h2 { font-size: 40px }
-    .page .best-shop-all { display: none }
-    .page .best .product-rail { grid-auto-columns: 316px; margin-top: 42px; padding-inline: 16px }
+    .best { padding-top: 24px }
+    .best-header h2 { font-size: 40px }
+    .best-shop-all { display: none }
+    .best .product-rail { grid-auto-columns: 316px; margin-top: 42px; padding-inline: 16px }
+}
+
+/* Keep the section aligned with the surrounding Eye Champ homepage. */
+
+
+.best .best-header {
+    padding-inline: clamp(18px, 2vw, 28px);
+}
+
+.best .best-shop-all {
+    right: clamp(18px, 2vw, 28px);
+}
+
+.best .best-product-slider:hover .card-slider-arrow:not(.slick-disabled),
+.best .best-product-slider:focus-within .card-slider-arrow:not(.slick-disabled) {
+    display: grid !important;
+    opacity: 1 !important;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.best .best-product-slider {
+    margin-top: clamp(42px, 3.2vw, 52px);
+}
+
+@media (max-width: 768px) {
+    .best {
+        margin-block: 12px;
+        padding: 24px 0 30px;
+        border-radius: 18px;
+    }
+
+    .best .best-header {
+        padding-inline: 16px;
+    }
+
+    .best .best-product-slider {
+        margin-top: 34px;
+    }
+}
+
+/* Final Slick arrow overrides — library styles are loaded separately. */
+.best .best-product-slider .card-slider-arrow {
+    z-index: 20 !important;
+    display: grid !important;
+    width: 42px !important;
+    height: 42px !important;
+    background: #050505 !important;
+    color: #fff !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+.best:hover .best-product-slider .card-slider-arrow:not(.slick-disabled),
+.best .best-product-slider:focus-within .card-slider-arrow:not(.slick-disabled) {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+}
+
+.best .best-product-slider .card-slider-arrow.slick-disabled {
+    display: none !important;
+}
+
+.best .best-product-slider .card-slider-arrow svg {
+    display: block;
+    color: #fff;
+    stroke: currentColor;
 }

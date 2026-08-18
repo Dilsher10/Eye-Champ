@@ -22,7 +22,7 @@ function ProductImage({ view, className = "" }: { view: string, className?: stri
 function Rating({ value = 5 }: { value?: number }) { return <span className="stars">{[1, 2, 3, 4, 5].map(i => <Star key={i} fill={i <= value ? "currentColor" : "#c7d2d5"} color={i <= value ? "currentColor" : "#c7d2d5"} />)}</span> }
 
 export default function ProductPage() {
-    const [view, setView] = useState("front"), [liked, setLiked] = useState(false), [tab, setTab] = useState("Description"), [color, setColor] = useState(0), [photosOnly, setPhotosOnly] = useState(false);
+    const [view, setView] = useState("front"), [liked, setLiked] = useState(false), [tab, setTab] = useState("Fit & Size"), [color, setColor] = useState(0), [photosOnly, setPhotosOnly] = useState(false), [sideView, setSideView] = useState(false);
     const move = (n: number) => setView(views[(views.indexOf(view) + views.length + n) % views.length]);
     return (
         <main className="pdp productDetails">
@@ -62,13 +62,13 @@ export default function ProductPage() {
                 <div className="tabs wrap">
                     {["Fit & Size", "Features", "Description"].map(t => <button key={t} className={tab === t ? "active" : ""} onClick={() => setTab(t)}>{t}</button>)}
                 </div>
-                <div className="detail-content wrap">
-                    <div>
-                        <b>Design:</b>
-                        <p>Discover timeless sophistication with these full rim square glasses, meticulously crafted from premium acetate to showcase a sleek design and impeccable craftsmanship.</p><b>Fit:</b><p>These glasses feature spring hinges and a universal bridge fit, ensuring superior comfort and a secure fit for everyday wear.</p><b>Recommendation:</b><p>These glasses offer a sophisticated and classic style, perfect for both men and women. With their square frame shape, they are ideal for individuals with heart and oval face shapes.</p>
-                    </div>
-                    <ProductImage view="angle" />
-                </div>
+                {tab === "Fit & Size" && <div className="fit-content wrap">
+                    <div className="fit-column"><h3>Prescription requirements <span title="Prescription help">?</span></h3><dl><dt>Rx Range</dt><dd>-20.00 ~ +12.00</dd><dt>PD Range</dt><dd>59 - 79 mm<sup>*</sup></dd><dt><u>Progressive</u></dt><dd>Yes</dd><dt><u>Bifocal</u></dt><dd>Yes</dd><dt><u>Readers</u></dt><dd>Yes</dd></dl><i>*Additional cost for PDs outside this range</i></div>
+                    <div className="fit-column"><h3>Frame Size</h3><dl><dt>Size</dt><dd><u>Large</u></dd><dt>Frame Width</dt><dd>132 mm / 5.2 in</dd><dt>Bridge width</dt><dd>19 mm / 0.7 in</dd><dt>Lens Width</dt><dd>52 mm / 2 in</dd><dt>Lens Height</dt><dd>43 mm / 1.7 in</dd><dt>Temple Length</dt><dd>143 mm / 5.6 in</dd></dl><button>Find your size</button></div>
+                    <div className={`measurement ${sideView ? "show-side" : "show-front"}`}><h3>Frame measurements</h3><div className="measure-photo"><ProductImage key={sideView ? "side-measure" : "front-measure"} view={sideView ? "side" : "front"}/>{sideView ? <><span className="temple-label">143 mm / 5.6 in</span><i className="temple-line"/></> : <><span className="width-label">132 mm / 5.2 in</span><span className="height-label">↕<br/>43 mm / 1.7 in</span><span className="lens-label">↔ 52 mm / 2 in</span><span className="bridge-label">↔<br/>19 mm / 0.7 in</span></>}</div><div className="measure-footer"><span>52 □ 19 - 143</span><label className="side-toggle"><input type="checkbox" checked={sideView} onChange={e=>setSideView(e.target.checked)}/><span className="toggle-track"><i/></span> Side view</label></div></div>
+                </div>}
+                {tab === "Features" && <div className="feature-content wrap"><div><h3>Frame Features</h3><p><b>Shape:</b> Square</p><p><b>Material:</b> Premium acetate</p><p><b>Hinge:</b> Spring hinge</p></div><div><h3>Lens Compatibility</h3><p>Single vision, progressive, bifocal and readers.</p><p>Prescription sunglasses and blue-light lenses available.</p></div></div>}
+                {tab === "Description" && <div className="detail-content wrap"><div><b>Design:</b><p>Discover timeless sophistication with these full rim square glasses, meticulously crafted from premium acetate to showcase a sleek design and impeccable craftsmanship.</p><b>Fit:</b><p>These glasses feature spring hinges and a universal bridge fit, ensuring superior comfort and a secure fit for everyday wear.</p><b>Recommendation:</b><p>These glasses offer a sophisticated and classic style, perfect for both men and women. With their square frame shape, they are ideal for individuals with heart and oval face shapes.</p></div><ProductImage view="angle" /></div>}
             </section>
 
             <section className="recommend">

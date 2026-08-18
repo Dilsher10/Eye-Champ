@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Topbar from "@/components/Topbar";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Eye Champ | Eyewear for Everyone",
@@ -15,6 +16,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Topbar />
         <Navbar />
         {children}
+        <Footer/>
       </body>
     </html>
   );

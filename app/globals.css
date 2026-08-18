@@ -2241,3 +2241,65 @@ footer {
     color: #fff;
     stroke: currentColor;
 }
+
+/* Under $30 product rail */
+.under-thirty.best {
+    margin-top: 5vw;
+    overflow: hidden;
+    background: #075760;
+}
+
+.under-thirty .best-header { padding: 0 23px }
+.under-thirty .best-header h2 {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(42px, 4vw, 66px);
+    line-height: 1;
+    letter-spacing: -2.5px;
+    font-weight: 900;
+}
+.under-thirty .best-shop-all {
+    top: 0;
+    right: 23px;
+    padding: 9px 17px;
+    border: 1px solid #fff;
+    background: #080808;
+    font-size: 16px;
+}
+.under-thirty .best-product-slider { margin-top: 50px }
+.under-thirty .best-product-slider .slick-list { padding: 0 16px }
+.under-thirty .best-product-slider .product-slide { padding: 0 8px }
+.under-thirty .product { border-radius: 15px }
+.under-thirty .product-image {
+    height: 356px;
+    margin: 8px 8px 0;
+    border-radius: 12px;
+    background: #f5f6f7;
+}
+.under-thirty .product-image img { padding: 77px 14px 82px; object-fit: contain }
+.under-thirty .product-badge { top: 13px; left: 8px }
+.under-thirty .wish-button { top: 9px; right: 7px }
+.under-thirty .wish-button.selected { color: #075760 }
+.under-thirty .try-on { bottom: 20px }
+.under-thirty .product-info { height: 143px }
+.under-thirty .card-slider-arrow { top: 54% }
+
+@media (max-width: 700px) {
+    .under-thirty.best {
+        margin-block: 12px;
+        padding: 22px 0 24px;
+        border-radius: 0;
+    }
+    .under-thirty .best-header { padding-inline: 16px }
+    .under-thirty .best-header h2 { font-size: clamp(34px, 10.5vw, 48px); letter-spacing: -1.6px }
+    .under-thirty .best-shop-all { display: block; top: 2px; right: 16px; padding: 7px 13px; font-size: 13px }
+    .under-thirty .best-product-slider { margin-top: 32px }
+    .under-thirty .best-product-slider .slick-list { padding: 0 8px }
+    .under-thirty .best-product-slider .product-slide { padding: 0 6px }
+    .under-thirty .product-image { height: auto; aspect-ratio: .9 / 1 }
+    .under-thirty .product-image img { padding: 23% 6% 27% }
+    .under-thirty .product-info { height: 142px; padding: 12px 8px 10px }
+    .under-thirty .product-meta strong { font-size: 17px }
+    .under-thirty .product-meta > span { font-size: 14px }
+    .under-thirty .product-info p, .under-thirty .delivery { font-size: 14px }
+}

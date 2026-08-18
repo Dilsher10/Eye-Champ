@@ -16,7 +16,7 @@ const products = [
   { image: "/images/product/eyeglasses-front-view.avif", price: "$14.95", rating: "4.5", reviews: "4K+", shape: "Rectangle", delivery: true, colors: ["silver", "multi", "pink", "more"] },
 ];
 
-export default function Slider() {
+export default function UnderSlider() {
   const [category, setCategory] = useState<"Eyeglasses" | "Sunglasses">("Eyeglasses");
   const [saved, setSaved] = useState<number[]>([]);
   const [selectedColors, setSelectedColors] = useState<Record<number, number>>({});
@@ -29,15 +29,10 @@ export default function Slider() {
   };
 
   return (
-    <section className="best-sellers" aria-labelledby="best-sellers-title">
+    <section className="best-sellers" aria-labelledby="best-sellers-title" id="underSlider">
       <div className="best-sellers-head">
         <div>
-          <h2 id="best-sellers-title">BEST SELLERS</h2>
-          <div className="best-sellers-tabs" role="tablist" aria-label="Product category">
-            {(["Eyeglasses", "Sunglasses"] as const).map((tab) => (
-              <button key={tab} type="button" role="tab" aria-selected={category === tab} className={category === tab ? "active" : ""} onClick={() => setCategory(tab)}>{tab}</button>
-            ))}
-          </div>
+          <h2 id="best-sellers-title">UNDER 5000 PICKS</h2>
         </div>
         <div className="best-sellers-actions">
           <a href="/product" className="best-sellers-shop">Shop all</a>

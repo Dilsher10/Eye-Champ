@@ -643,7 +643,7 @@ input {
 
 
 .everyone {
-    padding: 5.694vw 0;
+    padding: 3vw 0 4vw 0;
 }
 
 .deal {
@@ -1940,7 +1940,7 @@ footer {
     overflow: hidden;
     margin-top: clamp(42px, 5vw, 82px);
     padding: clamp(24px, 2.3vw, 40px) 0 clamp(22px, 2vw, 34px);
-    background: #d5f5fb;
+    background: var(--red);
 }
 
 .best-sellers-head {
@@ -1956,6 +1956,7 @@ footer {
     line-height: .95;
     letter-spacing: -.035em;
     font-weight: 900;
+    color: var(--white);
 }
 
 .best-sellers-tabs { display: flex; gap: 30px; }
@@ -1992,7 +1993,9 @@ footer {
 .seller-delivery { display: block; margin-top: 13px; color: #126843; font-size: 14px; }
 .seller-colors { display: flex; align-items: center; gap: 12px; min-height: 32px; margin-top: 10px; }
 .color-dot, .color-more { width: 25px; height: 25px; padding: 0; border: 0; border-radius: 50%; cursor: pointer; }
-.color-dot:first-child { outline: 2px solid #111; outline-offset: 2px; }
+.color-dot { transition: transform .16s ease, box-shadow .16s ease; }
+.color-dot:hover { transform: scale(1.08); }
+.color-dot.selected { box-shadow: 0 0 0 2px white, 0 0 0 4px #111; }
 .color-dot.black { background: #000; }.color-dot.blue { background: #153bb2; }.color-dot.clear { background: #d9edfa; }.color-dot.brown { background: #80624f; }.color-dot.gray { background: #696b6c; }.color-dot.green { background: #0bad18; }.color-dot.pink { background: #b20b81; }
 .color-dot.tortoise { background: radial-gradient(circle at 65% 30%, #f4b72d 0 22%, #17110b 26% 48%, #c98215 52% 72%, #24160a 76%); }
 .color-dot.silver { background: repeating-linear-gradient(45deg, #111 0 2px, #eee 2px 5px, #999 5px 7px); }
@@ -2026,4 +2029,13 @@ footer {
 .product .swatches button {
     position: relative;
     z-index: 3;
+}
+
+
+#underSlider{
+    background: var(--ink) !important;
+}
+
+#underSlider .best-sellers-shop{
+    border: 1px solid #fff;
 }

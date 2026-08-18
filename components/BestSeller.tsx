@@ -2,6 +2,7 @@
 
 import { ChevronLeft, ChevronRight, Heart, Plus, Star, Video } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import Slider from "react-slick";
 import type { CustomArrowProps, Settings } from "react-slick";
@@ -57,10 +58,38 @@ export default function BestSeller() {
     cssEase: "cubic-bezier(.22,.61,.36,1)",
     responsive: [
       {
-        breakpoint: 769,
-        settings: { slidesToShow: 1, slidesToScroll: 1 },
+        breakpoint: 1300,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
       },
-    ],
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
 
   return (
@@ -75,37 +104,41 @@ export default function BestSeller() {
       </header>
 
       <Slider {...settings} className="best-slider best-product-slider" key={category}>
-          {products[category].map((product, index) => {
-            const productKey = `${category}-${index}`;
-            const selectedColor = selectedColors[productKey] ?? 0;
-            return (
-            <div className="product-slide" key={`${category}-${index}`}><article className="product">
-            <div className="product-image">
-              <span className="product-badge">Top rated</span>
-              <button className="wish-button" aria-label="Add to favorites"><Heart /></button>
-              <Image src={product.image} alt={`${product.shape} glasses`} fill sizes="316px" unoptimized />
-              {/* <button className="try-on"><Video fill="currentColor" />Try on</button> */}
+        {products[category].map((product, index) => {
+          const productKey = `${category}-${index}`;
+          const selectedColor = selectedColors[productKey] ?? 0;
+          return (
+            <div className="product-slide" key={`${category}-${index}`}>
+              <article className="product">
+                <div className="product-image">
+                  <span className="product-badge">Top rated</span>
+                  <button className="wish-button" aria-label="Add to favorites"><Heart /></button>
+                  <Image src={product.image} alt={`${product.shape} glasses`} fill sizes="316px" unoptimized />
+                  {/* <button className="try-on"><Video fill="currentColor" />Try on</button> */}
+                </div>
+                <div className="product-info">
+                  <div className="product-meta"><strong>{product.price}</strong><span><Star fill="currentColor" /> {product.rating} <small>({product.reviews})</small></span></div>
+                  <p>{product.shape}</p>
+                  {product.delivery && <b className="delivery">{product.delivery}</b>}
+                  <div className="swatches" aria-label="Available colors">
+                    {product.colors.map((color, colorIndex) => (
+                      <button
+                        key={color}
+                        className={`color-swatch ${color === "tortoise" || color === "stripe" || color === "multi" ? color : ""} ${selectedColor === colorIndex ? "selected" : ""}`}
+                        style={color.startsWith("#") ? { backgroundColor: color } : undefined}
+                        onClick={() => setSelectedColors((current) => ({ ...current, [productKey]: colorIndex }))}
+                        aria-label={`Select color ${colorIndex + 1}`}
+                        aria-pressed={selectedColor === colorIndex}
+                      />
+                    ))}
+                    {"more" in product && product.more && <button aria-label="More colors"><Plus /></button>}
+                  </div>
+                </div>
+                <Link className="product-card-link" href="/product" aria-label={`View ${product.shape} glasses for ${product.price}`} />
+              </article>
             </div>
-            <div className="product-info">
-              <div className="product-meta"><strong>{product.price}</strong><span><Star fill="currentColor" /> {product.rating} <small>({product.reviews})</small></span></div>
-              <p>{product.shape}</p>
-              {product.delivery && <b className="delivery">{product.delivery}</b>}
-              <div className="swatches" aria-label="Available colors">
-                {product.colors.map((color, colorIndex) => (
-                  <button
-                    key={color}
-                    className={`color-swatch ${color === "tortoise" || color === "stripe" || color === "multi" ? color : ""} ${selectedColor === colorIndex ? "selected" : ""}`}
-                    style={color.startsWith("#") ? { backgroundColor: color } : undefined}
-                    onClick={() => setSelectedColors((current) => ({ ...current, [productKey]: colorIndex }))}
-                    aria-label={`Select color ${colorIndex + 1}`}
-                    aria-pressed={selectedColor === colorIndex}
-                  />
-                ))}
-                {"more" in product && product.more && <button aria-label="More colors"><Plus /></button>}
-              </div>
-            </div>
-            </article></div>
-          )})}
+          )
+        })}
       </Slider>
     </section>
   );

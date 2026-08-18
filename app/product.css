@@ -97,7 +97,7 @@
 
 .gallery-arrow {
     position: absolute;
-    top: 280px;
+    top: 210px;
     border: 0;
     background: none
 }
@@ -971,13 +971,13 @@
     background-image: none
 }
 
-.pdp .sprite img {
+/* .pdp .sprite img {
     position: absolute;
     width: 200%;
     height: 300%;
     max-width: none;
     object-fit: fill
-}
+} */
 
 .pdp .sprite-front img {
     left: 0;
@@ -1516,4 +1516,41 @@
 
 .pdp .reviews.is-collapsed {
     padding-bottom: 18px
+}
+
+.pdp .gallery-main {
+    width: 88%;
+    height: 400px;
+    overflow: hidden;
+    margin-top: 2vw;
+}
+
+.pdp .gallery-main .swiper-wrapper {
+    display: flex;
+    height: 100%
+}
+
+.pdp .gallery-main .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%
+}
+
+.pdp .gallery-main .product-asset {
+    width: 100%;
+    height: 100%
+}
+
+@media(max-width:900px) {
+    .pdp .gallery-main {
+        width: 100%;
+        height: 300px
+    }
+}
+
+@media(max-width:480px) {
+    .pdp .gallery-main {
+        height: 250px
+    }
 }

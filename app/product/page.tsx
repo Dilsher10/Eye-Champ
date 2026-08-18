@@ -27,8 +27,8 @@ function Rating({ value = 5 }: { value?: number }) { return <span className="sta
 export default function ProductPage() {
     const productSlider = useRef<SwiperInstance | null>(null);
     const photoSlider = useRef<SwiperInstance | null>(null);
+    const gallerySlider = useRef<SwiperInstance | null>(null);
     const [view, setView] = useState("front"), [liked, setLiked] = useState(false), [tab, setTab] = useState("Fit & Size"), [color, setColor] = useState(0), [photosOnly, setPhotosOnly] = useState(false), [sideView, setSideView] = useState(false), [sortOpen, setSortOpen] = useState(false), [sortOrder, setSortOrder] = useState("Newest"), [reviewsOpen, setReviewsOpen] = useState(true);
-    const move = (n: number) => setView(views[(views.indexOf(view) + views.length + n) % views.length]);
     const slideProducts = (direction: number) => direction < 0 ? productSlider.current?.slidePrev() : productSlider.current?.slideNext();
     const sortedReviews = [...reviews].sort((a, b) => sortOrder === "Highest rating" ? b[0] - a[0] : sortOrder === "Lowest rating" ? a[0] - b[0] : sortOrder === "Most helpful" ? b[7] - a[7] : 0);
     return (
@@ -38,12 +38,12 @@ export default function ProductPage() {
                     <button className="gallery-heart" onClick={() => setLiked(!liked)} aria-label="Save product">
                         <Heart fill={liked ? "#0b6068" : "none"} />
                     </button>
-                    <button type="button" className="gallery-arrow left" onClick={() => move(-1)}><ChevronLeft /></button>
-                    <ProductImage key={`main-${view}`} view={view} />
-                    <button type="button" className="gallery-arrow right" onClick={() => move(1)}><ChevronRight /></button>
+                    <button type="button" className="gallery-arrow left" onClick={() => gallerySlider.current?.slidePrev()}><ChevronLeft /></button>
+                    <Swiper className="gallery-main" loop speed={450} onSwiper={swiper => { gallerySlider.current = swiper }} onSlideChange={swiper => setView(views[swiper.realIndex])}>{views.map(v => <SwiperSlide key={v}><ProductImage view={v} /></SwiperSlide>)}</Swiper>
+                    <button type="button" className="gallery-arrow right" onClick={() => gallerySlider.current?.slideNext()}><ChevronRight /></button>
                     <div className="gallery-tools"><button>360°</button><button>▰</button></div>
                     <div className="thumbnails">
-                        {views.slice(0, 4).map(v => <button type="button" aria-label={`Show ${v} view`} className={view === v ? "active" : ""} key={v} onClick={() => setView(v)}><ProductImage view={v} /></button>)}
+                        {views.slice(0, 4).map(v => <button type="button" aria-label={`Show ${v} view`} className={view === v ? "active" : ""} key={v} onClick={() => gallerySlider.current?.slideToLoop(views.indexOf(v))}><ProductImage view={v} /></button>)}
                     </div>
                 </div>
                 <div className="product-info-panel">

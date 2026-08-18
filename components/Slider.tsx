@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { ChevronLeft, ChevronRight, Heart, Plus, Star, Video } from "lucide-react";
 import { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -17,6 +18,7 @@ const products = [
 ];
 
 export default function Slider() {
+  const router = useRouter();
   const [category, setCategory] = useState<"Eyeglasses" | "Sunglasses">("Eyeglasses");
   const [saved, setSaved] = useState<number[]>([]);
   const [selectedColors, setSelectedColors] = useState<Record<number, number>>({});
@@ -64,7 +66,18 @@ export default function Slider() {
         >
         {products.map((product, index) => (
           <SwiperSlide key={`${category}-${index}`}>
-            <article className="seller-card">
+            <article
+              className="seller-card"
+              role="link"
+              tabIndex={0}
+              aria-label={`View ${product.shape} ${category.toLowerCase()} for ${product.price}`}
+              onClick={(event) => {
+                if (!(event.target as HTMLElement).closest("button, a")) router.push("/product");
+              }}
+              onKeyDown={(event) => {
+                if (event.key === "Enter") router.push("/product");
+              }}
+            >
               <div className="seller-visual">
                 <span className="seller-badge">Top rated</span>
                 <button className={`seller-heart ${saved.includes(index) ? "saved" : ""}`} type="button" aria-label={saved.includes(index) ? "Remove from favorites" : "Add to favorites"} onClick={() => toggleSaved(index)}>

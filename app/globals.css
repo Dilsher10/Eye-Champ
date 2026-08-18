@@ -1975,7 +1975,9 @@ footer {
 .seller-nav-next { right: 7px; }
 .seller-nav:disabled { opacity: 0; pointer-events: none; }
 .best-sellers-rail .swiper-slide { height: auto; }
-.seller-card { overflow: hidden; height: 100%; min-height: 515px; border-radius: 15px; background: white; }
+.seller-card { overflow: hidden; height: 100%; min-height: 515px; border-radius: 15px; background: white; cursor: pointer; }
+.seller-card:focus-visible { outline: 3px solid #111; outline-offset: -3px; }
+.seller-card button { cursor: pointer; }
 .seller-visual { position: relative; height: 364px; margin: 8px; border-radius: 13px; background: #f7f8f9; display: grid; place-items: center; }
 .seller-visual > img { width: 92%; height: auto; max-height: 205px; object-fit: contain; }
 .seller-badge { position: absolute; top: 13px; left: 8px; padding: 4px 9px; border-radius: 999px; background: #cdeff5; color: #34535a; font-size: 13px; font-weight: 800; letter-spacing: .02em; }

@@ -1,6 +1,6 @@
 "use client";
 import { useRef, useState } from "react";
-import { ChevronDown, ChevronLeft, ChevronRight, Heart, Star, ThumbsUp, Video } from "lucide-react";
+import { ChevronDown, ChevronLeft, ChevronRight, Heart, ShieldCheck, Star, ThumbsUp, Video } from "lucide-react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperInstance } from "swiper";
@@ -27,7 +27,7 @@ function Rating({ value = 5 }: { value?: number }) { return <span className="sta
 export default function ProductPage() {
     const productSlider = useRef<SwiperInstance | null>(null);
     const photoSlider = useRef<SwiperInstance | null>(null);
-    const [view, setView] = useState("front"), [liked, setLiked] = useState(false), [tab, setTab] = useState("Fit & Size"), [color, setColor] = useState(0), [photosOnly, setPhotosOnly] = useState(false), [sideView, setSideView] = useState(false), [sortOpen, setSortOpen] = useState(false), [sortOrder, setSortOrder] = useState("Newest");
+    const [view, setView] = useState("front"), [liked, setLiked] = useState(false), [tab, setTab] = useState("Fit & Size"), [color, setColor] = useState(0), [photosOnly, setPhotosOnly] = useState(false), [sideView, setSideView] = useState(false), [sortOpen, setSortOpen] = useState(false), [sortOrder, setSortOrder] = useState("Newest"), [reviewsOpen, setReviewsOpen] = useState(true);
     const move = (n: number) => setView(views[(views.indexOf(view) + views.length + n) % views.length]);
     const slideProducts = (direction: number) => direction < 0 ? productSlider.current?.slidePrev() : productSlider.current?.slideNext();
     const sortedReviews = [...reviews].sort((a, b) => sortOrder === "Highest rating" ? b[0] - a[0] : sortOrder === "Lowest rating" ? a[0] - b[0] : sortOrder === "Most helpful" ? b[7] - a[7] : 0);
@@ -105,21 +105,21 @@ export default function ProductPage() {
                 </article></SwiperSlide>)}
                 </Swiper>
             </section>
-            <section id="reviews" className="reviews wrap">
-                <h2>Customer Reviews <ChevronDown /></h2>
+            <section id="reviews" className={`reviews wrap ${reviewsOpen ? "is-open" : "is-collapsed"}`}>
+                <h2><span>Customer Reviews</span><button type="button" aria-expanded={reviewsOpen} aria-label={reviewsOpen ? "Hide customer reviews" : "Show customer reviews"} onClick={() => setReviewsOpen(!reviewsOpen)}><ChevronDown /></button></h2>
                 <div className="photo-head">
                     <b>Customer Photos</b>
                     <div><button type="button" aria-label="Previous customer photos" onClick={() => photoSlider.current?.slidePrev()}><ChevronLeft /></button><button type="button" aria-label="Next customer photos" onClick={() => photoSlider.current?.slideNext()}><ChevronRight /></button><u>View all photos</u></div>
                 </div>
                 <Swiper className="customer-photos" onSwiper={swiper => { photoSlider.current = swiper }} slidesPerView={1.5} spaceBetween={14} breakpoints={{ 480: { slidesPerView: 2.4, spaceBetween: 16 }, 768: { slidesPerView: 3.5, spaceBetween: 18 }, 1100: { slidesPerView: 5.2, spaceBetween: 22 } }}>
-                    {[1, 2, 3, 4, 5, 6, 7, 8].map((n, i) => <SwiperSlide key={n}><div className={`person person-${i % 6 + 1}`}><span>◯</span></div></SwiperSlide>)}
+                    {[1, 2, 3, 4, 5, 6, 7, 8].map((n, i) => <SwiperSlide key={n}><div className={`person person-${i % 6 + 1}`}></div></SwiperSlide>)}
                 </Swiper>
                 <div className="rating-box"><div><b>Overall Rating</b><div className="big-rating">4.7 <span><Rating /><small>Reviews</small></span></div><p>customers</p><button>Write a review</button></div><div><b>Rating Snapshot</b>{[[5, 185], [4, 24], [3, 6], [2, 3], [1, 3]].map(([s, n]) => <div className="bar" key={s}><u>{s} stars</u><i><em style={{ width: `${s === 5 ? 84 : s * 6}%` }} /></i><u>{n}</u></div>)}</div><div><b>Average Ratings</b><p>Fit</p><div className="scale"><i style={{ left: "55%" }} /></div><div className="scale-labels"><span>Tight</span><span>True to Size</span><span>Loose</span></div><p>Quality</p><div className="scale"><i style={{ left: "90%" }} /></div><div className="scale-labels"><span>Low</span><span>Average</span><span>High</span></div></div></div>
                 <div className="sort">
                     <div className="sort-menu"><button type="button" className="sort-trigger" aria-expanded={sortOpen} onClick={() => setSortOpen(!sortOpen)}>Sort by: {sortOrder} <ChevronDown /></button>{sortOpen && <div className="sort-options" role="menu">{["Newest", "Highest rating", "Lowest rating", "Most helpful"].map(option => <button type="button" role="menuitemradio" aria-checked={sortOrder === option} key={option} onClick={() => { setSortOrder(option); setSortOpen(false) }}><span className={sortOrder === option ? "selected" : ""} />{option}</button>)}</div>}</div>
                     <label><input type="checkbox" checked={photosOnly} onChange={e => setPhotosOnly(e.target.checked)} /> Reviews with photos</label>
                 </div>
-                <div className="review-list">{sortedReviews.map(r => <article key={r[1]}><div><Rating value={r[0]} /><p><b>{r[1]}</b> &nbsp; <span>●</span> <b>Verified customer</b></p><h3>{r[2]} <small>{r[3]}</small></h3><p>{r[4]}</p><footer><b>Was this review helpful?</b> <ThumbsUp /> {r[7]}</footer></div><aside><p><b>Fit:</b> {r[5]}</p><p><b>Quality:</b> {r[6]}</p></aside></article>)}</div>
+                <div className="review-list">{sortedReviews.map(r => <article key={r[1]}><div><Rating value={r[0]} /><p className="reviewer-line"><b>{r[1]}</b><ShieldCheck className="verified-icon" fill="currentColor" /><b>Verified customer</b></p><h3>{r[2]} <small>{r[3]}</small></h3><p>{r[4]}</p><footer><b>Was this review helpful?</b> <ThumbsUp /> {r[7]}</footer></div><aside><p><b>Fit:</b> {r[5]}</p><p><b>Quality:</b> {r[6]}</p></aside></article>)}</div>
                 <nav className="pagination"><button disabled><ChevronLeft /> Previous</button><b>1</b><span>2</span><span>3</span><span>…</span><span>56</span><button>Next <ChevronRight /></button></nav>
             </section>
         </main>

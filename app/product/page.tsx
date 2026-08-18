@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import { ChevronDown, ChevronLeft, ChevronRight, Heart, Star, ThumbsUp, Video } from "lucide-react";
-import Footer from "@/components/Footer";
 import Image from "next/image";
 import "../product.css";
 

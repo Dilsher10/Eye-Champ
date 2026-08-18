@@ -1,0 +1,91 @@
+"use client";
+
+import Image from "next/image";
+import { ChevronLeft, ChevronRight, Heart, Plus, Star, Video } from "lucide-react";
+import { useRef, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperInstance } from "swiper";
+import "swiper/css";
+
+const products = [
+  { image: "/images/product/1.avif", price: "$31.95", rating: "4.7", reviews: "221", shape: "Square", colors: ["tortoise", "black"] },
+  { image: "/images/product/2.avif", price: "$17.95", rating: "4.5", reviews: "2K+", shape: "Square", delivery: true, colors: ["blue", "clear", "brown", "more"] },
+  { image: "/images/product/3.avif", price: "$31.95", rating: "4.6", reviews: "224", shape: "Square", delivery: true, colors: ["black", "tortoise", "gray"] },
+  { image: "/images/product/4.avif", price: "$17.95", rating: "4.7", reviews: "168", shape: "Rectangle", colors: ["black", "green"] },
+  { image: "/images/product/eyeglasses-front-view.avif", price: "$14.95", rating: "4.5", reviews: "4K+", shape: "Rectangle", delivery: true, colors: ["silver", "multi", "pink", "more"] },
+  { image: "/images/product/eyeglasses-front-view.avif", price: "$14.95", rating: "4.5", reviews: "4K+", shape: "Rectangle", delivery: true, colors: ["silver", "multi", "pink", "more"] },
+];
+
+export default function Slider() {
+  const [category, setCategory] = useState<"Eyeglasses" | "Sunglasses">("Eyeglasses");
+  const [saved, setSaved] = useState<number[]>([]);
+  const [atStart, setAtStart] = useState(true);
+  const [atEnd, setAtEnd] = useState(false);
+  const swiper = useRef<SwiperInstance | null>(null);
+
+  const toggleSaved = (index: number) => {
+    setSaved((current) => current.includes(index) ? current.filter((item) => item !== index) : [...current, index]);
+  };
+
+  return (
+    <section className="best-sellers" aria-labelledby="best-sellers-title">
+      <div className="best-sellers-head">
+        <div>
+          <h2 id="best-sellers-title">BEST SELLERS</h2>
+          <div className="best-sellers-tabs" role="tablist" aria-label="Product category">
+            {(["Eyeglasses", "Sunglasses"] as const).map((tab) => (
+              <button key={tab} type="button" role="tab" aria-selected={category === tab} className={category === tab ? "active" : ""} onClick={() => setCategory(tab)}>{tab}</button>
+            ))}
+          </div>
+        </div>
+        <div className="best-sellers-actions">
+          <a href="/product" className="best-sellers-shop">Shop all</a>
+        </div>
+      </div>
+
+      <div className="best-sellers-slider-wrap">
+        <button className="seller-nav seller-nav-prev" type="button" aria-label="Previous products" disabled={atStart} onClick={() => swiper.current?.slidePrev()}><ChevronLeft /></button>
+        <Swiper
+          className="best-sellers-rail"
+          onSwiper={(instance) => { swiper.current = instance; setAtStart(instance.isBeginning); setAtEnd(instance.isEnd); }}
+          onSlideChange={(instance) => { setAtStart(instance.isBeginning); setAtEnd(instance.isEnd); }}
+          onResize={(instance) => { setAtStart(instance.isBeginning); setAtEnd(instance.isEnd); }}
+          slidesPerView={1.15}
+          spaceBetween={12}
+          grabCursor
+          breakpoints={{
+            480: { slidesPerView: 1.65, spaceBetween: 12 },
+            768: { slidesPerView: 2.5, spaceBetween: 14 },
+            1024: { slidesPerView: 3.55, spaceBetween: 16 },
+            1280: { slidesPerView: 4.45, spaceBetween: 16 },
+            1600: { slidesPerView: 5.15, spaceBetween: 16 },
+          }}
+        >
+        {products.map((product, index) => (
+          <SwiperSlide key={`${category}-${index}`}>
+            <article className="seller-card">
+              <div className="seller-visual">
+                <span className="seller-badge">Top rated</span>
+                <button className={`seller-heart ${saved.includes(index) ? "saved" : ""}`} type="button" aria-label={saved.includes(index) ? "Remove from favorites" : "Add to favorites"} onClick={() => toggleSaved(index)}>
+                  <Heart fill={saved.includes(index) ? "currentColor" : "none"} />
+                </button>
+                <Image src={product.image} alt={`${product.shape} ${category.toLowerCase()}`} width={520} height={280} sizes="(max-width: 600px) 82vw, (max-width: 1000px) 44vw, 20vw" unoptimized />
+                <button className="try-on" type="button"><Video fill="currentColor" aria-hidden="true" />Try on</button>
+              </div>
+              <div className="seller-info">
+                <div className="seller-line"><strong>{product.price}</strong><span><Star fill="currentColor" aria-hidden="true" /> {product.rating} ({product.reviews})</span></div>
+                <p>{product.shape}</p>
+                {product.delivery && <b className="seller-delivery">Get it as early as Fri, Aug 21</b>}
+                <div className="seller-colors" aria-label="Available colors">
+                  {product.colors.map((color, colorIndex) => color === "more" ? <button type="button" className="color-more" aria-label="See more colors" key={`${color}-${colorIndex}`}><Plus /></button> : <button type="button" aria-label={`${color} color`} className={`color-dot ${color}`} key={`${color}-${colorIndex}`} />)}
+                </div>
+              </div>
+            </article>
+          </SwiperSlide>
+        ))}
+        </Swiper>
+        <button className="seller-nav seller-nav-next" type="button" aria-label="Next products" disabled={atEnd} onClick={() => swiper.current?.slideNext()}><ChevronRight /></button>
+      </div>
+    </section>
+  );
+}

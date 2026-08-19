@@ -51,10 +51,12 @@ export default function ImageSlider() {
     dots: false,
     infinite: true,
     speed: 600,
-    slidesToShow: 2,
+    // Keep the server-rendered/default layout mobile-first so a refresh does
+    // not briefly render the desktop two-card layout on narrow screens.
+    slidesToShow: 1,
     slidesToScroll: 1,
     centerMode: true,
-    centerPadding: "6.75%",
+    centerPadding: "12%",
     autoplay: true,
     autoplaySpeed: 3500,
     arrows: true,
@@ -63,6 +65,14 @@ export default function ImageSlider() {
     pauseOnHover: true,
     cssEase: "cubic-bezier(.22,.61,.36,1)",
     responsive: [
+      {
+        breakpoint: 10000,
+        settings: {
+          slidesToShow: 2,
+          centerMode: true,
+          centerPadding: "6.75%",
+        },
+      },
       {
         breakpoint: 769,
         settings: {

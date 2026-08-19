@@ -46,15 +46,16 @@ export default function UnderSlider() {
           onSwiper={(instance) => { swiper.current = instance; setAtStart(instance.isBeginning); setAtEnd(instance.isEnd); }}
           onSlideChange={(instance) => { setAtStart(instance.isBeginning); setAtEnd(instance.isEnd); }}
           onResize={(instance) => { setAtStart(instance.isBeginning); setAtEnd(instance.isEnd); }}
-          slidesPerView={1.15}
+          slidesPerView={5}
           spaceBetween={12}
           grabCursor
           breakpoints={{
-            480: { slidesPerView: 1.65, spaceBetween: 12 },
-            768: { slidesPerView: 2.5, spaceBetween: 14 },
-            1024: { slidesPerView: 3.55, spaceBetween: 16 },
-            1280: { slidesPerView: 4.45, spaceBetween: 16 },
-            1600: { slidesPerView: 5.15, spaceBetween: 16 },
+            0: { slidesPerView: 1, spaceBetween: 12 },
+            480: { slidesPerView: 1, spaceBetween: 12 },
+            768: { slidesPerView: 2, spaceBetween: 14 },
+            1024: { slidesPerView: 3, spaceBetween: 16 },
+            1280: { slidesPerView: 4, spaceBetween: 16 },
+            1600: { slidesPerView: 5, spaceBetween: 16 },
           }}
         >
         {products.map((product, index) => (

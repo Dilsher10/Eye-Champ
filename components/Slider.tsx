@@ -53,50 +53,51 @@ export default function Slider() {
           onSwiper={(instance) => { swiper.current = instance; setAtStart(instance.isBeginning); setAtEnd(instance.isEnd); }}
           onSlideChange={(instance) => { setAtStart(instance.isBeginning); setAtEnd(instance.isEnd); }}
           onResize={(instance) => { setAtStart(instance.isBeginning); setAtEnd(instance.isEnd); }}
-          slidesPerView={1.15}
+          slidesPerView={5}
           spaceBetween={12}
           grabCursor
           breakpoints={{
-            480: { slidesPerView: 1.65, spaceBetween: 12 },
-            768: { slidesPerView: 2.5, spaceBetween: 14 },
-            1024: { slidesPerView: 3.55, spaceBetween: 16 },
-            1280: { slidesPerView: 4.45, spaceBetween: 16 },
-            1600: { slidesPerView: 5.15, spaceBetween: 16 },
+            0: { slidesPerView: 1, spaceBetween: 12 },
+            480: { slidesPerView: 1, spaceBetween: 12 },
+            768: { slidesPerView: 2, spaceBetween: 14 },
+            1024: { slidesPerView: 3, spaceBetween: 16 },
+            1280: { slidesPerView: 4, spaceBetween: 16 },
+            1600: { slidesPerView: 5, spaceBetween: 16 },
           }}
         >
-        {products.map((product, index) => (
-          <SwiperSlide key={`${category}-${index}`}>
-            <article
-              className="seller-card"
-              role="link"
-              tabIndex={0}
-              aria-label={`View ${product.shape} ${category.toLowerCase()} for ${product.price}`}
-              onClick={(event) => {
-                if (!(event.target as HTMLElement).closest("button, a")) router.push("/product");
-              }}
-              onKeyDown={(event) => {
-                if (event.key === "Enter") router.push("/product");
-              }}
-            >
-              <div className="seller-visual">
-                <span className="seller-badge">Top rated</span>
-                <button className={`seller-heart ${saved.includes(index) ? "saved" : ""}`} type="button" aria-label={saved.includes(index) ? "Remove from favorites" : "Add to favorites"} onClick={() => toggleSaved(index)}>
-                  <Heart fill={saved.includes(index) ? "currentColor" : "none"} />
-                </button>
-                <Image src={product.image} alt={`${product.shape} ${category.toLowerCase()}`} width={520} height={280} sizes="(max-width: 600px) 82vw, (max-width: 1000px) 44vw, 20vw" unoptimized />
-                {/* <button className="try-on" type="button"><Video fill="currentColor" aria-hidden="true" />Try on</button> */}
-              </div>
-              <div className="seller-info">
-                <div className="seller-line"><strong>{product.price}</strong><span><Star fill="currentColor" aria-hidden="true" /> {product.rating} ({product.reviews})</span></div>
-                <p>{product.shape}</p>
-                {product.delivery && <b className="seller-delivery">Get it as early as Fri, Aug 21</b>}
-                <div className="seller-colors" aria-label="Available colors">
-                  {product.colors.map((color, colorIndex) => color === "more" ? <button type="button" className="color-more" aria-label="See more colors" key={`${color}-${colorIndex}`}><Plus /></button> : <button type="button" aria-label={`Select ${color} color`} aria-pressed={(selectedColors[index] ?? 0) === colorIndex} onClick={() => setSelectedColors((current) => ({ ...current, [index]: colorIndex }))} className={`color-dot ${color} ${(selectedColors[index] ?? 0) === colorIndex ? "selected" : ""}`} key={`${color}-${colorIndex}`} />)}
+          {products.map((product, index) => (
+            <SwiperSlide key={`${category}-${index}`}>
+              <article
+                className="seller-card"
+                role="link"
+                tabIndex={0}
+                aria-label={`View ${product.shape} ${category.toLowerCase()} for ${product.price}`}
+                onClick={(event) => {
+                  if (!(event.target as HTMLElement).closest("button, a")) router.push("/product");
+                }}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter") router.push("/product");
+                }}
+              >
+                <div className="seller-visual">
+                  <span className="seller-badge">Top rated</span>
+                  <button className={`seller-heart ${saved.includes(index) ? "saved" : ""}`} type="button" aria-label={saved.includes(index) ? "Remove from favorites" : "Add to favorites"} onClick={() => toggleSaved(index)}>
+                    <Heart fill={saved.includes(index) ? "currentColor" : "none"} />
+                  </button>
+                  <Image src={product.image} alt={`${product.shape} ${category.toLowerCase()}`} width={520} height={280} sizes="(max-width: 600px) 82vw, (max-width: 1000px) 44vw, 20vw" unoptimized />
+                  {/* <button className="try-on" type="button"><Video fill="currentColor" aria-hidden="true" />Try on</button> */}
                 </div>
-              </div>
-            </article>
-          </SwiperSlide>
-        ))}
+                <div className="seller-info">
+                  <div className="seller-line"><strong>{product.price}</strong><span><Star fill="currentColor" aria-hidden="true" /> {product.rating} ({product.reviews})</span></div>
+                  <p>{product.shape}</p>
+                  {product.delivery && <b className="seller-delivery">Get it as early as Fri, Aug 21</b>}
+                  <div className="seller-colors" aria-label="Available colors">
+                    {product.colors.map((color, colorIndex) => color === "more" ? <button type="button" className="color-more" aria-label="See more colors" key={`${color}-${colorIndex}`}><Plus /></button> : <button type="button" aria-label={`Select ${color} color`} aria-pressed={(selectedColors[index] ?? 0) === colorIndex} onClick={() => setSelectedColors((current) => ({ ...current, [index]: colorIndex }))} className={`color-dot ${color} ${(selectedColors[index] ?? 0) === colorIndex ? "selected" : ""}`} key={`${color}-${colorIndex}`} />)}
+                  </div>
+                </div>
+              </article>
+            </SwiperSlide>
+          ))}
         </Swiper>
         <button className="seller-nav seller-nav-next" type="button" aria-label="Next products" disabled={atEnd} onClick={() => swiper.current?.slideNext()}><ChevronRight /></button>
       </div>

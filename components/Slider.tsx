@@ -84,7 +84,7 @@ export default function Slider() {
                   <Heart fill={saved.includes(index) ? "currentColor" : "none"} />
                 </button>
                 <Image src={product.image} alt={`${product.shape} ${category.toLowerCase()}`} width={520} height={280} sizes="(max-width: 600px) 82vw, (max-width: 1000px) 44vw, 20vw" unoptimized />
-                <button className="try-on" type="button"><Video fill="currentColor" aria-hidden="true" />Try on</button>
+                {/* <button className="try-on" type="button"><Video fill="currentColor" aria-hidden="true" />Try on</button> */}
               </div>
               <div className="seller-info">
                 <div className="seller-line"><strong>{product.price}</strong><span><Star fill="currentColor" aria-hidden="true" /> {product.rating} ({product.reviews})</span></div>

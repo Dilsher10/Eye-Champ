@@ -1785,6 +1785,7 @@ footer {
     .brand-band {
         padding: 0 0 3.4rem;
         background: white;
+        margin-top: 5vw;
     }
 
     .image-slider {
@@ -1965,7 +1966,11 @@ footer {
 .best-sellers-actions { display: flex; align-items: center; gap: 12px; }
 .best-sellers-shop { padding: 10px 19px; border-radius: 999px; background: #050505; color: white; font-size: 14px; font-weight: 800; }
 
-.best-sellers-slider-wrap { position: relative; }
+.best-sellers-slider-wrap { 
+    position: relative; 
+    padding: 1vw;
+}
+
 .best-sellers-rail {
     padding: 0 24px;
 }
@@ -2012,7 +2017,7 @@ footer {
 }
 
 @media (max-width: 480px) {
-    .best-sellers h2 { font-size: 36px; }
+    .best-sellers h2 { font-size: 26px; }
     .best-sellers-tabs { gap: 22px; }
     .best-sellers-tabs button { font-size: 13px; }
     .best-sellers-actions { gap: 6px; }

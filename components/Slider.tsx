@@ -31,7 +31,7 @@ export default function Slider() {
   };
 
   return (
-    <section className="best-sellers" aria-labelledby="best-sellers-title">
+    <section className="best-sellers featured-slider" aria-labelledby="best-sellers-title">
       <div className="best-sellers-head">
         <div>
           <h2 id="best-sellers-title">BEST SELLERS</h2>

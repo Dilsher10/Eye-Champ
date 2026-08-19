@@ -2293,6 +2293,74 @@ footer {
 }
 
 @media (max-width: 768px) {
+    .featured-slider {
+        position: relative;
+    }
+
+    .featured-slider .best-sellers-head {
+        padding-bottom: 25px;
+        justify-content: center;
+    }
+
+    .featured-slider .best-sellers-actions {
+        position: absolute;
+        z-index: 6;
+        bottom: 30px;
+        left: 20px;
+    }
+
+    .featured-slider .best-sellers-slider-wrap {
+        padding-bottom: 76px;
+    }
+
+    .featured-slider .seller-nav {
+        top: auto;
+        bottom: 5px;
+        transform: none;
+        transition: 0.5s;
+    }
+
+    .featured-slider .seller-nav:hover{
+        background-color: #fff;
+        color: #000;
+    }
+
+    .under-slider .seller-nav:hover{
+        background-color: var(--ink);
+        color: var(--white);
+        border: 1px solid var(--white);
+    }
+
+    .featured-slider .seller-nav-prev {
+        right: 72px;
+        left: auto;
+        background-color: var(--ink);
+        color: var(--white);
+    }
+
+    .featured-slider .seller-nav-next {
+        right: 20px;
+        background-color: var(--ink);
+        color: var(--white);
+    }
+
+    .under-slider .seller-nav-prev {
+        right: 72px;
+        left: auto;
+        background-color: var(--white);
+        color: var(--ink);
+    }
+
+    .under-slider .seller-nav-next {
+        right: 20px;
+        background-color: var(--white);
+        color: var(--ink);
+    }
+
+    .featured-slider .seller-nav:disabled {
+        opacity: .35;
+    }
+
     .best-sellers-head {
         padding-bottom: 25px;
     }
@@ -2312,15 +2380,18 @@ footer {
 
 @media (max-width: 480px) {
     .best-sellers h2 {
-        font-size: 18px;
+        font-size: 35px;
+        text-align: center;
+        line-height: 1.2;
     }
 
     .best-sellers-tabs {
-        gap: 22px;
+        gap: 30px;
+        justify-content: center;
     }
 
     .best-sellers-tabs button {
-        font-size: 13px;
+        font-size: 17px;
     }
 
     .best-sellers-actions {
@@ -2357,6 +2428,10 @@ footer {
     .best-sellers-slider-wrap {
         padding: 1vw 4vw;
     }
+
+    .featured-slider .best-sellers-slider-wrap {
+        padding-bottom: 76px;
+    }
 }
 
 .product .wish-button {
@@ -2369,10 +2444,10 @@ footer {
 }
 
 
-#underSlider {
+.under-slider {
     background: var(--ink) !important;
 }
 
-#underSlider .best-sellers-shop {
+.under-slider .best-sellers-shop {
     border: 1px solid #fff;
 }

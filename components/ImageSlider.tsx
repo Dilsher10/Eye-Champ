@@ -9,16 +9,16 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const slides = [
-  ["cartier", "Cartier eyewear campaign", "CARTIER.webp"],
-  ["emporio-armani", "Emporio Armani eyewear campaign", "EMPORIO-ARMANI.webp"],
-  ["gucci", "Gucci eyewear campaign", "GUCCI.webp"],
-  ["mont-blanc", "Montblanc eyewear campaign", "MONTBLANK.webp"],
-  ["moscot", "Moscot eyewear campaign", "MOSCOT.webp"],
-  ["oakley", "Oakley eyewear campaign", "OAKLEY.webp"],
-  ["prada", "Prada eyewear campaign", "PRADA.webp"],
-  ["ray-ban", "Ray-Ban eyewear campaign", "RAY-BAN.webp"],
-  ["tom-ford", "Tom Ford eyewear campaign", "TOMFORD.webp"],
-  ["versace", "Versace eyewear campaign", "VERSACE.webp"],
+  ["cartier", "Cartier eyewear campaign", "CARTIER.png"],
+  ["emporio-armani", "Emporio Armani eyewear campaign", "EMPORIO-ARMANI.png"],
+  ["gucci", "Gucci eyewear campaign", "GUCCI.png"],
+  ["mont-blanc", "Montblanc eyewear campaign", "MONTBLANK.png"],
+  ["moscot", "Moscot eyewear campaign", "MOSCOT.png"],
+  ["oakley", "Oakley eyewear campaign", "OAKLEY.png"],
+  ["prada", "Prada eyewear campaign", "PRADA.png"],
+  ["ray-ban", "Ray-Ban eyewear campaign", "RAY-BAN.png"],
+  ["tom-ford", "Tom Ford eyewear campaign", "TOMFORD.png"],
+  ["versace", "Versace eyewear campaign", "VERSACE.png"],
 ] as const;
 
 function PrevArrow({ onClick }: CustomArrowProps) {

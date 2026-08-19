@@ -38,25 +38,25 @@ function NextArrow({ onClick }: CustomArrowProps) {
 }
 
 export default function ImageSlider() {
-  const slider = useRef<Slider>(null);
+  const desktopSlider = useRef<Slider>(null);
+  const mobileSlider = useRef<Slider>(null);
   const [playing, setPlaying] = useState(true);
 
   const togglePlayback = () => {
-    if (playing) slider.current?.slickPause();
-    else slider.current?.slickPlay();
+    const sliders = [desktopSlider.current, mobileSlider.current];
+    sliders.forEach((slider) => {
+      if (playing) slider?.slickPause();
+      else slider?.slickPlay();
+    });
     setPlaying((current) => !current);
   };
 
-  const settings: Settings = {
+  const sharedSettings: Settings = {
     dots: false,
     infinite: true,
     speed: 600,
-    // Keep the server-rendered/default layout mobile-first so a refresh does
-    // not briefly render the desktop two-card layout on narrow screens.
-    slidesToShow: 1,
     slidesToScroll: 1,
     centerMode: true,
-    centerPadding: "12%",
     autoplay: true,
     autoplaySpeed: 3500,
     arrows: true,
@@ -64,47 +64,52 @@ export default function ImageSlider() {
     nextArrow: <NextArrow />,
     pauseOnHover: true,
     cssEase: "cubic-bezier(.22,.61,.36,1)",
-    responsive: [
-      {
-        breakpoint: 10000,
-        settings: {
-          slidesToShow: 2,
-          centerMode: true,
-          centerPadding: "6.75%",
-        },
-      },
-      {
-        breakpoint: 769,
-        settings: {
-          slidesToShow: 1,
-          centerMode: true,
-          centerPadding: "12%",
-        },
-      },
-    ],
+  };
+
+  const desktopSettings: Settings = {
+    ...sharedSettings,
+    slidesToShow: 2,
+    centerPadding: "6.75%",
+  };
+
+  const mobileSettings: Settings = {
+    ...sharedSettings,
+    slidesToShow: 1,
+    centerPadding: "12%",
   };
 
   return (
     <section className="brand-band" aria-label="Featured eyewear promotions">
-      <Slider ref={slider} {...settings} className="image-slider">
-        {slides.map(([name, alt, mobileImage]) => (
-          <article key={name} className="image-slide">
-            <picture>
-              <source
-                media="(max-width: 768px)"
-                srcSet={`/images/brand-banners/mobile/${mobileImage}`}
-              />
+      <div className="desktop-image-slider">
+        <Slider ref={desktopSlider} {...desktopSettings} className="image-slider">
+          {slides.map(([name, alt]) => (
+            <article key={name} className="image-slide">
               <Image
                 src={`/images/brand-banners/${name}.webp`}
                 alt={alt}
                 fill
                 unoptimized
-                sizes="(max-width: 768px) 100vw, 38vw"
+                sizes="38vw"
               />
-            </picture>
-          </article>
-        ))}
-      </Slider>
+            </article>
+          ))}
+        </Slider>
+      </div>
+      <div className="mobile-image-slider">
+        <Slider ref={mobileSlider} {...mobileSettings} className="image-slider">
+          {slides.map(([name, alt, mobileImage]) => (
+            <article key={name} className="image-slide">
+              <Image
+                src={`/images/brand-banners/mobile/${mobileImage}`}
+                alt={alt}
+                fill
+                unoptimized
+                sizes="76vw"
+              />
+            </article>
+          ))}
+        </Slider>
+      </div>
       <button
         type="button"
         className="slider-pause"

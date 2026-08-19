@@ -891,6 +891,20 @@ footer {
     width: 100%;
 }
 
+.mobile-image-slider {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .desktop-image-slider {
+        display: none;
+    }
+
+    .mobile-image-slider {
+        display: block;
+    }
+}
+
 .image-slider .slick-list {
     overflow: hidden;
     margin: 0;

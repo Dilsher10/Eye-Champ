@@ -57,8 +57,8 @@ export default function Slider() {
           spaceBetween={12}
           grabCursor
           breakpoints={{
-            0: { slidesPerView: 1, spaceBetween: 12 },
-            480: { slidesPerView: 1, spaceBetween: 12 },
+            0: { slidesPerView: 1.15, spaceBetween: 12 },
+            480: { slidesPerView: 1.15, spaceBetween: 12 },
             768: { slidesPerView: 2, spaceBetween: 14 },
             1024: { slidesPerView: 3, spaceBetween: 16 },
             1280: { slidesPerView: 4, spaceBetween: 16 },

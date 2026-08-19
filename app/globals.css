@@ -2017,7 +2017,7 @@ footer {
 }
 
 @media (max-width: 480px) {
-    .best-sellers h2 { font-size: 26px; }
+    .best-sellers h2 { font-size: 18px; }
     .best-sellers-tabs { gap: 22px; }
     .best-sellers-tabs button { font-size: 13px; }
     .best-sellers-actions { gap: 6px; }

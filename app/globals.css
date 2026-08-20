@@ -120,8 +120,8 @@ input {
     display: none;
 }
 
-.pills-wrap button,
-.pills-track button {
+.pills-wrap .category-pill,
+.pills-track .category-pill {
     flex: none;
     min-width: max-content;
     font-size: 0.8vw;
@@ -137,13 +137,13 @@ input {
     cursor: pointer;
 }
 
-.pills-wrap button img {
+.pills-wrap .category-pill img {
     border-radius: 50%;
     width: 2vw;
     margin-right: 0.5vw;
 }
 
-.pills-wrap button:hover {
+.pills-wrap .category-pill:hover {
     border: 1px solid #222;
 }
 
@@ -151,7 +151,27 @@ input {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 1.389vw
+    font-size: 1.389vw;
+    position: relative;
+    padding-bottom: 5px
+}
+
+.utility a::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background: #083f43;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform .18s ease;
+}
+
+.utility a:hover::after,
+.utility a:focus-visible::after {
+    transform: scaleX(1);
 }
 
 .utility small {
@@ -1115,7 +1135,7 @@ footer {
         animation-play-state: paused;
     }
 
-    .pills-track button {
+    .pills-track .category-pill {
         flex: none;
         min-width: max-content;
         font-size: 0.7rem;
@@ -1127,7 +1147,7 @@ footer {
         justify-content: space-evenly;
     }
 
-    .pills-track button img {
+    .pills-track .category-pill img {
         width: 20%;
         margin-right: 1vw;
     }

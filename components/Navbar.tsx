@@ -22,6 +22,7 @@ export default function Navbar() {
             </header>
 
             <nav className="main-nav" aria-label="Shop categories">
+                <a href="/shop-all">Shop all</a>
                 {['Eyeglasses', 'Sunglasses', 'Lenses', 'Sports', 'Trending Now', 'Sale'].map(x => <a key={x} href={`#${x.toLowerCase().replaceAll(' ', '-')}`}>{x}</a>)}
             </nav>
         </>

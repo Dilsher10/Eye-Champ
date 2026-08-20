@@ -68,10 +68,10 @@
 
 .plp-hero h1 {
   margin: 10px 0 12px;
-  font-size: 58px;
-  line-height: .91;
-  letter-spacing: -.055em;
-  color: #073f43
+  font-size: 2.5vw;
+  line-height: 1;
+  font-weight: bold;
+  color: #fff;
 }
 
 .plp-hero p {
@@ -232,7 +232,6 @@
   position: relative;
   display: grid;
   place-items: center;
-  background: #f4f7f7;
   border-radius: 4px;
   overflow: hidden
 }
@@ -412,7 +411,7 @@
 }
 
 .plp-faq article {
-  border-top: 1px solid #c8d1d1
+  border-top: 1px solid #c8d1d1;
 }
 
 .plp-faq article:last-child {
@@ -878,12 +877,12 @@
     display: none
   }
 
-  .plp-hero h1 {
+  /* .plp-hero h1 {
     margin: 0 0 9px;
     color: #fff;
     font-size: 32px;
     line-height: 1
-  }
+  } */
 
   .plp-hero h1:before {
     content: "Best Sellers:";
@@ -1026,3 +1025,8 @@
 .shape-icon{width:54px;height:26px;flex:none;object-fit:contain}
 .filters details label:has(.shape-icon){gap:7px;min-height:30px}
 .filters details label:has(.shape-icon) input{margin-right:0}
+
+.filters details label:has(.filter-color){gap:7px;min-height:26px}
+.filters details label:has(.filter-color) input{margin-right:0}
+.filter-color{width:15px;height:15px;flex:none;border:1px solid #b3babc;border-radius:50%;background:#ddd}
+.color-black{background:#050505;border-color:#050505}.color-pink{background:#ce1590;border-color:#ce1590}.color-clear{background:#edf7fa}.color-blue{background:#143ed1;border-color:#143ed1}.color-purple{background:#8914c9;border-color:#8914c9}.color-green{background:#08bd27;border-color:#08bd27}.color-red{background:#c9111d;border-color:#c9111d}.color-gold{background:#e9ba24;border-color:#e9ba24}.color-brown{background:#8e715e;border-color:#8e715e}.color-white{background:#fff}.color-cream{background:#eee1c8;border-color:#eee1c8}.color-orange{background:#ff850b;border-color:#ff850b}.color-gray{background:#7f8587;border-color:#7f8587}.color-yellow{background:#e6b900;border-color:#e6b900}.color-rose-gold{background:linear-gradient(135deg,#eed0d3,#bd7780);border:0}.color-silver{background:linear-gradient(135deg,#f7f7f7,#888);border:0}.color-rainbow{background:conic-gradient(#f22,#ff0,#0c5,#1ad,#5139dc,#f22);border:0}.color-tortoiseshell{background:radial-gradient(circle at 70% 25%,#edb02d 0 18%,#2a1708 23% 48%,#aa6819 52% 72%,#3b210c 76%);border:0}.color-pattern{background:repeating-linear-gradient(35deg,#111 0 2px,#f4f4f4 2px 5px);border:0}.color-multicolor{background:conic-gradient(#ff6a53 0 25%,#11a58d 0 50%,#ffc52b 0 75%,#2182be 0);border:0}

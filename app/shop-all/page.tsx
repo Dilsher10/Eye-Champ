@@ -20,12 +20,12 @@ const groups = [
   ["Price", ["$6.95", "Under $10", "Under $20", "Under $30", "Above $30"]],
 ] as const;
 const materials = [["Metal", ["Titanium", "Flex Titanium", "Stainless Steel", "Other Metal", "All Metal"]], ["Plastic", ["Acetate", "Carbon Fiber", "Other Plastic", "All Plastic"]], ["Eco-Friendly", ["Bio-Based", "Recycled PET", "Recycled Metal + Bio-Base", "All Eco-Friendly"]], ["Mixed", ["Mixed Materials"]]] as const;
-const trailing = [["Comfort Features", ["Lightweight", "Flexible", "Adjustable Nose Pads", "Spring Hinges"]], ["Sport or Activity", ["Running", "Cycling", "Gaming"]], ["Collaborations", ["Chase Stokes", "Sam Cassell", "The Kittles", "49ers"]]] as const;
+const trailing = [["Comfort Features", ["Lightweight", "Spring Hinges", "Flexible", "Universal Bridge Fit", "Anti-slip", "Ventilation", "Adjustable Nosepads", "Adjustable Temples", "Custom Engraving", "Clip-ons"]], ["Sport or Activity", ["Running", "Cycling", "Gaming"]], ["Collaborations", ["Chase Stokes", "Sam Cassell", "The Kittles", "49ers"]]] as const;
 const faqs = ["What is the Best Seller Glasses collection?", "What styles and frame types can I find in the Best Seller collection?", "Can best-selling frames be customized with specialty lenses?", "How often is the Best Seller Glasses collection updated?", "Are the best-selling frames chosen based on customer ratings and reviews?"];
 
 function Card({ p, i }: { p: typeof products[number]; i: number }) {
   const [liked, setLiked] = useState(false);
-  return <article className="plp-card"><div className="plp-photo">{i % 3 !== 1 && <span className="plp-badge">Top rated</span>}<button className="plp-heart" onClick={() => setLiked(!liked)} aria-label="Save frame"><Heart fill={liked ? "#053f44" : "none"} /></button><img src={`/images/product/${p[4]}`} alt={`${p[3]} eyeglasses`} /><button className="plp-try"><Video /> Try on</button></div><div className="plp-card-line"><b>{p[0]}</b><span><Star fill="currentColor" /> {p[1]} ({p[2]})</span></div><p>{p[3]}</p>{i % 4 !== 0 && <strong>Get it as early as Aug 26</strong>}<div className="plp-swatches"><i className={p[5]} /><i className="black" /><i className="clear" /><button>+3</button></div></article>;
+  return <article className="plp-card"><div className="plp-photo">{i % 3 !== 1 && <span className="plp-badge">Top rated</span>}<button className="plp-heart" onClick={() => setLiked(!liked)} aria-label="Save frame"><Heart fill={liked ? "#053f44" : "none"} /></button><img src={`/images/product/${p[4]}`} alt={`${p[3]} eyeglasses`} /></div><div className="plp-card-line"><b>{p[0]}</b><span><Star fill="currentColor" /> {p[1]} ({p[2]})</span></div><p>{p[3]}</p>{i % 4 !== 0 && <strong>Get it as early as Aug 26</strong>}<div className="plp-swatches"><i className={p[5]} /><i className="black" /><i className="clear" /><button>+3</button></div></article>;
 }
 function ShapeIcon({ shape }: { shape: string }) {
   const files: Record<string, string> = {
@@ -38,9 +38,18 @@ function ShapeIcon({ shape }: { shape: string }) {
   return <img className="shape-icon" src={`/images/shapes/${files[shape]}`} alt="" aria-hidden="true" />;
 }
 
+function ColorDot({ color }: { color: string }) {
+  return <i className={`filter-color color-${color.toLowerCase().replaceAll(" ", "-")}`} aria-hidden="true" />;
+}
+
 function FilterGroup({ title, items, shape, toggle }: { title: string; items: readonly string[]; shape: string[]; toggle: (x: string) => void }) {
   const help = title === "Frame Sizes - Adult" || title === "Pupillary Distance";
-  return <details open={title === "Shape" ? true : undefined}><summary><span>{title}{help && <b className="filter-help">?</b>}</span><ChevronDown /></summary><div>{items.map(item => <label key={item}><input type="checkbox" checked={title === "Shape" && shape.includes(item)} onChange={() => title === "Shape" && toggle(item)} />{title === "Shape" && <ShapeIcon shape={item} />}<span>{item}</span></label>)}</div></details>;
+  const [selected, setSelected] = useState<string[]>([]);
+  const choose = (item: string) => {
+    if (title === "Shape") toggle(item);
+    else setSelected(current => current.includes(item) ? current.filter(value => value !== item) : [...current, item]);
+  };
+  return <details open={title === "Shape" || title === "Color" || title === "Comfort Features" ? true : undefined}><summary><span>{title}{help && <b className="filter-help">?</b>}</span><ChevronDown /></summary><div>{items.map(item => <label key={item}><input type="checkbox" checked={title === "Shape" ? shape.includes(item) : selected.includes(item)} onChange={() => choose(item)} />{title === "Shape" && <ShapeIcon shape={item} />}{title === "Color" && <ColorDot color={item} />}<span>{item}{item === "Universal Bridge Fit" && <b className="filter-help">?</b>}</span></label>)}</div></details>;
 }
 function GridIcon({ size }: { size: 2 | 3 }) { return <span className={`grid-icon grid-icon-${size}`}>{Array.from({ length: size * size }, (_, i) => <i key={i} />)}</span> }
 
@@ -52,14 +61,62 @@ export default function ShopAll() {
     <section className="plp-hero">
       <div>
         <small>BEST SELLERS</small>
-        <h1>The A-List<br />Collection</h1>
+        <h1>The A-List Collection</h1>
         <p>Featuring fan favorites and breakout hits.</p>
       </div>
     </section>
-    <div className="plp-chips">{["Frames", "Prescription Sunglasses", "Zenni Featherlite™", "Minimalist", "The Trend Shop"].map((x, i) => <button key={x} className={i === 0 ? "active" : ""}>{x}</button>)}</div>
-    <section className="plp-tools"><button className="filter-button" onClick={() => setFiltersOpen(true)}><SlidersHorizontal /> Filter & Sort</button><span>Showing 1-{visible.length} of 424 results</span><div className="grid-switch"><button className={density === "roomy" ? "active" : ""} onClick={() => setDensity("roomy")} aria-label="Roomy grid"><GridIcon size={2} /></button><button className={density === "compact" ? "active" : ""} onClick={() => setDensity("compact")} aria-label="Compact grid"><GridIcon size={3} /></button></div><label>Sort By: <select value={sort} onChange={e => setSort(e.target.value)}>{["Relevance", "New Arrivals", "Top Rated", "Price Low to High", "Price High to Low"].map(x => <option key={x}>{x}</option>)}</select></label></section>
-    <div className={`plp-body ${filtersOpen ? "" : "filters-hidden"}`}>{filtersOpen && <aside className="filters open"><div className="filters-title"><h2>Filters</h2><button className="hide-filters" onClick={() => setFiltersOpen(false)}><SlidersHorizontal /><span>Hide Filters</span></button></div><details className="filter-by" open><summary>Filter by<ChevronDown /></summary><label className="rush"><input type="checkbox" /><span>Rush delivery</span></label></details>{groups.map(([title, items]) => <FilterGroup key={title} title={title} items={items} shape={shape} toggle={toggle} />)}<details className="material-filter" open><summary>Material<ChevronDown /></summary><div className="material-groups">{materials.map(([title, items]) => <FilterGroup key={title} title={title} items={items} shape={shape} toggle={toggle} />)}</div></details>{trailing.map(([title, items]) => <FilterGroup key={title} title={title} items={items} shape={shape} toggle={toggle} />)}</aside>}<section className={`plp-grid ${density}`}>{visible.map((p, i) => <Card key={`${p[0]}-${i}`} p={p} i={i} />)}<article className="campaign"><div><small>ZENNI STORIES</small><h2>EVERY MOMENT<br />HAS A LOOK</h2><p>See the latest styles made for every side of you.</p><button>Shop now</button></div></article></section></div>
-    <section className="plp-faq"><h2>Frequently Asked Questions about Best Seller Glasses</h2>{faqs.map((q, i) => <article key={q}><button onClick={() => setFaq(faq === i ? null : i)}>{q}<span>{faq === i ? "−" : "+"}</span></button>{faq === i && <p>Explore our curated selection of popular, customizable frames in a wide range of styles, sizes, and materials.</p>}</article>)}</section>
-    <section className="plp-news"><div><h2>Take 15% Off Your First Order</h2><p>Join today and save 15% on your first order of $65+ — plus get early access to deals, new styles, and more.</p></div><form onSubmit={e => e.preventDefault()}><input type="email" placeholder="Email Address" /><button>Unlock my 15% off <ChevronRight /></button></form></section>
+
+    <div className="plp-chips">
+      {["Frames", "Prescription Sunglasses", "Zenni Featherlite™", "Minimalist", "The Trend Shop"].map((x, i) => <button key={x} className={i === 0 ? "active" : ""}>{x}</button>)}
+    </div>
+
+    <section className="plp-tools">
+      <button className="filter-button" onClick={() => setFiltersOpen(true)}><SlidersHorizontal /> Filter & Sort</button>
+      <span>Showing 1-{visible.length} of 424 results</span>
+      <div className="grid-switch">
+        <button className={density === "roomy" ? "active" : ""} onClick={() => setDensity("roomy")} aria-label="Roomy grid"><GridIcon size={2} /></button>
+        <button className={density === "compact" ? "active" : ""} onClick={() => setDensity("compact")} aria-label="Compact grid"><GridIcon size={3} /></button>
+      </div>
+      <label>Sort By: <select value={sort} onChange={e => setSort(e.target.value)}>{["Relevance", "New Arrivals", "Top Rated", "Price Low to High", "Price High to Low"].map(x => <option key={x}>{x}</option>)}</select></label>
+    </section>
+
+    <div className={`plp-body ${filtersOpen ? "" : "filters-hidden"}`}>
+      {filtersOpen && <aside className="filters open">
+        <div className="filters-title">
+          <h2>Filters</h2>
+          <button className="hide-filters" onClick={() => setFiltersOpen(false)}>
+            <SlidersHorizontal />
+            <span>Hide Filters</span>
+          </button>
+        </div>
+        <details className="filter-by" open>
+          <summary>Filter by<ChevronDown /></summary>
+          <label className="rush"><input type="checkbox" /><span>Rush delivery</span></label>
+        </details>
+
+        {groups.map(([title, items]) => <FilterGroup key={title} title={title} items={items} shape={shape} toggle={toggle} />)}
+
+        <details className="material-filter" open>
+          <summary>Material<ChevronDown /></summary>
+          <div className="material-groups">
+            {materials.map(([title, items]) => <FilterGroup key={title} title={title} items={items} shape={shape} toggle={toggle} />)}
+          </div>
+        </details>
+
+        {trailing.map(([title, items]) => <FilterGroup key={title} title={title} items={items} shape={shape} toggle={toggle} />)}
+      </aside>}
+
+      <section className={`plp-grid ${density}`}>
+        {visible.map((p, i) => <Card key={`${p[0]}-${i}`} p={p} i={i} />)}
+      </section>
+    </div>
+
+    <section className="plp-faq">
+      <h2>Frequently Asked Questions about Best Seller Glasses</h2>
+      {faqs.map((q, i) => <article key={q}>
+        <button onClick={() => setFaq(faq === i ? null : i)}>{q}<span>{faq === i ? "−" : "+"}</span></button>
+        {faq === i && <p>Explore our curated selection of popular, customizable frames in a wide range of styles, sizes, and materials.</p>}
+      </article>)}
+    </section>
   </main>;
 }

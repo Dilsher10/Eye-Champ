@@ -11,7 +11,7 @@ const products = [
   ["$19.95", "4.0", "502", "Square", "1.avif", "tortoise"], ["$9.95", "3.9", "2K+", "Aviator", "3.avif", "black"], ["$27.95", "4.3", "359", "Geometric", "4.avif", "clear"], ["$21.95", "4.5", "1K+", "Square", "2.avif", "blue"],
 ] as const;
 const groups = [
-  ["Gender & Age", ["Women", "Men", "Kids"]],
+  ["Gender & Age", ["Women", "Men"]],
   ["Shape", ["Square", "Cat-Eye", "Round", "Rectangle", "Aviator", "Browline", "Geometric", "Oval", "Heart", "Wrap-Around", "Full Rim", "Half Rim", "Rimless"]],
   ["Frame Sizes - Adult", ["Extra Small", "Small", "Medium", "Large", "Extra Large", "Custom"]],
   ["Color", ["Black", "Pink", "Clear", "Blue", "Tortoiseshell", "Purple", "Green", "Red", "Rainbow", "Gold", "Brown", "White", "Pattern", "Cream", "Multicolor", "Orange", "Gray", "Yellow", "Silver", "Rose Gold"]],

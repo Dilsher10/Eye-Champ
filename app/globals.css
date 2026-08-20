@@ -135,6 +135,7 @@ input {
     align-items: center;
     background-color: #eef0f1;
     cursor: pointer;
+    transition: all .3s ease;
 }
 
 .pills-wrap .category-pill img {
@@ -320,11 +321,18 @@ input {
     border: 0;
     border-radius: 1.25vw;
     background: var(--white);
+    border: 1px solid var(--white);
     color: var(--ink);
     padding: 0.694vw 1.389vw;
     font-size: 0.694vw;
     font-weight: 800;
-    cursor: pointer
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.btn:hover{
+    background: var(--ink);
+    color: var(--white);
 }
 
 .gender-grid {
@@ -2026,6 +2034,12 @@ footer {
     color: white;
     font-size: 14px;
     font-weight: 800;
+    transition: all .3s ease;
+}
+
+.best-sellers-shop:hover{
+    background: var(--white);
+    color: var(--ink);
 }
 
 .best-sellers-slider-wrap {

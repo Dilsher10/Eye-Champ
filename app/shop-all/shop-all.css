@@ -58,7 +58,7 @@
 
 .plp-hero>div:last-child {
   padding: 64px 7vw;
-  background: #bddfd7
+  color: #fff;
 }
 
 .plp-hero small {
@@ -405,9 +405,12 @@
 }
 
 .plp-faq {
-  max-width: 1060px;
-  margin: 0 auto;
-  padding: 30px 25px 70px
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  margin: 0;
+  padding: 30px 25px 70px;
+  box-sizing: border-box
 }
 
 .plp-faq h2 {
@@ -504,9 +507,13 @@
 
 @media(max-width:768px) {
   .plp-hero {
-    height: 480px;
+    height: 250px;
     grid-template-columns: 1fr;
     grid-template-rows: 55% 45%
+  }
+
+  .plp-tools label{
+    text-align: left;
   }
 
   .plp-hero>div:last-child {
@@ -873,11 +880,11 @@
     filter: brightness(.9) drop-shadow(0 12px 8px #0009)
   }
 
-  .plp-hero>div:last-child {
+  /* .plp-hero>div:last-child {
     padding: 112px 32px;
     background: transparent;
     color: #fff
-  }
+  } */
 
   .plp-hero small {
     display: none
@@ -971,7 +978,10 @@
     height: 300px
   }
 
-  .plp-faq,
+  .plp-faq {
+    grid-column: 2
+  }
+
   .plp-news {
     grid-column: 1/-1
   }

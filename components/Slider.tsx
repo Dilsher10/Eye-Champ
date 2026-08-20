@@ -6,6 +6,7 @@ import { ChevronLeft, ChevronRight, Heart, Plus, Star, Video } from "lucide-reac
 import { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperInstance } from "swiper";
+import Link from "next/link";
 import "swiper/css";
 
 const products = [
@@ -42,7 +43,7 @@ export default function Slider() {
           </div>
         </div>
         <div className="best-sellers-actions">
-          <a href="/product" className="best-sellers-shop">Shop all</a>
+          <Link href="/shop-all" className="best-sellers-shop">Shop all</Link>
         </div>
       </div>
 

@@ -27,9 +27,20 @@ function Card({ p, i }: { p: typeof products[number]; i: number }) {
   const [liked, setLiked] = useState(false);
   return <article className="plp-card"><div className="plp-photo">{i % 3 !== 1 && <span className="plp-badge">Top rated</span>}<button className="plp-heart" onClick={() => setLiked(!liked)} aria-label="Save frame"><Heart fill={liked ? "#053f44" : "none"} /></button><img src={`/images/product/${p[4]}`} alt={`${p[3]} eyeglasses`} /><button className="plp-try"><Video /> Try on</button></div><div className="plp-card-line"><b>{p[0]}</b><span><Star fill="currentColor" /> {p[1]} ({p[2]})</span></div><p>{p[3]}</p>{i % 4 !== 0 && <strong>Get it as early as Aug 26</strong>}<div className="plp-swatches"><i className={p[5]} /><i className="black" /><i className="clear" /><button>+3</button></div></article>;
 }
+function ShapeIcon({ shape }: { shape: string }) {
+  const files: Record<string, string> = {
+    Square: "square-shape.svg", "Cat-Eye": "catEye-shape.svg", Round: "round-shape.svg",
+    Rectangle: "rectangle-shape.svg", Aviator: "aviator-shape.svg", Browline: "browline-shape.svg",
+    Geometric: "geometric-shape.svg", Oval: "oval-shape.svg", Heart: "heart-shape.svg",
+    "Wrap-Around": "Sports-Shield-Wraparound.svg", "Full Rim": "fullRim.svg",
+    "Half Rim": "halfRim.svg", Rimless: "rimless.svg",
+  };
+  return <img className="shape-icon" src={`/images/shapes/${files[shape]}`} alt="" aria-hidden="true" />;
+}
+
 function FilterGroup({ title, items, shape, toggle }: { title: string; items: readonly string[]; shape: string[]; toggle: (x: string) => void }) {
   const help = title === "Frame Sizes - Adult" || title === "Pupillary Distance";
-  return <details><summary><span>{title}{help && <b className="filter-help">?</b>}</span><ChevronDown /></summary><div>{items.map(item => <label key={item}><input type="checkbox" checked={title === "Shape" && shape.includes(item)} onChange={() => title === "Shape" && toggle(item)} />{item}</label>)}</div></details>;
+  return <details open={title === "Shape" ? true : undefined}><summary><span>{title}{help && <b className="filter-help">?</b>}</span><ChevronDown /></summary><div>{items.map(item => <label key={item}><input type="checkbox" checked={title === "Shape" && shape.includes(item)} onChange={() => title === "Shape" && toggle(item)} />{title === "Shape" && <ShapeIcon shape={item} />}<span>{item}</span></label>)}</div></details>;
 }
 function GridIcon({ size }: { size: 2 | 3 }) { return <span className={`grid-icon grid-icon-${size}`}>{Array.from({ length: size * size }, (_, i) => <i key={i} />)}</span> }
 

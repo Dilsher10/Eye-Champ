@@ -1022,3 +1022,7 @@
 .grid-switch button.active .grid-icon-3 i{border-color:#7d878a;background:#7d878a}
 .grid-switch button.active .grid-icon-2 i{border-color:#111;background:#111}
 @media(max-width:768px){.grid-switch{display:none}}
+
+.shape-icon{width:54px;height:26px;flex:none;object-fit:contain}
+.filters details label:has(.shape-icon){gap:7px;min-height:30px}
+.filters details label:has(.shape-icon) input{margin-right:0}

@@ -25,7 +25,9 @@ const faqs = ["What is the Best Seller Glasses collection?", "What styles and fr
 
 function Card({ p, i }: { p: typeof products[number]; i: number }) {
   const [liked, setLiked] = useState(false);
-  return <article className="plp-card"><div className="plp-photo">{i % 3 !== 1 && <span className="plp-badge">Top rated</span>}<button className="plp-heart" onClick={() => setLiked(!liked)} aria-label="Save frame"><Heart fill={liked ? "#053f44" : "none"} /></button><img src={`/images/product/${p[4]}`} alt={`${p[3]} eyeglasses`} /></div><div className="plp-card-line"><b>{p[0]}</b><span><Star fill="currentColor" /> {p[1]} ({p[2]})</span></div><p>{p[3]}</p>{i % 4 !== 0 && <strong>Get it as early as Aug 26</strong>}<div className="plp-swatches"><i className={p[5]} /><i className="black" /><i className="clear" /><button>+3</button></div></article>;
+  const colors = [...new Set<string>([p[5], "black", "clear"])];
+  const [selectedColor, setSelectedColor] = useState(colors[0]);
+  return <article className="plp-card"><div className="plp-photo">{i % 3 !== 1 && <span className="plp-badge">Top rated</span>}<button className="plp-heart" onClick={() => setLiked(!liked)} aria-label="Save frame"><Heart fill={liked ? "#053f44" : "none"} /></button><img src={`/images/product/${p[4]}`} alt={`${p[3]} eyeglasses`} /></div><div className="plp-card-line"><b>{p[0]}</b><span><Star fill="currentColor" /> {p[1]} ({p[2]})</span></div><p>{p[3]}</p>{i % 4 !== 0 && <strong>Get it as early as Aug 26</strong>}<div className="plp-swatches" aria-label="Frame colors">{colors.map(color => <button type="button" key={color} className={`color-choice ${color} ${selectedColor === color ? "selected" : ""}`} onClick={() => setSelectedColor(color)} aria-label={`Select ${color} color`} aria-pressed={selectedColor === color} />)}<button type="button" className="more-colors" aria-label="Show 3 more colors">+3</button></div></article>;
 }
 function ShapeIcon({ shape }: { shape: string }) {
   const files: Record<string, string> = {

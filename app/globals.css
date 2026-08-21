@@ -330,7 +330,7 @@ input {
     transition: all .3s ease;
 }
 
-.btn:hover{
+.btn:hover {
     background: var(--ink);
     color: var(--white);
 }
@@ -503,6 +503,7 @@ input {
     color: #fff
 }
 
+
 .product-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -646,32 +647,15 @@ input {
 }
 
 .everyone {
-    padding: 0.694vw 0 0
+    padding: 3vw 0 0vw 0;
 }
 
 .benefits {
-    display: flex;
-    justify-content: center;
-    gap: 5.25vw;
-}
-
-.benefits div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.694vw;
-    color: #777
-}
-
-.benefits span {
-    font-size: 10.819vw;
-    color: #ddd;
-    margin-bottom: -3vw;
-}
-
-
-.everyone {
-    padding: 3vw 0 4vw 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2vw;
+    width: 80%;
+    margin: 3vw auto;
 }
 
 .deal {
@@ -1370,16 +1354,6 @@ footer {
         font-size: 0.7rem;
     }
 
-    /* .benefits {
-        flex-wrap: wrap;
-        gap: 1.25rem 2rem;
-    } */
-
-    .benefits span {
-        font-size: 3.5rem;
-        margin-bottom: -1.3rem;
-    }
-
     .deal>div:last-child {
         padding: 1.25rem;
     }
@@ -1758,23 +1732,6 @@ footer {
         margin-inline: auto;
     }
 
-    .benefits {
-        display: grid;
-        grid-template-columns: repeat(3, 58px);
-        justify-content: center;
-        gap: 8px 25px;
-        margin-top: 8px;
-    }
-
-    .benefits span {
-        font-size: 44px;
-        margin-bottom: -16px;
-    }
-
-    .benefits small {
-        font-size: 8px;
-    }
-
     .deal {
         min-height: 0;
         height: auto;
@@ -2037,7 +1994,7 @@ footer {
     transition: all .3s ease;
 }
 
-.best-sellers-shop:hover{
+.best-sellers-shop:hover {
     background: var(--white);
     color: var(--ink);
 }
@@ -2368,12 +2325,12 @@ footer {
         transition: 0.5s;
     }
 
-    .featured-slider .seller-nav:hover{
+    .featured-slider .seller-nav:hover {
         background-color: #fff;
         color: #000;
     }
 
-    .under-slider .seller-nav:hover{
+    .under-slider .seller-nav:hover {
         background-color: var(--ink);
         color: var(--white);
         border: 1px solid var(--white);

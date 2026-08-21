@@ -658,6 +658,31 @@ input {
     margin: 3vw auto;
 }
 
+.benefits>div {
+    position: relative;
+    cursor: pointer;
+}
+
+.benefits img {
+    display: block;
+    width: 100%;
+    transition: opacity 0.25s ease;
+}
+
+.benefit-image-hover {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+}
+
+.benefits>div:hover .benefit-image {
+    opacity: 0;
+}
+
+.benefits>div:hover .benefit-image-hover {
+    opacity: 1;
+}
+
 .deal {
     height: 25.347vw;
     background: url('../public/images/off-banner.webp');
@@ -1730,6 +1755,13 @@ footer {
     .everyone .section-title h2 {
         max-width: 250px;
         margin-inline: auto;
+    }
+
+    .benefits {
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+        gap: 5vw;
+        margin-top: 5vw;
     }
 
     .deal {

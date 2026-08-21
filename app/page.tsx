@@ -53,16 +53,20 @@ export default function Home() {
 
         <div className="benefits">
           <div>
-            <img src="/images/benefits/free-shiping.png" alt="" />
+            <img className="benefit-image" src="/images/benefits/free-shiping.png" alt="" />
+            <img className="benefit-image-hover" src="/images/benefits/hover/free-shiping.png" alt="" aria-hidden="true" />
           </div>
           <div>
-            <img src="/images/benefits/prescription-accuracy.png" alt="" />
+            <img className="benefit-image" src="/images/benefits/prescription-accuracy.png" alt="" />
+            <img className="benefit-image-hover" src="/images/benefits/hover/prescription-accuracy.png" alt="" aria-hidden="true" />
           </div>
           <div>
-            <img src="/images/benefits/secure-online-payments.png" alt="" />
+            <img className="benefit-image" src="/images/benefits/secure-online-payments.png" alt="" />
+            <img className="benefit-image-hover" src="/images/benefits/hover/secure-online-payments.png" alt="" aria-hidden="true" />
           </div>
           <div>
-            <img src="/images/benefits/transparent-pricing.png" alt="" />
+            <img className="benefit-image" src="/images/benefits/transparent-pricing.png" alt="" />
+            <img className="benefit-image-hover" src="/images/benefits/hover/transparent-pricing.png" alt="" aria-hidden="true" />
           </div>
         </div>
       </section>

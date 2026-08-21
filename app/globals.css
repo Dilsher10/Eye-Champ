@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-    --red: #ff383c;
+    --red: #FA3C3C;
     --ink: #0a0a0a;
     --muted: #777;
     --cream: #f4efe9;
@@ -653,7 +653,7 @@ input {
 .benefits {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 2vw;
+    gap: 3vw;
     width: 80%;
     margin: 3vw auto;
 }

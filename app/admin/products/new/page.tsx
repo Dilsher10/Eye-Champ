@@ -8,7 +8,7 @@ import type { ReactNode } from "react";
 import "./new-product.css";
 
 const productNav = [
-  ["Overview", Grid2X2, "/admin"], ["Orders", ShoppingBag, "#"], ["Products", Glasses, "#"],
+  ["Overview", Grid2X2, "/admin"], ["Orders", ShoppingBag, "#"], ["Products", Glasses, "/admin/products"],
   ["Inventory", Boxes, "#"], ["Customers", Users, "#"], ["Discounts", Tag, "#"],
 ] as const;
 

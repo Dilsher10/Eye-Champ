@@ -69,7 +69,7 @@ export default function AdminDashboard() {
         <nav className={styles.nav} aria-label="Admin navigation">
           <p>Workspace</p>
           {navItems.map(({ label, icon: Icon, badge }) => (
-            <button className={label === "Overview" ? styles.activeNav : ""} key={label} onClick={() => setSidebarOpen(false)}>
+            <button className={label === "Overview" ? styles.activeNav : ""} key={label} onClick={() => { if (label === "Products") window.location.href = "/admin/products"; setSidebarOpen(false); }}>
               <Icon size={19} /><span>{label}</span>{badge && <em>{badge}</em>}
             </button>
           ))}

@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Bell, Boxes, ChevronDown, CircleDollarSign, Download, Filter, Glasses, Grid2X2, HelpCircle, LayoutGrid, List, Menu, MoreHorizontal, Plus, Search, Settings, ShoppingBag, SlidersHorizontal, Tag, Truck, Users, X } from "lucide-react";
-import { Fragment, useMemo, useState } from "react";
+import AdminSidebar from "@/components/admin/AdminSidebar";
+import { Bell, ChevronDown, Download, Filter, Glasses, LayoutGrid, List, Menu, MoreHorizontal, Plus, Search, SlidersHorizontal } from "lucide-react";
+import { useMemo, useState } from "react";
 import "./new/new-product.css";
 import "./products.css";
 
-const nav = [["Overview",Grid2X2,"/admin"],["Orders",ShoppingBag,"#"],["Products",Glasses,"/admin/products"],["Inventory",Boxes,"#"],["Customers",Users,"#"],["Discounts",Tag,"#"]] as const;
 const products = [
   {name:"Avery Crystal",sku:"EC-AV-014",type:"Eyeglasses",price:64,stock:42,status:"Active",image:"/images/product/1.avif",colors:["#171717","#d9c6b7","#b67170"]},
   {name:"Luna Tortoise",sku:"EC-LU-022",type:"Eyeglasses",price:78,stock:18,status:"Active",image:"/images/product/2.avif",colors:["#5b3219","#111","#d8e7ea"]},
@@ -20,12 +20,11 @@ const products = [
 ];
 
 export default function ProductsPage(){
-  const [menuOpen,setMenuOpen]=useState(false),[productsOpen,setProductsOpen]=useState(true),[view,setView]=useState<"table"|"grid">("table"),[query,setQuery]=useState(""),[status,setStatus]=useState("All statuses"),[selected,setSelected]=useState<string[]>([]);
+  const [menuOpen,setMenuOpen]=useState(false),[view,setView]=useState<"table"|"grid">("table"),[query,setQuery]=useState(""),[status,setStatus]=useState("All statuses"),[selected,setSelected]=useState<string[]>([]);
   const shown=useMemo(()=>products.filter(p=>(status==="All statuses"||p.status===status)&&(`${p.name} ${p.sku} ${p.type}`.toLowerCase().includes(query.toLowerCase()))),[query,status]);
   const toggle=(sku:string)=>setSelected(current=>current.includes(sku)?current.filter(x=>x!==sku):[...current,sku]);
   return <main className="np-admin pc-admin">
-    <aside className={`np-sidebar ${menuOpen?"open":""}`}><div className="np-brand"><Link href="/"><Image src="/images/logo.png" alt="Eye Champ" width={150} height={46} priority/></Link><button onClick={()=>setMenuOpen(false)} aria-label="Close menu"><X size={20}/></button></div><nav><p>Workspace</p>{nav.map(([label,Icon,href])=>label==="Products"?<Fragment key={label}><button className="active np-product-toggle" onClick={()=>setProductsOpen(open=>!open)} aria-expanded={productsOpen}><Icon size={19}/><span>{label}</span><ChevronDown className={productsOpen?"open":""} size={16}/></button>{productsOpen&&<div className="np-subnav"><Link className="current" href="/admin/products">View products</Link><Link href="/admin/products/new">Add product</Link></div>}</Fragment>:<Link href={href} key={label}><Icon size={19}/><span>{label}</span>{label==="Orders"&&<em>12</em>}{label==="Inventory"&&<em>4</em>}</Link>)}<p>Management</p><a href="#"><Truck size={19}/><span>Shipping</span></a><a href="#"><CircleDollarSign size={19}/><span>Finances</span></a><a href="#"><Settings size={19}/><span>Settings</span></a></nav><div className="np-help"><HelpCircle size={18}/><strong>Need some help?</strong><p>Visit the support center for guides and answers.</p><button>Get support</button></div><div className="np-store"><span>EC</span><div><strong>Eye Champ</strong><small><i/> Store is live</small></div><MoreHorizontal size={18}/></div></aside>
-    {menuOpen&&<button className="np-scrim" onClick={()=>setMenuOpen(false)} aria-label="Close menu"/>}
+    <AdminSidebar open={menuOpen} onClose={()=>setMenuOpen(false)}/>
     <section className="np-workspace"><header className="np-topbar"><button className="np-menu" onClick={()=>setMenuOpen(true)} aria-label="Open menu"><Menu size={21}/></button><label><Search size={18}/><input placeholder="Search orders, products, customers..."/><kbd>⌘ K</kbd></label><div><button className="np-bell" aria-label="Notifications"><Bell size={19}/><i/></button><span className="np-avatar">DK</span><p><strong>Dilsher Khan</strong><small>Administrator</small></p><ChevronDown size={15}/></div></header>
       <div className="pc-content"><div className="pc-head"><div><p>Catalog</p><h1>Products</h1><span>Manage products, inventory, pricing, and visibility.</span></div><div><button><Download size={16}/> Export</button><Link href="/admin/products/new"><Plus size={17}/> Add product</Link></div></div>
         <section className="pc-summary"><article><span>All products</span><strong>128</strong><small>Across 8 collections</small></article><article><span>Active</span><strong>112</strong><small><i className="green"/> Published in store</small></article><article><span>Low stock</span><strong>9</strong><small><i className="orange"/> Needs attention</small></article><article><span>Out of stock</span><strong>3</strong><small><i className="red"/> Currently unavailable</small></article></section>

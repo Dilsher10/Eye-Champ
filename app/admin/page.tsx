@@ -2,45 +2,29 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import AdminSidebar from "@/components/admin/AdminSidebar";
 import {
   ArrowDownRight,
   ArrowUpRight,
   Bell,
-  Boxes,
   ChevronDown,
   CircleDollarSign,
   Download,
   Eye,
-  Glasses,
-  Grid2X2,
-  HelpCircle,
   Menu,
   MoreHorizontal,
   Package,
   Plus,
   Search,
-  Settings,
   ShoppingBag,
-  Tag,
-  Truck,
   Users,
-  X,
 } from "lucide-react";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import "./admin.css";
 
 const styles: Record<string, string> = new Proxy({}, {
   get: (_target, className) => String(className),
 });
-
-const navItems = [
-  { label: "Overview", icon: Grid2X2 },
-  { label: "Orders", icon: ShoppingBag, badge: "12" },
-  { label: "Products", icon: Glasses },
-  { label: "Inventory", icon: Boxes, badge: "4" },
-  { label: "Customers", icon: Users },
-  { label: "Discounts", icon: Tag },
-];
 
 const orders = [
   { id: "#EC-1048", customer: "Aisha Khan", initials: "AK", product: "Avery / Crystal Rose", total: "$128.00", status: "Paid", fulfillment: "Unfulfilled", date: "Aug 25, 10:42 AM" },
@@ -57,48 +41,11 @@ const inventory = [
 
 export default function AdminDashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [productsOpen, setProductsOpen] = useState(false);
   const [period, setPeriod] = useState("Last 7 days");
 
   return (
     <main className={styles.adminViewport}>
-      <aside className={`${styles.sidebar} ${sidebarOpen ? styles.sidebarOpen : ""}`}>
-        <div className={styles.brand}>
-          <Link href="/" aria-label="Eye Champ home"><Image src="/images/logo.png" alt="Eye Champ" width={150} height={46} priority /></Link>
-          <button className={styles.closeMenu} onClick={() => setSidebarOpen(false)} aria-label="Close navigation"><X size={20} /></button>
-        </div>
-        <nav className={styles.nav} aria-label="Admin navigation">
-          <p>Workspace</p>
-          {navItems.map(({ label, icon: Icon, badge }) => label === "Products" ? (
-            <Fragment key={label}>
-              <button className={styles.productToggle} onClick={() => setProductsOpen(open => !open)} aria-expanded={productsOpen}>
-                <Icon size={19} /><span>{label}</span><ChevronDown className={productsOpen ? styles.chevronOpen : ""} size={16}/>
-              </button>
-              {productsOpen && <div className={styles.adminSubnav}>
-                <Link href="/admin/products">View products</Link>
-                <Link href="/admin/products/new">Add product</Link>
-              </div>}
-            </Fragment>
-          ) : (
-            <button className={label === "Overview" ? styles.activeNav : ""} key={label} onClick={() => setSidebarOpen(false)}>
-              <Icon size={19} /><span>{label}</span>{badge && <em>{badge}</em>}
-            </button>
-          ))}
-          <p>Management</p>
-          <button><Truck size={19} /><span>Shipping</span></button>
-          <button><CircleDollarSign size={19} /><span>Finances</span></button>
-          <button><Settings size={19} /><span>Settings</span></button>
-        </nav>
-        <div className={styles.helpCard}>
-          <span><HelpCircle size={18} /></span>
-          <strong>Need some help?</strong>
-          <p>Visit the support center for guides and answers.</p>
-          <button>Get support</button>
-        </div>
-        <div className={styles.storeStatus}><span>EC</span><div><strong>Eye Champ</strong><small><i /> Store is live</small></div><MoreHorizontal size={18} /></div>
-      </aside>
-
-      {sidebarOpen && <button className={styles.scrim} onClick={() => setSidebarOpen(false)} aria-label="Close navigation" />}
+      <AdminSidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)}/>
 
       <section className={styles.workspace}>
         <header className={styles.topbar}>

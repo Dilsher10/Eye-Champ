@@ -1,20 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { ArrowLeft, Bell, Boxes, ChevronDown, CircleDollarSign, Glasses, Grid2X2, HelpCircle, ImagePlus, Menu, MoreHorizontal, Package, Search, Settings, ShoppingBag, Tag, Trash2, Truck, Users, X } from "lucide-react";
-import { Fragment, useState } from "react";
+import AdminSidebar from "@/components/admin/AdminSidebar";
+import { ArrowLeft, Bell, ChevronDown, ImagePlus, Menu, Package, Search, Trash2 } from "lucide-react";
+import { useState } from "react";
 import type { ReactNode } from "react";
 import "./new-product.css";
 
-const productNav = [
-  ["Overview", Grid2X2, "/admin"], ["Orders", ShoppingBag, "#"], ["Products", Glasses, "/admin/products"],
-  ["Inventory", Boxes, "#"], ["Customers", Users, "#"], ["Discounts", Tag, "#"],
-] as const;
-
 export default function NewProductPage() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [productsOpen, setProductsOpen] = useState(true);
   const [status, setStatus] = useState("Active");
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
@@ -26,13 +20,7 @@ export default function NewProductPage() {
   }
 
   return <main className="np-admin">
-    <aside className={`np-sidebar ${menuOpen ? "open" : ""}`}>
-      <div className="np-brand"><Link href="/"><Image src="/images/logo.png" alt="Eye Champ" width={150} height={46} priority /></Link><button onClick={() => setMenuOpen(false)} aria-label="Close menu"><X size={20}/></button></div>
-      <nav><p>Workspace</p>{productNav.map(([label, Icon, href]) => label === "Products" ? <Fragment key={label}><button className="active np-product-toggle" onClick={() => setProductsOpen(open => !open)} aria-expanded={productsOpen}><Icon size={19}/><span>{label}</span><ChevronDown className={productsOpen ? "open" : ""} size={16}/></button>{productsOpen && <div className="np-subnav"><Link href="/admin/products">View products</Link><Link className="current" href="/admin/products/new">Add product</Link></div>}</Fragment> : <Link href={href} key={label}><Icon size={19}/><span>{label}</span>{label === "Orders" && <em>12</em>}{label === "Inventory" && <em>4</em>}</Link>)}<p>Management</p><a href="#"><Truck size={19}/><span>Shipping</span></a><a href="#"><CircleDollarSign size={19}/><span>Finances</span></a><a href="#"><Settings size={19}/><span>Settings</span></a></nav>
-      <div className="np-help"><HelpCircle size={18}/><strong>Need some help?</strong><p>Visit the support center for guides and answers.</p><button>Get support</button></div>
-      <div className="np-store"><span>EC</span><div><strong>Eye Champ</strong><small><i/> Store is live</small></div><MoreHorizontal size={18}/></div>
-    </aside>
-    {menuOpen && <button className="np-scrim" onClick={() => setMenuOpen(false)} aria-label="Close menu"/>}
+    <AdminSidebar open={menuOpen} onClose={() => setMenuOpen(false)}/>
     <section className="np-workspace">
       <header className="np-topbar"><button className="np-menu" onClick={() => setMenuOpen(true)} aria-label="Open menu"><Menu size={21}/></button><label><Search size={18}/><input placeholder="Search orders, products, customers..."/><kbd>⌘ K</kbd></label><div><button className="np-bell" aria-label="Notifications"><Bell size={19}/><i/></button><span className="np-avatar">DK</span><p><strong>Dilsher Khan</strong><small>Administrator</small></p><ChevronDown size={15}/></div></header>
       <div className="np-content">

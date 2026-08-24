@@ -13,7 +13,7 @@ export default function Navbar() {
                 </a>
                 <label className="search"><Search size={18} /><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search our AI recommended frames" /></label>
                 <nav className={`utility ${menu ? "open" : ""}`} aria-label="Account links">
-                    <a href="#login" aria-label="Login"><UserRound size={18} /><small>Login</small></a>
+                    <a href="/admin" aria-label="Login"><UserRound size={18} /><small>Login</small></a>
                     <a href="#favorites" aria-label="Favorites"><Heart size={18} /><small>Favorites</small></a>
                     <a href="#help" aria-label="Help"><HelpCircle size={18} /><small>Help</small></a>
                     <a href="#cart" aria-label="Cart"><ShoppingCart size={18} /><small>Cart</small></a>

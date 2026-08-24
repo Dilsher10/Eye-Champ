@@ -1,5 +1,6 @@
 "use client";
 import { Heart, HelpCircle, Search, ShoppingCart, UserRound } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function Navbar() {
@@ -13,7 +14,7 @@ export default function Navbar() {
                 </a>
                 <label className="search"><Search size={18} /><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search our AI recommended frames" /></label>
                 <nav className={`utility ${menu ? "open" : ""}`} aria-label="Account links">
-                    <a href="/admin" aria-label="Login"><UserRound size={18} /><small>Login</small></a>
+                    <Link href="/admin" aria-label="Login"><UserRound size={18} /><small>Login</small></Link>
                     <a href="#favorites" aria-label="Favorites"><Heart size={18} /><small>Favorites</small></a>
                     <a href="#help" aria-label="Help"><HelpCircle size={18} /><small>Help</small></a>
                     <a href="#cart" aria-label="Cart"><ShoppingCart size={18} /><small>Cart</small></a>

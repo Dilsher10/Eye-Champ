@@ -3,7 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import AdminSidebar from "@/components/admin/AdminSidebar";
-import { Bell, ChevronDown, Download, Filter, Glasses, LayoutGrid, List, Menu, MoreHorizontal, Plus, Search, SlidersHorizontal } from "lucide-react";
+import AdminTopbar from "@/components/admin/AdminTopbar";
+import { Download, Filter, Glasses, LayoutGrid, List, MoreHorizontal, Plus, Search, SlidersHorizontal } from "lucide-react";
 import { useMemo, useState } from "react";
 import "./new/new-product.css";
 import "./products.css";
@@ -25,7 +26,7 @@ export default function ProductsPage(){
   const toggle=(sku:string)=>setSelected(current=>current.includes(sku)?current.filter(x=>x!==sku):[...current,sku]);
   return <main className="np-admin pc-admin">
     <AdminSidebar open={menuOpen} onClose={()=>setMenuOpen(false)}/>
-    <section className="np-workspace"><header className="np-topbar"><button className="np-menu" onClick={()=>setMenuOpen(true)} aria-label="Open menu"><Menu size={21}/></button><label><Search size={18}/><input placeholder="Search orders, products, customers..."/><kbd>⌘ K</kbd></label><div><button className="np-bell" aria-label="Notifications"><Bell size={19}/><i/></button><span className="np-avatar">DK</span><p><strong>Dilsher Khan</strong><small>Administrator</small></p><ChevronDown size={15}/></div></header>
+    <section className="np-workspace"><AdminTopbar onMenuOpen={()=>setMenuOpen(true)}/>
       <div className="pc-content"><div className="pc-head"><div><p>Catalog</p><h1>Products</h1><span>Manage products, inventory, pricing, and visibility.</span></div><div><button><Download size={16}/> Export</button><Link href="/admin/products/new"><Plus size={17}/> Add product</Link></div></div>
         <section className="pc-summary"><article><span>All products</span><strong>128</strong><small>Across 8 collections</small></article><article><span>Active</span><strong>112</strong><small><i className="green"/> Published in store</small></article><article><span>Low stock</span><strong>9</strong><small><i className="orange"/> Needs attention</small></article><article><span>Out of stock</span><strong>3</strong><small><i className="red"/> Currently unavailable</small></article></section>
         <section className="pc-catalog"><div className="pc-tabs"><div><button className="active">All <span>128</span></button><button>Active <span>112</span></button><button>Draft <span>13</span></button><button>Archived <span>3</span></button></div><button><SlidersHorizontal size={15}/> Manage columns</button></div>

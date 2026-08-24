@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import AdminSidebar from "@/components/admin/AdminSidebar";
-import { ArrowLeft, Bell, ChevronDown, ImagePlus, Menu, Package, Search, Trash2 } from "lucide-react";
+import AdminTopbar from "@/components/admin/AdminTopbar";
+import { ArrowLeft, ImagePlus, Package, Trash2 } from "lucide-react";
 import { useState } from "react";
 import type { ReactNode } from "react";
 import "./new-product.css";
@@ -22,7 +23,7 @@ export default function NewProductPage() {
   return <main className="np-admin">
     <AdminSidebar open={menuOpen} onClose={() => setMenuOpen(false)}/>
     <section className="np-workspace">
-      <header className="np-topbar"><button className="np-menu" onClick={() => setMenuOpen(true)} aria-label="Open menu"><Menu size={21}/></button><label><Search size={18}/><input placeholder="Search orders, products, customers..."/><kbd>⌘ K</kbd></label><div><button className="np-bell" aria-label="Notifications"><Bell size={19}/><i/></button><span className="np-avatar">DK</span><p><strong>Dilsher Khan</strong><small>Administrator</small></p><ChevronDown size={15}/></div></header>
+      <AdminTopbar onMenuOpen={() => setMenuOpen(true)}/>
       <div className="np-content">
         <div className="np-pagehead"><div><Link href="/admin"><ArrowLeft size={16}/> Products</Link><h1>Add new product</h1><p>Create a new frame and make it available in your store.</p></div><div><Link href="/admin">Discard</Link><button className="np-draft" onClick={saveProduct}>Save as draft</button><button className="np-save" onClick={saveProduct}>Save product</button></div></div>
         {saved && <div className="np-toast"><span>✓</span> Product details saved successfully.</div>}

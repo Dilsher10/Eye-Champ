@@ -3,19 +3,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import AdminSidebar from "@/components/admin/AdminSidebar";
+import AdminTopbar from "@/components/admin/AdminTopbar";
 import {
   ArrowDownRight,
   ArrowUpRight,
-  Bell,
-  ChevronDown,
   CircleDollarSign,
   Download,
   Eye,
-  Menu,
   MoreHorizontal,
   Package,
   Plus,
-  Search,
   ShoppingBag,
   Users,
 } from "lucide-react";
@@ -48,15 +45,7 @@ export default function AdminDashboard() {
       <AdminSidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)}/>
 
       <section className={styles.workspace}>
-        <header className={styles.topbar}>
-          <button className={styles.menuButton} onClick={() => setSidebarOpen(true)} aria-label="Open navigation"><Menu size={22} /></button>
-          <label className={styles.search}><Search size={18} /><input aria-label="Search admin" placeholder="Search orders, products, customers..." /><kbd>⌘ K</kbd></label>
-          <div className={styles.topActions}>
-            <button className={styles.iconButton} aria-label="Notifications"><Bell size={20} /><i /></button>
-            <span className={styles.divider} />
-            <button className={styles.profile}><span>DK</span><div><strong>Admin</strong><small>Administrator</small></div><ChevronDown size={15} /></button>
-          </div>
-        </header>
+        <AdminTopbar onMenuOpen={() => setSidebarOpen(true)}/>
 
         <div className={styles.content}>
           <div className={styles.headingRow}>

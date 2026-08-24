@@ -12,7 +12,7 @@ type AdminSidebarProps = { open: boolean; onClose: () => void };
 const workspaceItems = [
   { label: "Overview", icon: Grid2X2, href: "/admin" },
   { label: "Orders", icon: ShoppingBag, href: "/admin/orders", badge: "12" },
-  { label: "Inventory", icon: Boxes, href: "#", badge: "4" },
+  { label: "Inventory", icon: Boxes, href: "/admin/inventory", badge: "4" },
   { label: "Customers", icon: Users, href: "#" },
   { label: "Discounts", icon: Tag, href: "#" },
 ];

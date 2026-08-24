@@ -42,10 +42,10 @@ export default function AdminDashboard() {
 
   return (
     <main className={styles.adminViewport}>
-      <AdminSidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)}/>
+      <AdminSidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
       <section className={styles.workspace}>
-        <AdminTopbar onMenuOpen={() => setSidebarOpen(true)}/>
+        <AdminTopbar onMenuOpen={() => setSidebarOpen(true)} />
 
         <div className={styles.content}>
           <div className={styles.headingRow}>
@@ -67,7 +67,7 @@ export default function AdminDashboard() {
               <div className={styles.chart} aria-label="Revenue chart from Monday through Sunday">
                 <div className={styles.yAxis}><span>$6k</span><span>$4k</span><span>$2k</span><span>$0</span></div>
                 <svg viewBox="0 0 700 210" preserveAspectRatio="none" role="img">
-                  <defs><linearGradient id="revenueFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stopColor="#0d6666" stopOpacity=".24"/><stop offset="1" stopColor="#0d6666" stopOpacity="0"/></linearGradient></defs>
+                  <defs><linearGradient id="revenueFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stopColor="#0d6666" stopOpacity=".24" /><stop offset="1" stopColor="#0d6666" stopOpacity="0" /></linearGradient></defs>
                   <path className={styles.area} d="M0 164 C65 150 80 95 145 112 S230 147 290 98 S385 41 435 81 S520 130 575 72 S655 42 700 18 L700 210 L0 210Z" />
                   <path className={styles.line} d="M0 164 C65 150 80 95 145 112 S230 147 290 98 S385 41 435 81 S520 130 575 72 S655 42 700 18" />
                   <circle cx="700" cy="18" r="5" />

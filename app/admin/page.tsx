@@ -26,7 +26,7 @@ import {
   Users,
   X,
 } from "lucide-react";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import "./admin.css";
 
 const styles: Record<string, string> = new Proxy({}, {
@@ -57,6 +57,7 @@ const inventory = [
 
 export default function AdminDashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
   const [period, setPeriod] = useState("Last 7 days");
 
   return (
@@ -68,8 +69,18 @@ export default function AdminDashboard() {
         </div>
         <nav className={styles.nav} aria-label="Admin navigation">
           <p>Workspace</p>
-          {navItems.map(({ label, icon: Icon, badge }) => (
-            <button className={label === "Overview" ? styles.activeNav : ""} key={label} onClick={() => { if (label === "Products") window.location.href = "/admin/products"; setSidebarOpen(false); }}>
+          {navItems.map(({ label, icon: Icon, badge }) => label === "Products" ? (
+            <Fragment key={label}>
+              <button className={styles.productToggle} onClick={() => setProductsOpen(open => !open)} aria-expanded={productsOpen}>
+                <Icon size={19} /><span>{label}</span><ChevronDown className={productsOpen ? styles.chevronOpen : ""} size={16}/>
+              </button>
+              {productsOpen && <div className={styles.adminSubnav}>
+                <Link href="/admin/products">View products</Link>
+                <Link href="/admin/products/new">Add product</Link>
+              </div>}
+            </Fragment>
+          ) : (
+            <button className={label === "Overview" ? styles.activeNav : ""} key={label} onClick={() => setSidebarOpen(false)}>
               <Icon size={19} /><span>{label}</span>{badge && <em>{badge}</em>}
             </button>
           ))}

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, Bell, Boxes, ChevronDown, CircleDollarSign, Glasses, Grid2X2, HelpCircle, ImagePlus, Menu, MoreHorizontal, Package, Search, Settings, ShoppingBag, Tag, Trash2, Truck, Users, X } from "lucide-react";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import type { ReactNode } from "react";
 import "./new-product.css";
 
@@ -14,6 +14,7 @@ const productNav = [
 
 export default function NewProductPage() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(true);
   const [status, setStatus] = useState("Active");
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
@@ -27,7 +28,7 @@ export default function NewProductPage() {
   return <main className="np-admin">
     <aside className={`np-sidebar ${menuOpen ? "open" : ""}`}>
       <div className="np-brand"><Link href="/"><Image src="/images/logo.png" alt="Eye Champ" width={150} height={46} priority /></Link><button onClick={() => setMenuOpen(false)} aria-label="Close menu"><X size={20}/></button></div>
-      <nav><p>Workspace</p>{productNav.map(([label, Icon, href]) => <Link className={label === "Products" ? "active" : ""} href={href} key={label}><Icon size={19}/><span>{label}</span>{label === "Orders" && <em>12</em>}{label === "Inventory" && <em>4</em>}</Link>)}<p>Management</p><a href="#"><Truck size={19}/><span>Shipping</span></a><a href="#"><CircleDollarSign size={19}/><span>Finances</span></a><a href="#"><Settings size={19}/><span>Settings</span></a></nav>
+      <nav><p>Workspace</p>{productNav.map(([label, Icon, href]) => label === "Products" ? <Fragment key={label}><button className="active np-product-toggle" onClick={() => setProductsOpen(open => !open)} aria-expanded={productsOpen}><Icon size={19}/><span>{label}</span><ChevronDown className={productsOpen ? "open" : ""} size={16}/></button>{productsOpen && <div className="np-subnav"><Link href="/admin/products">View products</Link><Link className="current" href="/admin/products/new">Add product</Link></div>}</Fragment> : <Link href={href} key={label}><Icon size={19}/><span>{label}</span>{label === "Orders" && <em>12</em>}{label === "Inventory" && <em>4</em>}</Link>)}<p>Management</p><a href="#"><Truck size={19}/><span>Shipping</span></a><a href="#"><CircleDollarSign size={19}/><span>Finances</span></a><a href="#"><Settings size={19}/><span>Settings</span></a></nav>
       <div className="np-help"><HelpCircle size={18}/><strong>Need some help?</strong><p>Visit the support center for guides and answers.</p><button>Get support</button></div>
       <div className="np-store"><span>EC</span><div><strong>Eye Champ</strong><small><i/> Store is live</small></div><MoreHorizontal size={18}/></div>
     </aside>

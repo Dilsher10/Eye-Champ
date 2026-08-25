@@ -72,19 +72,6 @@ export default function Navbar() {
                     </section>
                 </div>
                 <div className="mega-trigger">
-                    <a className="mega-link" href="#collabs-partners">Collabs & Partners</a>
-                    <section className="mega-menu" aria-label="Collaborations and partners menu">
-                        <div className="mega-inner mega-inner-six">
-                            <div className="mega-column"><b>Collaborations</b>{["Chase Stokes", "George & Claire Kittle", "Sam Cassell"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
-                            <div className="mega-column"><b>Sports</b>{["Columbus Crew", "49ers Faithful to the Bay", "College Athlete Picks"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
-                            <div className="mega-column"><b>Licensed</b>{["WWE", "Monster Jam", "Pax West 2026", "Disc Golf Pro Tour", "Major League Pickleball", "Major League Fishing"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
-                            <div className="mega-column"><b>Gaming & Esports</b>{["Chess.com", "Evo 2026", "Supernova", "Team Liquid RWF", "Cloud9", "San Francisco Marathon"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
-                            <a className="mega-card" href="/shop-all"><img src="/images/trend-banners/4.webp" alt="The Kittles wearing Zenni glasses" /><span>The Kittles x Zenni</span></a>
-                            <a className="mega-card" href="/shop-all"><img src="/images/brand-banners/mobile/MONTBLANK.png" alt="PAX West 2026" /><span>PAX West 2026</span></a>
-                        </div>
-                    </section>
-                </div>
-                <div className="mega-trigger">
                     <a className="mega-link mega-trending" href="#trending-now">✨ Trending Now</a>
                     <section className="mega-menu" aria-label="Trending Now menu">
                         <div className="mega-inner">

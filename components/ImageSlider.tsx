@@ -9,17 +9,68 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const slides = [
-  ["cartier", "Cartier eyewear campaign", "CARTIER.png"],
-  ["emporio-armani", "Emporio Armani eyewear campaign", "EMPORIO-ARMANI.png"],
-  ["gucci", "Gucci eyewear campaign", "GUCCI.png"],
-  ["mont-blanc", "Montblanc eyewear campaign", "MONTBLANK.png"],
-  ["moscot", "Moscot eyewear campaign", "MOSCOT.png"],
-  ["oakley", "Oakley eyewear campaign", "OAKLEY.png"],
-  ["prada", "Prada eyewear campaign", "PRADA.png"],
-  ["ray-ban", "Ray-Ban eyewear campaign", "RAY-BAN.png"],
-  ["tom-ford", "Tom Ford eyewear campaign", "TOMFORD.png"],
-  ["versace", "Versace eyewear campaign", "VERSACE.png"],
+  {
+    name: "cartier",
+    alt: "Cartier eyewear campaign",
+    desktop: "/images/brand-banners/cartier.webp",
+    mobile: "/images/brand-banners/mobile/cartier.png",
+  },
+  {
+    name: "emporio-armani",
+    alt: "Emporio Armani eyewear campaign",
+    desktop: "/images/brand-banners/emporio-armani.png",
+    mobile: "/images/brand-banners/mobile/emporio-armani.png",
+  },
+  {
+    name: "gucci",
+    alt: "Gucci eyewear campaign",
+    desktop: "/images/brand-banners/gucci.webp",
+    mobile: "/images/brand-banners/mobile/gucci.png",
+  },
+  {
+    name: "mont-blanc",
+    alt: "Montblanc eyewear campaign",
+    desktop: "/images/brand-banners/mont-blanc.webp",
+    mobile: "/images/brand-banners/mobile/mont-blanc.png",
+  },
+  {
+    name: "moscot",
+    alt: "Moscot eyewear campaign",
+    desktop: "/images/brand-banners/moscot.webp",
+    mobile: "/images/brand-banners/mobile/moscot.png",
+  },
+  {
+    name: "oakley",
+    alt: "Oakley eyewear campaign",
+    desktop: "/images/brand-banners/oakley.png",
+    mobile: "/images/brand-banners/mobile/oakley.png",
+  },
+  {
+    name: "prada",
+    alt: "Prada eyewear campaign",
+    desktop: "/images/brand-banners/prada.webp",
+    mobile: "/images/brand-banners/mobile/prada.png",
+  },
+  {
+    name: "ray-ban",
+    alt: "Ray-Ban eyewear campaign",
+    desktop: "/images/brand-banners/ray-ban.webp",
+    mobile: "/images/brand-banners/mobile/ray-ban.png",
+  },
+  {
+    name: "tom-ford",
+    alt: "Tom Ford eyewear campaign",
+    desktop: "/images/brand-banners/tom-ford.webp",
+    mobile: "/images/brand-banners/mobile/tom-ford.png",
+  },
+  {
+    name: "versace",
+    alt: "Versace eyewear campaign",
+    desktop: "/images/brand-banners/versace.webp",
+    mobile: "/images/brand-banners/mobile/versace.png",
+  },
 ] as const;
+
 
 function PrevArrow({ onClick }: CustomArrowProps) {
   return (
@@ -82,11 +133,11 @@ export default function ImageSlider() {
     <section className="brand-band" aria-label="Featured eyewear promotions">
       <div className="desktop-image-slider">
         <Slider ref={desktopSlider} {...desktopSettings} className="image-slider">
-          {slides.map(([name, alt]) => (
-            <article key={name} className="image-slide">
+          {slides.map((slide) => (
+            <article key={slide.name} className="image-slide">
               <Image
-                src={`/images/brand-banners/${name}.webp`}
-                alt={alt}
+                src={slide.desktop}
+                alt={slide.alt}
                 fill
                 unoptimized
                 sizes="38vw"
@@ -94,14 +145,15 @@ export default function ImageSlider() {
             </article>
           ))}
         </Slider>
+
       </div>
       <div className="mobile-image-slider">
         <Slider ref={mobileSlider} {...mobileSettings} className="image-slider">
-          {slides.map(([name, alt, mobileImage]) => (
-            <article key={name} className="image-slide">
+          {slides.map((slide) => (
+            <article key={slide.name} className="image-slide">
               <Image
-                src={`/images/brand-banners/mobile/${mobileImage}`}
-                alt={alt}
+                src={slide.mobile}
+                alt={slide.alt}
                 fill
                 unoptimized
                 sizes="76vw"
@@ -109,6 +161,7 @@ export default function ImageSlider() {
             </article>
           ))}
         </Slider>
+
       </div>
       <button
         type="button"

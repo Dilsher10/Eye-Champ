@@ -280,25 +280,25 @@ input {
 /* Hero */
 
 .hero {
-    height: 25.694vw;
-    background: url('../public/images/hero.webp');
+    height: 26vw;
+    background: url('../public/images/hero.png');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-.hero>.sheet-photo {
+/* .hero>.sheet-photo {
     position: absolute;
     inset: 0 0 0 33%;
     background-size: 300% 200%;
     background-position: 0 0
-}
+} */
 
 .hero-copy {
     position: absolute;
     z-index: 1;
     left: 3.125vw;
-    top: 50%;
+    top: 30%;
 }
 
 .hero h1,
@@ -1108,8 +1108,8 @@ footer {
     }
 
     .slider-arrow {
-        width: 2.25rem;
-        height: 2.25rem;
+        width: 2rem;
+        height: 2rem;
         font-size: 1.5rem;
         bottom: 0.35rem;
     }
@@ -1497,6 +1497,12 @@ footer {
 }
 
 @media (max-width: 480px) {
+    .hero-mobile {
+        background: url('../public/images/hero-mobile.png');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
 
     .product-rail {
         grid-auto-columns: 76%;
@@ -1850,7 +1856,7 @@ footer {
     }
 
     .slider-pause {
-        bottom: 1rem;
+        bottom: 3vw;
     }
 
     .image-slider .slick-dots {
@@ -2121,7 +2127,7 @@ footer {
     cursor: pointer;
 }
 
-.best-sellers-tabs button{
+.best-sellers-tabs button {
     font-size: 1vw;
 }
 
@@ -2427,8 +2433,8 @@ footer {
     }
 
     .slider-pause {
-    width: 7.083vw;
-    height: 7.083vw;
+        width: 8.083vw;
+        height: 8.083vw;
     }
 
     .slider-pause svg {

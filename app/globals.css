@@ -1845,18 +1845,35 @@ footer {
 
     .slider-arrow {
         display: grid !important;
+        top: auto;
+        bottom: calc(-3.4rem + clamp(8px, 2.5vw, 12px));
+        width: clamp(34px, 9vw, 40px);
+        height: clamp(34px, 9vw, 40px);
     }
 
     .prev-arrow {
-        left: calc(50% - 4rem);
+        left: calc(50% - clamp(58px, 17vw, 68px));
     }
 
     .next-arrow {
-        right: calc(50% - 4rem);
+        right: calc(50% - clamp(58px, 17vw, 68px));
     }
 
     .slider-pause {
-        bottom: 3vw;
+        top: auto;
+        bottom: clamp(11px, 3.3vw, 16px);
+        width: clamp(28px, 7vw, 32px);
+        height: clamp(28px, 7vw, 32px);
+    }
+
+    .slider-arrow svg {
+        width: clamp(14px, 4vw, 18px);
+        height: clamp(14px, 4vw, 18px);
+    }
+
+    .slider-pause svg {
+        width: clamp(12px, 3.2vw, 14px);
+        height: clamp(12px, 3.2vw, 14px);
     }
 
     .image-slider .slick-dots {
@@ -2421,7 +2438,7 @@ footer {
     }
 
     .seller-visual {
-        height: 330px;
+        height: 300px;
     }
 }
 
@@ -2497,15 +2514,15 @@ footer {
     }
 
     .seller-colors {
-        gap: 1.833vw;
+        gap: 2.833vw;
         min-height: 2.222vw;
         margin-top: 3.694vw;
     }
 
     .color-dot,
     .color-more {
-        width: 5.736vw;
-        height: 5.736vw;
+        width: 7.736vw;
+        height: 7.736vw;
     }
 
     .seller-line {
@@ -2549,7 +2566,7 @@ footer {
     }
 
     .seller-card {
-        min-height: 485px;
+        min-height: 440px;
     }
 
     .best-sellers-slider-wrap {

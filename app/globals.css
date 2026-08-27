@@ -59,7 +59,7 @@ input {
 }
 
 .shell {
-    width: min(92vw, calc(100% - 3.333vw));
+    width: min(90vw, calc(100% - 3.333vw));
     margin-inline: auto
 }
 

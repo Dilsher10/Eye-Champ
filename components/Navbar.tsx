@@ -27,9 +27,7 @@ export default function Navbar() {
                     <a className="mega-link" href="/shop-all">Eyeglasses</a>
                     <section className="mega-menu" aria-label="Eyeglasses menu">
                         <div className="mega-inner">
-                            <div className="mega-column"><b>Eyeglasses</b>{["All Eyeglasses", "Women", "Men", "Kids", "Best Sellers", "New Arrivals", "Accessories"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
-                            <div className="mega-column"><b>Shop By</b>{["Fashion", "Classic", "Premium", "Under $30", "Progressives", "Zenni Featherlite™", "EcoBloomz™ ECO Friendly", "Active Style", "Protective & Safety", "Headset Compatible"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
-                            <div className="mega-column"><b>Featured</b>{["Lunar New Year", "Zenniverse", "On Sale", "Face Shape", "Virtual Try On"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
+                            <div className="mega-column"><b>Eyeglasses</b>{["All eyeglasses", "Men eyeglasses", "Women eyeglasses", "Kids eyeglasses", "New arrivals", "Under 5000", "Premium eyeglasses", "Transition eyeglasses"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
                             <a className="mega-card" href="/shop-all"><img src="/images/Square.webp" alt="Zenni Featherlite eyeglasses" /><span>Zenni Featherlite™</span></a>
                             <a className="mega-card" href="/shop-all"><img src="/images/women.webp" alt="Kids glasses" /><span>Kids Glasses</span></a>
                         </div>
@@ -39,9 +37,7 @@ export default function Navbar() {
                     <a className="mega-link" href="/shop-all">Sunglasses</a>
                     <section className="mega-menu" aria-label="Sunglasses menu">
                         <div className="mega-inner">
-                            <div className="mega-column"><b>Sunglasses</b>{["All Sunglasses", "Women", "Men", "Kids", "Prescription Sunglasses", "Non-Prescription Sunglasses", "Best Sellers", "New Arrivals", "Accessories"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
-                            <div className="mega-column"><b>Shop By</b>{["Fashion", "Classic", "Premium", "Under $30", "Polarized", "Sports", "Active Style", "Clip-Ons"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
-                            <div className="mega-column"><b>Featured</b>{["Jelly Tints", "Designer Inspired", "Aviators", "On Sale", "Virtual Try On"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
+                            <div className="mega-column"><b>Sunglasses</b>{["All sunglasses", "Men sunglasses", "Women sunglasses", "Kids sunglasses", "New arrivals", "Under 5000", "Premium sunglasses", "Polarized sunglasses", "Powered sunglasses"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
                             <a className="mega-card" href="/shop-all"><img src="/images/trend-banners/3.webp" alt="Woman wearing dark sunglasses" /><span>Sunglasses Guide</span></a>
                             <a className="mega-card" href="/shop-all"><img src="/images/trend-banners/4.webp" alt="Woman wearing fashion sunglasses" /><span>Fashion Sunglasses</span></a>
                         </div>
@@ -51,9 +47,9 @@ export default function Navbar() {
                     <a className="mega-link" href="#lenses">Lenses</a>
                     <section className="mega-menu" aria-label="Lenses menu">
                         <div className="mega-inner">
-                            <div className="mega-column"><b>Prescription</b>{["Progressives", "Bifocals", "Readers"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
-                            <div className="mega-column"><b>Innovation</b>{["EyeQLenz™ + Zenni ID Guard™", "Blokz™ Blue Light Filtering", "Privacy Zenni ID Guard™"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
-                            <div className="mega-column"><b>Specialty</b>{["Transitions®", "Night Driving", "VR Meta Quest 3 Headsets", "FL-41 for Light Sensitivity", "Polycarbonate Impact Resistant", "Trivex Impact Resistant"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
+                            <div className="mega-column"><b>Transparent lenses</b>{["Brand", "Brand"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
+                            <div className="mega-column"><b>Coloured lenses</b>{["Brand", "Brand"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
+                            <div className="mega-column"><b>Daily disposable lenses</b></div>
                             <a className="mega-card" href="/shop-all"><img src="/images/trend-banners/2.webp" alt="Blokz blue light filtering lenses" /><span>Blokz™</span></a>
                             <a className="mega-card" href="/shop-all"><img src="/images/brand-banners/tom-ford.webp" alt="Transitions XTRActive lenses" /><span>Transitions® XTRActive</span></a>
                         </div>

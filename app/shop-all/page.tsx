@@ -10,17 +10,17 @@ const products = [
   ["$29.95", "4.5", "417", "Square", "1.avif", "black"], ["$14.95", "4.4", "1K+", "Klutch Player", "3.avif", "clear"], ["$17.95", "4.5", "4K+", "Bravo Browline", "2.avif", "brown"], ["$27.95", "4.7", "225", "Rectangle", "4.avif", "blue"],
   ["$19.95", "4.0", "502", "Square", "1.avif", "tortoise"], ["$9.95", "3.9", "2K+", "Aviator", "3.avif", "black"], ["$27.95", "4.3", "359", "Geometric", "4.avif", "clear"], ["$21.95", "4.5", "1K+", "Square", "2.avif", "blue"],
 ] as const;
+
 const groups = [
-  ["Gender & Age", ["Women", "Men"]],
-  ["Shape", ["Square", "Cat-Eye", "Round", "Rectangle", "Aviator", "Browline", "Geometric", "Oval", "Heart", "Wrap-Around", "Full Rim", "Half Rim", "Rimless"]],
-  ["Frame Sizes - Adult", ["Extra Small", "Small", "Medium", "Large", "Extra Large", "Custom"]],
-  ["Color", ["Black", "Pink", "Clear", "Blue", "Tortoiseshell", "Purple", "Green", "Red", "Rainbow", "Gold", "Brown", "White", "Pattern", "Cream", "Multicolor", "Orange", "Gray", "Yellow", "Silver", "Rose Gold"]],
-  ["Pupillary Distance", ["One number", "Two numbers"]],
-  ["Prescription", ["Single Vision", "Bifocals", "Progressives", "High Prescription", "Readers"]],
+  ["Gender", ["Women", "Men"]],
   ["Price", ["$6.95", "Under $10", "Under $20", "Under $30", "Above $30"]],
+  ["Material", ["Plastic", "Metal", "Mix material", "Acetate"]],
+  ["Shape", ["Square", "Cat-Eye", "Round", "Rectangle", "Aviator", "Browline", "Geometric", "Oval", "Heart", "Wrap-Around", "Full Rim", "Half Rim", "Rimless"]],
+  ["Rim", ["Full rim", "Half rim", "Rimless"]],
+  ["Brand", ["Ray-Ban", "Prada", "Tom Ford"]],
+  ["Color", ["Black", "Pink", "Clear", "Blue", "Tortoiseshell", "Purple", "Green", "Red", "Rainbow", "Gold", "Brown", "White", "Pattern", "Cream", "Multicolor", "Orange", "Gray", "Yellow", "Silver", "Rose Gold"]],
 ] as const;
-const materials = [["Metal", ["Titanium", "Flex Titanium", "Stainless Steel", "Other Metal", "All Metal"]], ["Plastic", ["Acetate", "Carbon Fiber", "Other Plastic", "All Plastic"]], ["Eco-Friendly", ["Bio-Based", "Recycled PET", "Recycled Metal + Bio-Base", "All Eco-Friendly"]], ["Mixed", ["Mixed Materials"]]] as const;
-const trailing = [["Comfort Features", ["Lightweight", "Spring Hinges", "Flexible", "Universal Bridge Fit", "Anti-slip", "Ventilation", "Adjustable Nosepads", "Adjustable Temples", "Custom Engraving", "Clip-ons"]], ["Sport or Activity", ["Running", "Cycling", "Gaming"]], ["Collaborations", ["Chase Stokes", "Sam Cassell", "The Kittles", "49ers"]]] as const;
+
 const faqs = ["What is the Best Seller Glasses collection?", "What styles and frame types can I find in the Best Seller collection?", "Can best-selling frames be customized with specialty lenses?", "How often is the Best Seller Glasses collection updated?", "Are the best-selling frames chosen based on customer ratings and reviews?"];
 
 function Card({ p, i }: { p: typeof products[number]; i: number }) {
@@ -97,15 +97,6 @@ export default function ShopAll() {
         </details>
 
         {groups.map(([title, items]) => <FilterGroup key={title} title={title} items={items} shape={shape} toggle={toggle} />)}
-
-        <details className="material-filter" open>
-          <summary>Material<ChevronDown /></summary>
-          <div className="material-groups">
-            {materials.map(([title, items]) => <FilterGroup key={title} title={title} items={items} shape={shape} toggle={toggle} />)}
-          </div>
-        </details>
-
-        {trailing.map(([title, items]) => <FilterGroup key={title} title={title} items={items} shape={shape} toggle={toggle} />)}
       </aside>}
 
       <section className={`plp-grid ${density}`}>

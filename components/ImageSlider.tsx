@@ -60,7 +60,7 @@ const slides = [
   {
     name: "tom-ford",
     alt: "Tom Ford eyewear campaign",
-    desktop: "/images/brand-banners/tom-ford.webp",
+    desktop: "/images/brand-banners/tom-ford.png",
     mobile: "/images/brand-banners/mobile/tom-ford.png",
   },
   {

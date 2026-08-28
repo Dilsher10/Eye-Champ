@@ -6,6 +6,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperInstance } from "swiper";
 import "swiper/css";
 import "../product.css";
+import SelectLensesButton from "../../components/SelectLensesButton";
+import BuyNowButton from "../../components/BuyNowButton";
 
 const views = ["front", "side", "angle", "sun", "folded"];
 const productAssets: Record<string, { src: string; width: number; height: number }> = {
@@ -59,8 +61,8 @@ export default function ProductPage() {
                         <div className="size-line"><b>Size:</b> large (52 □ 19 - 143)</div>
                         {/* <b className="size-pill">Large</b> */}
                         <p><b>Color:</b> Tortoiseshell</p><div className="swatches">{["tortoise", "black", "blue"].map((c, i) => <button key={c} onClick={() => setColor(i)} className={`${c} ${color === i ? "selected" : ""}`} aria-label={c} />)}</div></div>
-                    <button className="select-lenses">Buy Now</button>
-                    <button className="select-lenses" onClick={() => alert("Lens selection opened")}>Select Lenses</button>
+                    <BuyNowButton />
+                    <SelectLensesButton />
                     <div className="pay-card">Pay over time with PayPal, Affirm or Afterpay. &nbsp;<u>Learn More</u><br />Use your insurance or FSA/HSA benefits. &nbsp;<u>Learn more</u></div>
                     <div className="includes"><h3>ZENNI WOW PRICE INCLUDES:</h3><p>✓ High-quality frame<br />✓ Basic prescription lenses*<br />✓ Anti-scratch coating<br />✓ UV protection</p><i>*multifocal or readers lenses start at additional cost</i></div>
                     <div className="bought">

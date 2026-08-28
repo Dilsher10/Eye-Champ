@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Topbar from "@/components/Topbar";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import SiteChrome from "@/components/SiteChrome";
 
 export const metadata: Metadata = {
   title: "Eye Champ | Eyewear for Everyone",
@@ -13,10 +11,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className="h-full antialiased">
       <body className="min-h-full flex flex-col">
-        <Topbar />
-        <Navbar />
-        {children}
-        <Footer/>
+        <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
   );

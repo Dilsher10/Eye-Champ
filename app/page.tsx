@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import type { CSSProperties } from "react";
 
 const shapes = ["Square", "Rectangle", "Round", "Cat-eye", "Browline", "Aviator"];
-const shapeImages = ["/images/Square.webp", "/images/Rectangle.webp", "/images/Round.webp", "/images/Round.webp", "/images/Browline.webp", "/images/Aviator.webp"];
+const shapeImages = ["/images/Square.webp", "/images/Rectangle.webp", "/images/Round.webp", "/images/cateye.png", "/images/Browline.webp", "/images/Aviator.webp"];
 const trendBanners = ["/images/trend-banners/1.webp", "/images/trend-banners/2.webp", "/images/trend-banners/3.webp", "/images/trend-banners/4.webp"];
 const mobileTrendBanners = ["/images/trend-banners/mobile/1.webp", "/images/trend-banners/mobile/2.webp", "/images/trend-banners/mobile/3.webp"];
 

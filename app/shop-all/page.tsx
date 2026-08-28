@@ -91,10 +91,6 @@ export default function ShopAll() {
             <span>Hide Filters</span>
           </button>
         </div>
-        <details className="filter-by" open>
-          <summary>Filter by<ChevronDown /></summary>
-          <label className="rush"><input type="checkbox" /><span>Rush delivery</span></label>
-        </details>
 
         {groups.map(([title, items]) => <FilterGroup key={title} title={title} items={items} shape={shape} toggle={toggle} />)}
       </aside>}

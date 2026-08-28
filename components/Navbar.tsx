@@ -28,8 +28,6 @@ export default function Navbar() {
                     <section className="mega-menu" aria-label="Eyeglasses menu">
                         <div className="mega-inner">
                             <div className="mega-column"><b>Eyeglasses</b>{["All eyeglasses", "Men eyeglasses", "Women eyeglasses", "Kids eyeglasses", "New arrivals", "Under 5000", "Premium eyeglasses", "Transition eyeglasses"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
-                            <a className="mega-card" href="/shop-all"><img src="/images/Square.webp" alt="Zenni Featherlite eyeglasses" /><span>Zenni Featherlite™</span></a>
-                            <a className="mega-card" href="/shop-all"><img src="/images/women.webp" alt="Kids glasses" /><span>Kids Glasses</span></a>
                         </div>
                     </section>
                 </div>
@@ -38,8 +36,6 @@ export default function Navbar() {
                     <section className="mega-menu" aria-label="Sunglasses menu">
                         <div className="mega-inner">
                             <div className="mega-column"><b>Sunglasses</b>{["All sunglasses", "Men sunglasses", "Women sunglasses", "Kids sunglasses", "New arrivals", "Under 5000", "Premium sunglasses", "Polarized sunglasses", "Powered sunglasses"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
-                            <a className="mega-card" href="/shop-all"><img src="/images/trend-banners/3.webp" alt="Woman wearing dark sunglasses" /><span>Sunglasses Guide</span></a>
-                            <a className="mega-card" href="/shop-all"><img src="/images/trend-banners/4.webp" alt="Woman wearing fashion sunglasses" /><span>Fashion Sunglasses</span></a>
                         </div>
                     </section>
                 </div>
@@ -50,8 +46,6 @@ export default function Navbar() {
                             <div className="mega-column"><b>Transparent lenses</b>{["Brand", "Brand"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
                             <div className="mega-column"><b>Coloured lenses</b>{["Brand", "Brand"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
                             <div className="mega-column"><b>Daily disposable lenses</b></div>
-                            <a className="mega-card" href="/shop-all"><img src="/images/trend-banners/2.webp" alt="Blokz blue light filtering lenses" /><span>Blokz™</span></a>
-                            <a className="mega-card" href="/shop-all"><img src="/images/brand-banners/tom-ford.webp" alt="Transitions XTRActive lenses" /><span>Transitions® XTRActive</span></a>
                         </div>
                     </section>
                 </div>
@@ -62,8 +56,6 @@ export default function Navbar() {
                             <div className="mega-column"><b>Glasses</b>{["All Sports Sunglasses", "All Sports Eyeglasses", "Men", "Women"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
                             <div className="mega-column"><b>Activity</b>{["Running", "Cycling", "Hiking & Mountaineering", "Golf", "Court Sports", "Active Style", "Protective Goggles"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
                             <div className="mega-column"><b>Lenses</b>{["Polarized", "Transitions®", "EyeQLenz™ + Zenni ID Guard™"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
-                            <a className="mega-card" href="/shop-all"><img src="/images/trend-banners/1.webp" alt="Performance sports sunglasses" /><span>Sunglasses Guide</span></a>
-                            <a className="mega-card" href="/shop-all"><img src="/images/men.webp" alt="Cyclist wearing sports glasses" /><span>Cycling</span></a>
                         </div>
                     </section>
                 </div>
@@ -74,8 +66,6 @@ export default function Navbar() {
                             <div className="mega-column"><b>Color</b>{["Tortoiseshell", "Sunset Hues", "Jelly Tints", "Baby Pink", "Citrus Burst", "Transformative Teal", "Coastal Cool", "Essential Neutrals", "Transparent & Clear", "Game Day"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
                             <div className="mega-column"><b>Styles</b>{["Country Concert", "Summer Camp", "'90s Inspired", "Retro", "Quiet Luxury", "Minimalist", "Bold", "Oversized", "As Seen On Tiktok"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
                             <div className="mega-column"><b>Collections</b>{["Zodiacs", "Lunar New Year", "Rimless", "Aviators"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
-                            <a className="mega-card" href="/shop-all"><img src="/images/Round.webp" alt="Oval glasses" /><span>Ovals</span></a>
-                            <a className="mega-card" href="/shop-all"><img src="/images/Trend-banner.webp" alt="Trending eyewear styles" /><span>The Trend Shop</span></a>
                         </div>
                     </section>
                 </div>

@@ -47,7 +47,7 @@ export default function ProductPage() {
                     </div>
                 </div>
                 <div className="product-info-panel">
-                    <h1>Tortoiseshell Square Glasses #4460125</h1>
+                    <h1>Tortoiseshell Square Glasses</h1>
                     <div className="title-row">
                         <div>
                             <small>Starting at</small>
@@ -55,13 +55,18 @@ export default function ProductPage() {
                         </div>
                         <a className="score" href="#reviews"><Star fill="currentColor" /> <b>4.7</b> <u>221 reviews</u></a>
                     </div>
-                    <div className="options-card"><div className="size-line"><b>Size:</b> 52 □ 19 - 143</div><b className="size-pill">Large</b><p><b>Frame Color:</b> Tortoiseshell</p><div className="swatches">{["tortoise", "black", "blue"].map((c, i) => <button key={c} onClick={() => setColor(i)} className={`${c} ${color === i ? "selected" : ""}`} aria-label={c} />)}</div></div>
-                    <button className="select-lenses" onClick={() => alert("Lens selection opened")}>Select Lenses</button><div className="pay-card">Pay over time with PayPal, Affirm or Afterpay. &nbsp;<u>Learn More</u><br />Use your insurance or FSA/HSA benefits. &nbsp;<u>Learn more</u></div>
+                    <div className="options-card">
+                        <div className="size-line"><b>Size:</b> large (52 □ 19 - 143)</div>
+                        {/* <b className="size-pill">Large</b> */}
+                        <p><b>Color:</b> Tortoiseshell</p><div className="swatches">{["tortoise", "black", "blue"].map((c, i) => <button key={c} onClick={() => setColor(i)} className={`${c} ${color === i ? "selected" : ""}`} aria-label={c} />)}</div></div>
+                    <button className="select-lenses">Buy Now</button>
+                    <button className="select-lenses" onClick={() => alert("Lens selection opened")}>Select Lenses</button>
+                    <div className="pay-card">Pay over time with PayPal, Affirm or Afterpay. &nbsp;<u>Learn More</u><br />Use your insurance or FSA/HSA benefits. &nbsp;<u>Learn more</u></div>
                     <div className="includes"><h3>ZENNI WOW PRICE INCLUDES:</h3><p>✓ High-quality frame<br />✓ Basic prescription lenses*<br />✓ Anti-scratch coating<br />✓ UV protection</p><i>*multifocal or readers lenses start at additional cost</i></div>
                     <div className="bought">
                         <h2>Customers also bought</h2>
                         <div><ProductImage view="case" />
-                        <section><b>Deluxe Eyewear Case</b><p>Protect your eyewear wherever life takes you with this reliable case. <u>read more</u></p><button>Add to cart $3.95</button></section></div></div>
+                            <section><b>Deluxe Eyewear Case</b><p>Protect your eyewear wherever life takes you with this reliable case. <u>read more</u></p><button>Add to cart $3.95</button></section></div></div>
                 </div>
             </section>
 
@@ -72,7 +77,7 @@ export default function ProductPage() {
                 {tab === "Fit & Size" && <div className="fit-content wrap">
                     <div className="fit-column"><h3>Prescription requirements <span title="Prescription help">?</span></h3><dl><dt>Rx Range</dt><dd>-20.00 ~ +12.00</dd><dt>PD Range</dt><dd>59 - 79 mm<sup>*</sup></dd><dt><u>Progressive</u></dt><dd>Yes</dd><dt><u>Bifocal</u></dt><dd>Yes</dd><dt><u>Readers</u></dt><dd>Yes</dd></dl><i>*Additional cost for PDs outside this range</i></div>
                     <div className="fit-column"><h3>Frame Size</h3><dl><dt>Size</dt><dd><u>Large</u></dd><dt>Frame Width</dt><dd>132 mm / 5.2 in</dd><dt>Bridge width</dt><dd>19 mm / 0.7 in</dd><dt>Lens Width</dt><dd>52 mm / 2 in</dd><dt>Lens Height</dt><dd>43 mm / 1.7 in</dd><dt>Temple Length</dt><dd>143 mm / 5.6 in</dd></dl><button>Find your size</button></div>
-                    <div className={`measurement ${sideView ? "show-side" : "show-front"}`}><h3>Frame measurements</h3><div className="measure-photo"><ProductImage key={sideView ? "side-measure" : "front-measure"} view={sideView ? "side" : "front"}/>{sideView ? <><span className="temple-label">143 mm / 5.6 in</span><i className="temple-line"/></> : <><span className="width-label">132 mm / 5.2 in</span><span className="height-label">↕<br/>43 mm / 1.7 in</span><span className="lens-label">↔ 52 mm / 2 in</span><span className="bridge-label">↔<br/>19 mm / 0.7 in</span></>}</div><div className="measure-footer"><span>52 □ 19 - 143</span><label className="side-toggle"><input type="checkbox" checked={sideView} onChange={e=>setSideView(e.target.checked)}/><span className="toggle-track"><i/></span> Side view</label></div></div>
+                    <div className={`measurement ${sideView ? "show-side" : "show-front"}`}><h3>Frame measurements</h3><div className="measure-photo"><ProductImage key={sideView ? "side-measure" : "front-measure"} view={sideView ? "side" : "front"} />{sideView ? <><span className="temple-label">143 mm / 5.6 in</span><i className="temple-line" /></> : <><span className="width-label">132 mm / 5.2 in</span><span className="height-label">↕<br />43 mm / 1.7 in</span><span className="lens-label">↔ 52 mm / 2 in</span><span className="bridge-label">↔<br />19 mm / 0.7 in</span></>}</div><div className="measure-footer"><span>52 □ 19 - 143</span><label className="side-toggle"><input type="checkbox" checked={sideView} onChange={e => setSideView(e.target.checked)} /><span className="toggle-track"><i /></span> Side view</label></div></div>
                 </div>}
                 {tab === "Features" && <div className="feature-content wrap">
                     <div className="frame-design"><h3>Frame design</h3><dl><dt>Shape</dt><dd><u>Square</u></dd><dt>Feature</dt><dd><u>Spring Hinges, Universal Bridge Fit</u></dd><dt>Rim</dt><dd><u>Full Rim</u></dd><dt>Material</dt><dd><u>Acetate</u></dd><dt>Weight</dt><dd>(23 grams / 0.8 ounces)</dd></dl></div>

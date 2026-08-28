@@ -206,9 +206,13 @@
 .options-card,
 .includes {
     margin-top: 26px;
-    padding: 18px 16px;
+    padding: 18px 0;
     border-radius: 16px;
     background: #f7f9fa
+}
+
+.size-line {
+    padding-bottom: 10px;
 }
 
 .size-line a {
@@ -227,7 +231,7 @@
 }
 
 .options-card p {
-    margin: 0 0 10px
+    margin: 0 0 20px
 }
 
 .swatches {

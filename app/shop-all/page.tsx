@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ChevronDown, ChevronRight, Heart, SlidersHorizontal, Star, Video } from "lucide-react";
+import { ChevronDown, Heart, SlidersHorizontal, Star } from "lucide-react";
 import "./shop-all.css";
 
 const products = [
@@ -69,7 +69,7 @@ export default function ShopAll() {
     </section>
 
     <div className="plp-chips">
-      {["Frames", "Prescription Sunglasses", "Zenni Featherlite™", "Minimalist", "The Trend Shop"].map((x, i) => <button key={x} className={i === 0 ? "active" : ""}>{x}</button>)}
+      {["Frames"].map((x, i) => <button key={x} className={i === 0 ? "active" : ""}>{x}</button>)}
     </div>
 
     <section className="plp-tools">

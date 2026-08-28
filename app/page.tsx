@@ -9,7 +9,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import type { CSSProperties } from "react";
 
-const shapes = ["Square", "Rectangle", "Round", "Cat-eye", "Browline", "Aviator"];
+const shapes = ["Square", "Rectangle", "Round", "Cat eye", "Browline", "Aviator"];
 const shapeImages = ["/images/Square.webp", "/images/Rectangle.webp", "/images/Round.webp", "/images/cateye.png", "/images/Browline.webp", "/images/Aviator.webp"];
 const trendBanners = ["/images/trend-banners/1.webp", "/images/trend-banners/2.webp", "/images/trend-banners/3.webp", "/images/trend-banners/4.webp"];
 const mobileTrendBanners = ["/images/trend-banners/mobile/1.webp", "/images/trend-banners/mobile/2.webp", "/images/trend-banners/mobile/3.webp"];
@@ -89,6 +89,5 @@ export default function Home() {
 
     <div className="page shell"><section className="trend card"><div key={`${trendBanners[trendIndex]}-${mobileTrendBanners[mobileTrendIndex]}`} className="trend-bg" style={{ "--trend-desktop-image": `url(${trendBanners[trendIndex]})`, "--trend-mobile-image": `url(${mobileTrendBanners[mobileTrendIndex]})` } as CSSProperties} /><div><h2>THE TREND SHOP</h2><p>Curated styles, fresh colors, and must-see edits.</p><a className="btn" href="/product">SHOP NOW</a></div></section></div>
     <UnderSlider />
-    <div className="page shell"><section className="payments"><div className="section-title"><h2>Payment Options Available</h2><p>Shop now and pay over time with our flexible payment options</p></div><div className="payment-logos"><b>VISA</b><b>AMEX</b><b>●●</b><b>Payoneer</b><b>▣ Pay</b><b>G Pay</b><b>PayPal</b></div></section></div>
   </main>;
 }

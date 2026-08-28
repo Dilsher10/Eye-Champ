@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebookF, faInstagram, faPinterestP, faSpotify, faThreads, faTiktok, faXTwitter, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faFacebookF, faInstagram, faPinterestP, faSpotify, faSquareFontAwesomeStroke, faThreads, faTiktok, faTwitter, faXTwitter, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { LockKeyhole, Truck } from "lucide-react";
 import styles from "./Footer.module.css";
 
@@ -13,6 +13,17 @@ const cards = [["VISA", styles.visa], ["●●", styles.mastercard], ["Diners", 
 
 export default function Footer() {
   return <footer id="help" className={styles.footer}>
+    <section className={styles.socialBanner} aria-label="Social media links">
+      <FontAwesomeIcon className={styles.socialMark} icon={faSquareFontAwesomeStroke} aria-hidden="true" />
+      <strong>Socialize with us</strong>
+      <nav>
+        <a href="#top" aria-label="Facebook"><FontAwesomeIcon icon={faFacebookF} /></a>
+        <a href="#top" aria-label="Pinterest"><FontAwesomeIcon icon={faPinterestP} /></a>
+        <a href="#top" aria-label="Twitter"><FontAwesomeIcon icon={faTwitter} /></a>
+        <a href="#top" aria-label="Instagram"><FontAwesomeIcon icon={faInstagram} /></a>
+        <a href="#top" aria-label="YouTube"><FontAwesomeIcon icon={faYoutube} /></a>
+      </nav>
+    </section>
     <section className={styles.assurances} aria-label="Shopping assurances">
       <div><LockKeyhole aria-hidden="true" /><strong>SECURE CHECKOUT</strong></div><div><Truck aria-hidden="true" /><strong>RESPONSIBLE SHIPPING</strong></div>
     </section>

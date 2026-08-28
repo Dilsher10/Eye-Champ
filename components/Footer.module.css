@@ -1,4 +1,10 @@
 .footer { color: #111; background: #f7f7f7; font-size: 12px; }
+.socialBanner { min-height: 96px; display: flex; align-items: center; justify-content: center; gap: 14px; background: #fff; color: #087984; }
+.socialBanner > strong { color: #3f3f3f; font-size: 24px; line-height: 1; }
+.socialBanner .socialMark { width: 27px; height: 27px; }
+.socialBanner nav { display: flex; align-items: center; gap: 22px; margin-left: 2px; }
+.socialBanner a { width: 25px; height: 25px; display: grid; place-items: center; color: #087984; }
+.socialBanner a svg { width: 100%; height: 100%; }
 .assurances { height: 176px; display: grid; grid-template-columns: 1fr 1fr; align-items: center; background: #fafafa; }
 .assurances div { display: grid; justify-items: center; gap: 18px; font-size: 13px; }
 .assurances svg { width: 25px; height: 25px; stroke-width: 1.2; }
@@ -31,6 +37,7 @@
 .disclaimer a { color: white; text-decoration: underline; }
 @media (max-width: 900px) { .assurances { height: 130px; } .linkGrid { grid-template-columns: repeat(3, 1fr); } .legalTop { align-items: flex-start; gap: 22px; } }
 @media (max-width: 600px) {
+  .socialBanner { min-height: 82px; gap: 9px; padding: 0 14px; } .socialBanner > strong { font-size: 17px; } .socialBanner .socialMark { width: 21px; height: 21px; } .socialBanner nav { gap: 13px; } .socialBanner a { width: 19px; height: 19px; }
   .assurances { height: 105px; } .assurances div { gap: 10px; font-size: 10px; } .assurances svg { width: 21px; height: 21px; }
   .security { padding: 15px 16px; display: grid; justify-content: center; gap: 12px; text-align: center; }
   .paymentMarks { justify-content: center; gap: 5px; } .paymentMarks span { width: 36px; height: 21px; }

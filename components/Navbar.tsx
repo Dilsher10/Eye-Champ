@@ -39,7 +39,7 @@ export default function Navbar() {
                     <a className="mega-link" href="/shop-all">Eyeglasses</a>
                     <section className="mega-menu" aria-label="Eyeglasses menu">
                         <div className="mega-inner">
-                            <div className="mega-column"><b>Eyeglasses</b>{["All eyeglasses", "Men eyeglasses", "Women eyeglasses", "Kids eyeglasses", "New arrivals", "Under 5000", "Premium eyeglasses", "Transition eyeglasses"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
+                            <div className="mega-column"><b>Eyeglasses</b>{["All eyeglasses", "Men eyeglasses", "Women eyeglasses", "Kids eyeglasses", "New arrivals", "Under 5000", "Premium eyeglasses", "Transition eyeglasses"].map(x => <Link href="/shop-all" key={x}>{x}</Link>)}</div>
                             <MegaMenuSlider />
                         </div>
                     </section>
@@ -48,7 +48,7 @@ export default function Navbar() {
                     <a className="mega-link" href="/shop-all">Sunglasses</a>
                     <section className="mega-menu" aria-label="Sunglasses menu">
                         <div className="mega-inner">
-                            <div className="mega-column"><b>Sunglasses</b>{["All sunglasses", "Men sunglasses", "Women sunglasses", "Kids sunglasses", "New arrivals", "Under 5000", "Premium sunglasses", "Polarized sunglasses", "Powered sunglasses"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
+                            <div className="mega-column"><b>Sunglasses</b>{["All sunglasses", "Men sunglasses", "Women sunglasses", "Kids sunglasses", "New arrivals", "Under 5000", "Premium sunglasses", "Polarized sunglasses", "Powered sunglasses"].map(x => <Link href="/shop-all" key={x}>{x}</Link>)}</div>
                             <MegaMenuSlider />
                         </div>
                     </section>
@@ -58,8 +58,8 @@ export default function Navbar() {
                     <section className="mega-menu" aria-label="Lenses menu">
                         <div className="mega-inner">
                             <div className="mega-column">
-                                <b>Transparent lenses</b>{["Brand", "Brand"].map(x => <a href="/shop-all" key={x}>{x}</a>)}
-                                <b>Coloured lenses</b>{["Brand", "Brand"].map(x => <a href="/shop-all" key={x}>{x}</a>)}
+                                <b>Transparent lenses</b>{["Brand", "Brand"].map(x => <Link href="/shop-all" key={x}>{x}</Link>)}
+                                <b>Coloured lenses</b>{["Brand", "Brand"].map(x => <Link href="/shop-all" key={x}>{x}</Link>)}
                                 <b>Daily disposable lenses</b>
                             </div>
                             <MegaMenuSlider />
@@ -82,7 +82,7 @@ export default function Navbar() {
                         </div>
                     </section>
                 </div>
-                <a className="sale-link" href="#sale">🛍 Sale</a>
+                <Link className="sale-link" href="#sale">🛍 Sale</Link>
             </nav>
         </>
     );

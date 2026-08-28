@@ -53,9 +53,7 @@ export default function Navbar() {
                     <a className="mega-link" href="#sports">Sports</a>
                     <section className="mega-menu" aria-label="Sports menu">
                         <div className="mega-inner">
-                            <div className="mega-column"><b>Glasses</b>{["All Sports Sunglasses", "All Sports Eyeglasses", "Men", "Women"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
-                            <div className="mega-column"><b>Activity</b>{["Running", "Cycling", "Hiking & Mountaineering", "Golf", "Court Sports", "Active Style", "Protective Goggles"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
-                            <div className="mega-column"><b>Lenses</b>{["Polarized", "Transitions®", "EyeQLenz™ + Zenni ID Guard™"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
+                            
                         </div>
                     </section>
                 </div>
@@ -63,9 +61,7 @@ export default function Navbar() {
                     <a className="mega-link mega-trending" href="#trending-now">✨ Trending Now</a>
                     <section className="mega-menu" aria-label="Trending Now menu">
                         <div className="mega-inner">
-                            <div className="mega-column"><b>Color</b>{["Tortoiseshell", "Sunset Hues", "Jelly Tints", "Baby Pink", "Citrus Burst", "Transformative Teal", "Coastal Cool", "Essential Neutrals", "Transparent & Clear", "Game Day"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
-                            <div className="mega-column"><b>Styles</b>{["Country Concert", "Summer Camp", "'90s Inspired", "Retro", "Quiet Luxury", "Minimalist", "Bold", "Oversized", "As Seen On Tiktok"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
-                            <div className="mega-column"><b>Collections</b>{["Zodiacs", "Lunar New Year", "Rimless", "Aviators"].map(x => <a href="/shop-all" key={x}>{x}</a>)}</div>
+                            
                         </div>
                     </section>
                 </div>

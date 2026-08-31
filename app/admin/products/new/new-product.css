@@ -546,12 +546,22 @@ body:has(.np-admin) {
     font-size: 10px
 }
 
-.np-cardtitle>small {
+.np-card-action {
     color: #7b8b90;
     font-size: 9px
 }
 
-.np-variants .np-cardtitle>small {
+.np-card-action>button {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: #0d6666;
+    font-size: 9px;
+    font-weight: 800;
+    cursor: pointer
+}
+
+.np-variants .np-card-action {
     color: #0d6666;
     font-weight: 800
 }
@@ -657,6 +667,140 @@ body:has(.np-admin) {
     border-radius: 8px;
     background: #fafcfc;
     cursor: pointer
+}
+
+.np-media-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 12px
+}
+
+.np-media-grid>div {
+    position: relative;
+    min-height: 105px;
+    overflow: hidden;
+    border: 1px solid #dfe6e7;
+    border-radius: 8px;
+    background: #f7f9f9
+}
+
+.np-media-grid img {
+    width: 100%;
+    height: 105px;
+    object-fit: contain
+}
+
+.np-media-grid span {
+    position: absolute;
+    left: 6px;
+    bottom: 6px;
+    padding: 3px 6px;
+    border-radius: 4px;
+    background: #143238d9;
+    color: #fff;
+    font-size: 8px;
+    font-weight: 700
+}
+
+.np-media-grid button {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 24px;
+    height: 24px;
+    display: grid;
+    place-items: center;
+    border: 1px solid #dce3e4;
+    border-radius: 50%;
+    background: #fff;
+    color: #a33
+}
+
+.np-compatibility {
+    margin-top: 18px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 8px;
+    background: #f7f9f9
+}
+
+.np-compatibility>strong {
+    color: #344a52;
+    font-size: 10px
+}
+
+.np-compatibility>small {
+    color: #8a989c;
+    font-size: 9px
+}
+
+.np-compatibility-input {
+    display: flex;
+    gap: 8px
+}
+
+.np-compatibility-input input {
+    min-width: 0;
+    height: 38px;
+    padding: 0 11px;
+    flex: 1;
+    border: 1px solid #d8e0e2;
+    border-radius: 7px;
+    outline: 0;
+    background: #fff;
+    color: #3d5057;
+    font-size: 11px
+}
+
+.np-compatibility-input input:focus {
+    border-color: #0d6666;
+    box-shadow: 0 0 0 2px #0d66661a
+}
+
+.np-compatibility-input button {
+    padding: 0 16px;
+    border: 1px solid #0d6666;
+    border-radius: 7px;
+    background: #0d6666;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700
+}
+
+.np-compatibility-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px
+}
+
+.np-compatibility-tags>span {
+    padding: 6px 7px 6px 9px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid #dce4e4;
+    border-radius: 6px;
+    background: #fff;
+    color: #344a52;
+    font-size: 9px
+}
+
+.np-compatibility-tags button {
+    padding: 0;
+    display: grid;
+    place-items: center;
+    border: 0;
+    background: none;
+    color: #78898e
+}
+
+.np-preview>div:first-child a {
+    color: #0d6666;
+    font-size: 10px;
+    font-weight: 800
 }
 
 .np-dropzone input {
@@ -863,6 +1007,12 @@ body:has(.np-admin) {
     align-items: center
 }
 
+.np-option+.np-option {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid #edf0f1
+}
+
 .np-option .np-field {
     margin: 0
 }
@@ -916,10 +1066,43 @@ body:has(.np-admin) {
 
 .np-tags input {
     min-width: 60px;
+    flex: 1;
     height: 25px;
     padding: 0;
     border: 0;
     outline: 0
+}
+
+.np-tags .np-add-value {
+    padding: 4px 8px;
+    border-radius: 5px;
+    background: #e8f2f1;
+    color: #0d6666;
+    font-size: 9px;
+    font-weight: 800
+}
+
+.np-variants-empty {
+    padding: 22px;
+    border: 1px dashed #d8e0e2;
+    border-radius: 8px;
+    text-align: center
+}
+
+.np-variants-empty p {
+    margin: 0 0 9px;
+    color: #7b8b90;
+    font-size: 10px
+}
+
+.np-variants-empty button {
+    padding: 7px 10px;
+    border: 1px solid #0d6666;
+    border-radius: 6px;
+    background: #fff;
+    color: #0d6666;
+    font-size: 9px;
+    font-weight: 800
 }
 
 .np-status select {
@@ -959,6 +1142,57 @@ body:has(.np-admin) {
 
 .np-sidecol .np-field {
     margin-bottom: 14px
+}
+
+.np-multicheck {
+    min-width: 0;
+    margin: 0 0 17px;
+    padding: 0;
+    border: 0
+}
+
+.np-multicheck legend {
+    margin-bottom: 8px;
+    color: #344a52;
+    font-size: 10px;
+    font-weight: 700
+}
+
+.np-multicheck>div {
+    max-height: 150px;
+    padding: 7px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3px;
+    overflow-y: auto;
+    border: 1px solid #d8e0e2;
+    border-radius: 7px;
+    background: #fff
+}
+
+.np-multicheck label {
+    min-width: 0;
+    padding: 6px;
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    border-radius: 5px;
+    color: #53666d;
+    font-size: 9px;
+    line-height: 1.25;
+    cursor: pointer
+}
+
+.np-multicheck label:hover {
+    background: #f2f7f6;
+    color: #183f40
+}
+
+.np-multicheck input {
+    width: 14px;
+    height: 14px;
+    flex: none;
+    accent-color: #0d6666
 }
 
 .np-sidecol .np-card>h2 {
@@ -1154,6 +1388,10 @@ body:has(.np-admin) {
 
     .np-card {
         padding: 16px
+    }
+
+    .np-media-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr))
     }
 
     .np-toast {

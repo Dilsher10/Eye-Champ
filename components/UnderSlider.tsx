@@ -10,12 +10,12 @@ import "swiper/css";
 import Link from "next/link";
 
 const products = [
-  { image: "/images/product/1.avif", price: "$31.95", rating: "4.7", reviews: "221", shape: "Square", colors: ["tortoise", "black"] },
-  { image: "/images/product/2.avif", price: "$17.95", rating: "4.5", reviews: "2K+", shape: "Square", delivery: true, colors: ["blue", "clear", "brown", "more"] },
-  { image: "/images/product/3.avif", price: "$31.95", rating: "4.6", reviews: "224", shape: "Square", delivery: true, colors: ["black", "tortoise", "gray"] },
-  { image: "/images/product/4.avif", price: "$17.95", rating: "4.7", reviews: "168", shape: "Rectangle", colors: ["black", "green"] },
-  { image: "/images/product/eyeglasses-front-view.avif", price: "$14.95", rating: "4.5", reviews: "4K+", shape: "Rectangle", delivery: true, colors: ["silver", "multi", "pink", "more"] },
-  { image: "/images/product/eyeglasses-front-view.avif", price: "$14.95", rating: "4.5", reviews: "4K+", shape: "Rectangle", delivery: true, colors: ["silver", "multi", "pink", "more"] },
+  { image: "/images/product/1.avif", price: "Rs 3999.00", rating: "4.7", reviews: "221", shape: "Square", colors: ["tortoise", "black"] },
+  { image: "/images/product/2.avif", price: "Rs 3999.00", rating: "4.5", reviews: "2K+", shape: "Square", delivery: true, colors: ["blue", "clear", "brown", "more"] },
+  { image: "/images/product/3.avif", price: "Rs 3999.00", rating: "4.6", reviews: "224", shape: "Square", delivery: true, colors: ["black", "tortoise", "gray"] },
+  { image: "/images/product/4.avif", price: "Rs 3999.00", rating: "4.7", reviews: "168", shape: "Rectangle", colors: ["black", "green"] },
+  { image: "/images/product/eyeglasses-front-view.avif", price: "Rs 3999.00", rating: "4.5", reviews: "4K+", shape: "Rectangle", delivery: true, colors: ["silver", "multi", "pink", "more"] },
+  { image: "/images/product/eyeglasses-front-view.avif", price: "Rs 3999.00", rating: "4.5", reviews: "4K+", shape: "Rectangle", delivery: true, colors: ["silver", "multi", "pink", "more"] },
 ];
 
 export default function UnderSlider() {

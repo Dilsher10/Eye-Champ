@@ -30,7 +30,7 @@ export default function ProductPage() {
     const productSlider = useRef<SwiperInstance | null>(null);
     const photoSlider = useRef<SwiperInstance | null>(null);
     const gallerySlider = useRef<SwiperInstance | null>(null);
-    const [view, setView] = useState("front"), [liked, setLiked] = useState(false), [tab, setTab] = useState("Fit & Size"), [color, setColor] = useState(0), [photosOnly, setPhotosOnly] = useState(false), [sideView, setSideView] = useState(false), [sortOpen, setSortOpen] = useState(false), [sortOrder, setSortOrder] = useState("Newest"), [reviewsOpen, setReviewsOpen] = useState(true);
+    const [view, setView] = useState("front"), [liked, setLiked] = useState(false), [tab, setTab] = useState("Features"), [color, setColor] = useState(0), [photosOnly, setPhotosOnly] = useState(false), [sideView, setSideView] = useState(false), [sortOpen, setSortOpen] = useState(false), [sortOrder, setSortOrder] = useState("Newest"), [reviewsOpen, setReviewsOpen] = useState(true);
     const slideProducts = (direction: number) => direction < 0 ? productSlider.current?.slidePrev() : productSlider.current?.slideNext();
     const sortedReviews = [...reviews].sort((a, b) => sortOrder === "Highest rating" ? b[0] - a[0] : sortOrder === "Lowest rating" ? a[0] - b[0] : sortOrder === "Most helpful" ? b[7] - a[7] : 0);
     return (
@@ -74,13 +74,8 @@ export default function ProductPage() {
 
             <section id="details" className="details">
                 <div className="tabs wrap">
-                    {["Fit & Size", "Features", "Description"].map(t => <button key={t} className={tab === t ? "active" : ""} onClick={() => setTab(t)}>{t}</button>)}
+                    {["Features", "Description"].map(t => <button key={t} className={tab === t ? "active" : ""} onClick={() => setTab(t)}>{t}</button>)}
                 </div>
-                {tab === "Fit & Size" && <div className="fit-content wrap">
-                    <div className="fit-column"><h3>Prescription requirements <span title="Prescription help">?</span></h3><dl><dt>Rx Range</dt><dd>-20.00 ~ +12.00</dd><dt>PD Range</dt><dd>59 - 79 mm<sup>*</sup></dd><dt><u>Progressive</u></dt><dd>Yes</dd><dt><u>Bifocal</u></dt><dd>Yes</dd><dt><u>Readers</u></dt><dd>Yes</dd></dl><i>*Additional cost for PDs outside this range</i></div>
-                    <div className="fit-column"><h3>Frame Size</h3><dl><dt>Size</dt><dd><u>Large</u></dd><dt>Frame Width</dt><dd>132 mm / 5.2 in</dd><dt>Bridge width</dt><dd>19 mm / 0.7 in</dd><dt>Lens Width</dt><dd>52 mm / 2 in</dd><dt>Lens Height</dt><dd>43 mm / 1.7 in</dd><dt>Temple Length</dt><dd>143 mm / 5.6 in</dd></dl><button>Find your size</button></div>
-                    <div className={`measurement ${sideView ? "show-side" : "show-front"}`}><h3>Frame measurements</h3><div className="measure-photo"><ProductImage key={sideView ? "side-measure" : "front-measure"} view={sideView ? "side" : "front"} />{sideView ? <><span className="temple-label">143 mm / 5.6 in</span><i className="temple-line" /></> : <><span className="width-label">132 mm / 5.2 in</span><span className="height-label">↕<br />43 mm / 1.7 in</span><span className="lens-label">↔ 52 mm / 2 in</span><span className="bridge-label">↔<br />19 mm / 0.7 in</span></>}</div><div className="measure-footer"><span>52 □ 19 - 143</span><label className="side-toggle"><input type="checkbox" checked={sideView} onChange={e => setSideView(e.target.checked)} /><span className="toggle-track"><i /></span> Side view</label></div></div>
-                </div>}
                 {tab === "Features" && <div className="feature-content wrap">
                     <div className="frame-design"><h3>Frame design</h3><dl><dt>Shape</dt><dd><u>Square</u></dd><dt>Feature</dt><dd><u>Spring Hinges, Universal Bridge Fit</u></dd><dt>Rim</dt><dd><u>Full Rim</u></dd><dt>Material</dt><dd><u>Acetate</u></dd><dt>Weight</dt><dd>(23 grams / 0.8 ounces)</dd></dl></div>
                     <div className="lens-list"><h3>Lens compatibility</h3>{["Sunglasses", "EyeQLenz™", "Transitions®", "Specialty lenses", "Blokz® blue-light blocking"].map(item => <p key={item}><span>✓</span><b>{item}</b></p>)}</div>

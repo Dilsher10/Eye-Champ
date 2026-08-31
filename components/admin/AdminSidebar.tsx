@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Boxes, ChevronDown, CircleDollarSign, Glasses, Grid2X2, HelpCircle, Layers3, MoreHorizontal, Settings, ShoppingBag, Tag, Truck, Users, X } from "lucide-react";
+import { BadgeCheck, Boxes, ChevronDown, CircleDollarSign, Glasses, Grid2X2, HelpCircle, Layers3, LibraryBig, MoreHorizontal, Settings, ShoppingBag, Tag, Truck, Users, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import "./AdminSidebar.css";
@@ -14,6 +14,8 @@ const workspaceItems = [
   { label: "Orders", icon: ShoppingBag, href: "/admin/orders", badge: "12" },
   { label: "Inventory", icon: Boxes, href: "/admin/inventory", badge: "4" },
   { label: "Categories", icon: Layers3, href: "/admin/categories" },
+  { label: "Collections", icon: LibraryBig, href: "/admin/collections" },
+  { label: "Brands", icon: BadgeCheck, href: "/admin/brands" },
   { label: "Customers", icon: Users, href: "#" },
   { label: "Discounts", icon: Tag, href: "#" },
 ];
@@ -45,7 +47,6 @@ export default function AdminSidebar({ open, onClose }: AdminSidebarProps) {
         <a href="#"><CircleDollarSign size={19}/><span>Finances</span></a>
         <a href="#"><Settings size={19}/><span>Settings</span></a>
       </nav>
-      <div className="admin-sidebar-help"><span><HelpCircle size={18}/></span><strong>Need some help?</strong><p>Visit the support center for guides and answers.</p><button>Get support</button></div>
       <div className="admin-sidebar-store"><span>EC</span><div><strong>Eye Champ</strong><small><i/> Store is live</small></div><MoreHorizontal size={18}/></div>
     </aside>
     {open && <button className="admin-sidebar-scrim" onClick={onClose} aria-label="Close navigation"/>}

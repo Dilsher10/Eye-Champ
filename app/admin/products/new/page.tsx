@@ -583,9 +583,16 @@ export default function NewProductPage() {
                   label="Brands"
                   name="brands"
                   values={[
-                    "Ray ban",
+                    "Ray-Ban",
+                    "Cartier",
+                    "Montblanc",
+                    "Tom Ford",
+                    "Moscot",
+                    "Oakley",
                     "Prada",
-                    "Tom ford"
+                    "Emporio Armani",
+                    "Versace",
+                    "Gucci"
                   ]}
                 />
                 <Field label="Tags">

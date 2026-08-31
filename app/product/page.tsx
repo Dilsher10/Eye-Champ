@@ -18,7 +18,7 @@ const productAssets: Record<string, { src: string; width: number; height: number
     folded: { src: "/images/product/3.avif", width: 84, height: 37 },
     case: { src: "/images/product/eyewear-case.avif", width: 84, height: 30 },
 };
-const products = [["$37.95", "4.7", "586", "front"], ["$31.95", "4.6", "224", "side"], ["$6.95", "4.5", "1961", "sun"], ["$29.95", "4.5", "417", "angle"], ["$17.95", "4.5", "221", "front"], ["$24.95", "4.8", "312", "angle"], ["$19.95", "4.6", "148", "side"], ["$34.95", "4.9", "93", "sun"]];
+const products = [["Rs 599.00", "4.7", "586", "front"], ["Rs 599.00", "4.6", "224", "side"], ["Rs 599.00", "4.5", "1961", "sun"], ["Rs 599.00", "4.5", "417", "angle"], ["Rs 599.00", "4.5", "221", "front"], ["Rs 599.00", "4.8", "312", "angle"], ["Rs 599.00", "4.6", "148", "side"], ["Rs 599.00", "4.9", "93", "sun"]];
 const reviews = [[5, "starseed03", "Great quality", "4 days ago", "I got them delivered earlier that expected. The frame was sturdy and of good quality.", "True to Size", "High", 0], [5, "Reviewer1948161032", "Great pair of glasses", "7 days ago", "The experience was great! The glasses are much better quality than the ones I usually get at Costco, and they were less expensive. I’m very happy with my purchase!", "True to Size", "Average", 0], [3, "Olivia", "Not true to color", "7 days ago", "I really love the size and shape of these frames, but if you’re someone who can’t wear really dark frames then these aren’t for you! I still like them overall.", "True to Size", "High", 1], [1, "craigbruckner", "Big ugly frames", "12 days ago", "These frames are way too big for my face. My wife laughed when she saw them. Oh well, I can wear them when I work outside as safety glasses.", "Loose", "Low", 0]] as const;
 function ProductImage({ view, className = "" }: { view: string, className?: string }) {
     const asset = productAssets[view] ?? productAssets.front;
@@ -53,7 +53,7 @@ export default function ProductPage() {
                     <div className="title-row">
                         <div>
                             <small>Starting at</small>
-                            <div className="price">$31.95</div>
+                            <div className="price">Rs 599.00</div>
                         </div>
                         <a className="score" href="#reviews"><Star fill="currentColor" /> <b>4.7</b> <u>221 reviews</u></a>
                     </div>
@@ -68,7 +68,7 @@ export default function ProductPage() {
                     <div className="bought">
                         <h2>Customers also bought</h2>
                         <div><ProductImage view="case" />
-                            <section><b>Deluxe Eyewear Case</b><p>Protect your eyewear wherever life takes you with this reliable case. <u>read more</u></p><button>Add to cart $3.95</button></section></div></div>
+                            <section><b>Deluxe Eyewear Case</b><p>Protect your eyewear wherever life takes you with this reliable case. <u>read more</u></p><button>Add to cart Rs299.00</button></section></div></div>
                 </div>
             </section>
 

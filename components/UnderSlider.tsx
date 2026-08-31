@@ -7,6 +7,7 @@ import { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperInstance } from "swiper";
 import "swiper/css";
+import Link from "next/link";
 
 const products = [
   { image: "/images/product/1.avif", price: "$31.95", rating: "4.7", reviews: "221", shape: "Square", colors: ["tortoise", "black"] },
@@ -37,7 +38,7 @@ export default function UnderSlider() {
           <h2 id="best-sellers-title">UNDER 5000 PICKS</h2>
         </div>
         <div className="best-sellers-actions">
-          <a href="/product" className="best-sellers-shop">Shop all</a>
+          <Link href="/product" className="best-sellers-shop">Shop all</Link>
         </div>
       </div>
 

@@ -11,8 +11,8 @@ import type { CSSProperties } from "react";
 
 const shapes = ["Square", "Rectangle", "Round", "Cat eye", "Browline", "Aviator"];
 const shapeImages = ["/images/Square.webp", "/images/Rectangle.webp", "/images/Round.webp", "/images/cateye.png", "/images/Browline.webp", "/images/Aviator.webp"];
-const trendBanners = ["/images/trend-banners/1.webp", "/images/trend-banners/2.webp", "/images/trend-banners/3.webp", "/images/trend-banners/4.webp"];
-const mobileTrendBanners = ["/images/trend-banners/mobile/1.webp", "/images/trend-banners/mobile/2.webp", "/images/trend-banners/mobile/3.webp"];
+const trendBanners = ["/images/trend-banners/1.png", "/images/trend-banners/1.png", "/images/trend-banners/1.png"];
+const mobileTrendBanners = ["/images/trend-banners/mobile/1.png", "/images/trend-banners/mobile/1.png", "/images/trend-banners/mobile/1.png"];
 
 export default function Home() {
   const [trendIndex, setTrendIndex] = useState(1);
@@ -75,7 +75,7 @@ export default function Home() {
         <div>
           <h2>BUY ONE,<br />GET ONE 20% OFF</h2>
           <p>Use code <b>GET20</b></p>
-          <a className="btn" href="/product">SHOP NOW</a>
+          <Link className="btn" href="/product">SHOP NOW</Link>
         </div>
       </section>
       <section className="shape-shop">
@@ -83,11 +83,15 @@ export default function Home() {
           <h2>SHOP BY FRAME SHAPE</h2>
           <p>Versatile shapes made to fit your mood and every moment.</p>
         </div>
-        <div className="shape-grid">{shapes.map((shape, i) => <a href="/product" key={shape}><div><img src={shapeImages[i]} alt={shape} style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "1.25vw" }} /></div><b>{shape}</b></a>)}</div></section></div>
+        <div className="shape-grid">{shapes.map((shape, i) => <Link href="/product" key={shape}><div><img src={shapeImages[i]} alt={shape} style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "1.25vw" }} /></div><b>{shape}</b></Link>)}</div></section></div>
 
     <ImageSlider />
 
-    <div className="page shell"><section className="trend card"><div key={`${trendBanners[trendIndex]}-${mobileTrendBanners[mobileTrendIndex]}`} className="trend-bg" style={{ "--trend-desktop-image": `url(${trendBanners[trendIndex]})`, "--trend-mobile-image": `url(${mobileTrendBanners[mobileTrendIndex]})` } as CSSProperties} /><div><h2>THE TREND SHOP</h2><p>Curated styles, fresh colors, and must-see edits.</p><a className="btn" href="/product">SHOP NOW</a></div></section></div>
+    <div className="page shell">
+      <section className="trend card">
+        <div key={`${trendBanners[trendIndex]}-${mobileTrendBanners[mobileTrendIndex]}`} className="trend-bg" style={{ "--trend-desktop-image": `url(${trendBanners[trendIndex]})`, "--trend-mobile-image": `url(${mobileTrendBanners[mobileTrendIndex]})` } as CSSProperties} /><div><h2>THE TREND SHOP</h2><p>Curated styles, fresh colors, and must-see edits.</p><Link className="btn" href="/product">SHOP NOW</Link></div>
+      </section>
+    </div>
     <UnderSlider />
   </main>;
 }

@@ -558,7 +558,8 @@ body:has(.np-admin) {
     color: #0d6666;
     font-size: 9px;
     font-weight: 800;
-    cursor: pointer
+    cursor: pointer;
+    float: right;
 }
 
 .np-variants .np-card-action {

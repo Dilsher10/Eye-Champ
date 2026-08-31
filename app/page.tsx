@@ -11,8 +11,8 @@ import type { CSSProperties } from "react";
 
 const shapes = ["Square", "Rectangle", "Round", "Cat eye", "Browline", "Aviator"];
 const shapeImages = ["/images/Square.webp", "/images/Rectangle.webp", "/images/Round.webp", "/images/cateye.png", "/images/Browline.webp", "/images/Aviator.webp"];
-const trendBanners = ["/images/trend-banners/1.png", "/images/trend-banners/1.png", "/images/trend-banners/1.png"];
-const mobileTrendBanners = ["/images/trend-banners/mobile/1.png", "/images/trend-banners/mobile/1.png", "/images/trend-banners/mobile/1.png"];
+const trendBanners = ["/images/trend-banners/1.png", "/images/trend-banners/2.png", "/images/trend-banners/3.png"];
+const mobileTrendBanners = ["/images/trend-banners/mobile/1.png", "/images/trend-banners/mobile/2.png", "/images/trend-banners/mobile/3.png"];
 
 export default function Home() {
   const [trendIndex, setTrendIndex] = useState(1);
